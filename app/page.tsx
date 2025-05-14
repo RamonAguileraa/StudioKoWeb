@@ -482,17 +482,20 @@ const projectList: Project[] = [
                 transition={{ duration: 0.6 }}
                 className="relative z-10"
               >
-                <div className="relative rounded-xl overflow-hidden aspect-[4/5]">
+                <div className="relative rounded-xl overflow-hidden aspect-[4/5] shadow-2xl">
                   <Image
-                    src="/placeholder.svg?height=600&width=480&text=Founder"
-                    alt="StudioKó Founder"
+                    src="/studioimg.png"
+                    alt="StudioKó Team"
                     width={480}
                     height={600}
-                    className="object-cover"
+                    className="object-cover w-full h-full"
+                    priority
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
               </motion.div>
-              <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-primary rounded-xl"></div>
+              <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-primary rounded-xl opacity-30"></div>
+              <div className="absolute -bottom-12 -right-12 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl"></div>
             </div>
 
             <motion.div

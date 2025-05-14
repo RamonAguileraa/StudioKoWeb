@@ -58,7 +58,7 @@ export default function AboutPage() {
           <motion.div className="mt-16 relative" style={{ y, opacity }}>
             <div className="relative mx-auto max-w-5xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl">
               <Image
-                src="/placeholder.svg?height=1080&width=1920&text=StudioKó Team"
+                src="/mikiyyo.png?height=1080&width=1920&text=StudioKó Team"
                 alt="StudioKó Team"
                 width={1920}
                 height={1080}
@@ -85,19 +85,19 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
               <p className="text-muted-foreground mb-6">
-                StudioKó was founded in 2018 with a vision to create a digital company that seamlessly blends artistic
-                creativity with technical excellence. Our founder's background in both game development and digital
-                design shaped our unique approach to digital experiences.
+              StudioKó was born from the idea that art and technology shouldn't live apart. Founded in 2018, it started as an indie game studio shaped by a deep passion for design, storytelling, and development. With roots in both digital art and interactive experiences, our founder envisioned a studio where creativity meets code.
               </p>
               <p className="text-muted-foreground mb-6">
-                What began as a small indie game studio quickly expanded to include a full-service creative agency as we
-                recognized the need for comprehensive digital solutions that prioritize both aesthetics and
-                functionality.
+              What began as a small creative team grew into a full-spectrum digital company—combining bold aesthetics with smart functionality. As we evolved, so did our mission: to offer meaningful digital experiences that connect emotionally and perform flawlessly.
               </p>
               <p className="text-muted-foreground">
-                Today, StudioKó operates through two specialized divisions: BosoZoku for game development and Maikonik
-                Media for creative and software solutions, allowing us to deliver exceptional digital experiences across
-                multiple platforms and industries.
+              Today, StudioKó runs through two core divisions:
+              <br />
+             <span className="text-primary">🎮 BosoZoku</span> , focused on game development and original IPs, and
+             <br />
+              <span className="text-primary">🧠 Maikonik Media,</span> our digital agency delivering creative and software solutions for modern brands.
+              <br />
+              Together, we build worlds, platforms, and stories that leave a lasting impact.
               </p>
             </motion.div>
 
@@ -108,16 +108,19 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="relative rounded-xl overflow-hidden aspect-square">
+              <div className="relative rounded-xl overflow-hidden aspect-square shadow-2xl">
                 <Image
-                  src="/placeholder.svg?height=800&width=800&text=Our Story"
+                  src="/studiokous.png"
                   alt="StudioKó Story"
                   width={800}
                   height={800}
-                  className="object-cover"
+                  className="object-cover w-full h-full"
+                  priority
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>
-              <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-primary rounded-xl"></div>
+              <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-primary rounded-xl opacity-30"></div>
+              <div className="absolute -bottom-8 -right-8 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl"></div>
             </motion.div>
           </div>
         </div>
@@ -153,19 +156,13 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Meet Our Founder</h2>
-              <h3 className="text-xl font-bold text-primary mb-4">Miguel Kó</h3>
+              <h3 className="text-xl font-bold text-primary mb-4">Ramón Aguilera</h3>
               <p className="text-muted-foreground mb-6">
-                Miguel Kó is a visionary creative director with over 15 years of experience in both game development and
-                digital design. His unique background combines technical expertise with artistic sensibility, allowing
-                him to bridge the gap between these two worlds.
-              </p>
-              <p className="text-muted-foreground mb-6">
-                After working with leading studios and agencies around the world, Miguel founded StudioKó in 2018 with a
-                mission to create digital experiences that blend artistic expression with technical excellence.
-              </p>
-              <p className="text-muted-foreground mb-6">
-                His work has been recognized with numerous awards, and he regularly speaks at industry conferences about
-                the intersection of game design, user experience, and digital storytelling.
+              Ramón Aguilera is a multidisciplinary creative with a strong background in game development, web design, and digital strategy. As the founder of StudioKó, he leads the BosoZoku project—an indie game initiative focused on creating immersive experiences rooted in cultural identity and creative storytelling.
+
+              With experience ranging from award-winning hackathons to mentoring in international NASA challenges, Ramón brings together technical skill and artistic vision to push the boundaries of interactive media. His leadership drives BosoZoku's flagship title Tibucami, a 3D action-adventure inspired by Rarámuri mythology.
+
+            He continues to innovate across every project—whether it's building digital worlds or shaping unique brand experiences.
               </p>
               <div className="flex space-x-4 mt-6">
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">

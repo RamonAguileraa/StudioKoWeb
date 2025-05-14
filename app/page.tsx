@@ -11,6 +11,16 @@ import SectionTransition from "@/components/section-transition"
 import AnimatedBlob from "@/components/animated-blob"
 import { useLanguage } from "@/context/language-context"
 
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  type: string;
+  image?: string;
+  video?: string;
+  youtubeId?: string;
+}
+
 export default function Home() {
   const { language } = useLanguage()
   const targetRef = useRef<HTMLDivElement>(null)
@@ -132,25 +142,25 @@ export default function Home() {
     },
   }
 
-const projectList = [
+const projectList: Project[] = [
   {
     id: 1,
-    title: "Project 1",
-    description: "Short description of Project 1 and what makes it special.",
+    title: "BosoZoku Studio",
+    description: "Estudio indie de videojuegos BosoZoku, donde puedes descargar nuestro primer juego Tibucami, apoyar el desarrollo con donaciones y conocer más sobre el proyecto y el equipo detrás. Diseñada para conectar con la comunidad y mostrar el alma del estudio.",
     image: "/tibucamipage.png?height=200&width=200",
     type: "Maikonik",
   },
   {
     id: 2,
-    title: "Project 2",
-    description: "Short description of Project 2 and what makes it special.",
+    title: "Tibucami",
+    description: "Tibucami es un juego de acción y aventura inspirado en la mitología Rarámuri. Acompaña a un joven espíritu en su viaje por tierras ancestrales y modernas, enfrentando desafíos y descubriendo su verdadero propósito.",
     image: "/presentaciongame.png?height=200&width=200",
     type: "BosoZoku",
   },
   {
     id: 3,
-    title: "Project 3",
-    description: "Short description of Project 3 and what makes it special.",
+    title: "€nligne",
+    description: "Aplicación web que permite convertir monedas en tiempo real con datos precisos gracias a la API de Fixer. Rápida, confiable y fácil de usar para usuarios que necesitan tasas de cambio actualizadas al instante.",
     image: "/enligne.png?height=200&width=200",
     type: "Maikonik",
   },
@@ -158,21 +168,21 @@ const projectList = [
     id: 4,
     title: "Project 4",
     description: "Short description of Project 4 and what makes it special.",
-    image: "/rinconcafe.png?height=200&width=200",
+    youtubeId: "nSLwgQ8VFp0",
     type: "BosoZoku",
   },
-{
+  {
     id: 5,
     title: "Project 5",
     description: "Short description of Project 5 and what makes it special.",
-    video: "/",
+    image: "/rinconcafe.png?height=200&width=200",
     type: "Maikonik",
   },
   {
     id: 6,
     title: "Project 6",
     description: "Short description of Project 6 and what makes it special.",
-    video: "/",
+    youtubeId: "joM3O1P0GZ4",
     type: "BosoZoku",
   },
 ]
@@ -364,26 +374,31 @@ const projectList = [
         >
           <Card className="overflow-hidden h-full">
             <div className="relative aspect-video overflow-hidden">
-            {project.video ? (
-  <video
-    src={project.video}
-    autoPlay
-    muted
-    loop
-    playsInline
-    className="w-full h-full object-cover"
-  />
-) : (
-  <>
-    <Image
-      src={project.image || "/placeholder.png"}
-      alt={project.title}
-      width={600}
-      height={400}
-      className="object-cover transition-transform duration-500 hover:scale-110"
-    />
-  </>
-
+              {project.youtubeId ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${project.youtubeId}&modestbranding=1&rel=0`}
+                  title={project.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              ) : project.video ? (
+                <video
+                  src={project.video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <Image
+                  src={project.image || "/placeholder.png"}
+                  alt={project.title}
+                  width={600}
+                  height={400}
+                  className="object-cover transition-transform duration-500 hover:scale-110"
+                />
               )}
               <div className="absolute top-2 right-2 text-xs font-medium px-2 py-1 rounded-full bg-background/80 backdrop-blur-sm">
                 {project.type}

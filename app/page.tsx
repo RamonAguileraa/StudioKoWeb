@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import SectionTransition from "@/components/section-transition"
 import AnimatedBlob from "@/components/animated-blob"
 import { useLanguage } from "@/context/language-context"
+import { SiNextdotjs, SiReact, SiTailwindcss, SiTypescript,SiAdobepremierepro, SiAdobeaftereffects, SiUnity, SiBlender, SiFigma, SiAdobexd } from "react-icons/si"
 
 interface Project {
   id: number;
@@ -19,6 +20,10 @@ interface Project {
   image?: string;
   video?: string;
   youtubeId?: string;
+  technologies: {
+    name: string;
+    icon: any;
+  }[];
 }
 
 export default function Home() {
@@ -149,6 +154,10 @@ const projectList: Project[] = [
     description: "Estudio indie de videojuegos BosoZoku, donde puedes descargar nuestro primer juego Tibucami, apoyar el desarrollo con donaciones y conocer más sobre el proyecto y el equipo detrás. Diseñada para conectar con la comunidad y mostrar el alma del estudio.",
     image: "/tibucamipage.png?height=200&width=200",
     type: "Maikonik",
+    technologies: [
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "Tailwind", icon: SiTailwindcss }
+    ]
   },
   {
     id: 2,
@@ -156,6 +165,10 @@ const projectList: Project[] = [
     description: "Tibucami es un juego de acción y aventura inspirado en la mitología Rarámuri. Acompaña a un joven espíritu en su viaje por tierras ancestrales y modernas, enfrentando desafíos y descubriendo su verdadero propósito.",
     image: "/presentaciongame.png?height=200&width=200",
     type: "BosoZoku",
+    technologies: [
+      { name: "Unity", icon: SiUnity },
+      { name: "Blender", icon: SiBlender }
+    ]
   },
   {
     id: 3,
@@ -163,6 +176,10 @@ const projectList: Project[] = [
     description: "Aplicación web que permite convertir monedas en tiempo real con datos precisos gracias a la API de Fixer. Rápida, confiable y fácil de usar para usuarios que necesitan tasas de cambio actualizadas al instante.",
     image: "/enligne.png?height=200&width=200",
     type: "Maikonik",
+    technologies: [
+      { name: "React", icon: SiReact },
+      { name: "TypeScript", icon: SiTypescript }
+    ]
   },
   {
     id: 4,
@@ -170,13 +187,21 @@ const projectList: Project[] = [
     description: "Short description of Project 4 and what makes it special.",
     youtubeId: "nSLwgQ8VFp0",
     type: "BosoZoku",
+    technologies: [
+      { name: "Premiere Pro", icon: SiAdobepremierepro },
+      { name: "After Effects", icon: SiAdobeaftereffects }
+    ]
   },
   {
     id: 5,
-    title: "Project 5",
-    description: "Short description of Project 5 and what makes it special.",
-    image: "/rinconcafe.png?height=200&width=200",
+    title: "Aroma Café",
+    description: "Landing page inspirada en un café auténtico. Transmite calidez, calidad y estilo moderno con un diseño fluido pensado para conectar con los amantes del buen café.",
+    image: "/cafearoma.png?height=200&width=200",
     type: "Maikonik",
+    technologies: [
+      { name: "Figma", icon: SiFigma },
+      { name: "Adobe XD", icon: SiAdobexd }
+    ]
   },
   {
     id: 6,
@@ -184,7 +209,11 @@ const projectList: Project[] = [
     description: "Short description of Project 6 and what makes it special.",
     youtubeId: "joM3O1P0GZ4",
     type: "BosoZoku",
-  },
+    technologies: [
+      { name: "Premiere Pro", icon: SiAdobepremierepro },
+      { name: "After Effects", icon: SiAdobeaftereffects }
+    ]
+  }
 ]
   const t = content[language]
 
@@ -407,6 +436,14 @@ const projectList: Project[] = [
             <CardContent className="p-6">
               <h3 className="font-bold mb-2">{project.title}</h3>
               <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+              <div className="flex items-center gap-2 mb-4">
+                {project.technologies.map((tech, index) => (
+                  <div key={index} className="flex items-center gap-1 text-muted-foreground">
+                    <tech.icon className="w-4 h-4" />
+                    <span className="text-xs">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
               <Link
                 href={`/projects/${project.id}`}
                 className="text-sm font-medium text-primary flex items-center hover:underline"

@@ -28,8 +28,7 @@ export default function BosoZokuPage() {
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-bosozoku">BosoZoku</h1>
               <p className="text-xl md:text-2xl mb-8 text-muted-foreground">
-                Our game development division creating immersive experiences inspired by rich cultural mythology and
-                unique visual styles.
+                Un estudio independiente de desarrollo de videojuegos creando experiencias inmersivas inspiradas en mitologías culturales y estilos visuales únicos.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="bg-bosozoku hover:bg-bosozoku/90 transition-colors">
@@ -74,7 +73,7 @@ export default function BosoZokuPage() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">About BosoZoku</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Creating games that blend cultural storytelling with innovative gameplay
+              Creando juegos que combinan narrativas culturales con gameplay innovador
             </p>
           </div>
 
@@ -125,16 +124,14 @@ export default function BosoZokuPage() {
 
           <div className="mt-16 text-center">
             <p className="text-muted-foreground max-w-3xl mx-auto mb-8">
-              BosoZoku was founded with the mission to create games that not only entertain but also preserve and
-              celebrate cultural heritage through interactive storytelling. Our team combines technical expertise with
-              artistic vision to craft unique gaming experiences.
+              BosoZoku fue fundado con la misión de crear juegos que no solo entretengan sino que también preserven y celebren el patrimonio cultural a través de la narrativa interactiva. Nuestro equipo combina experiencia técnica con visión artística para crear experiencias de juego únicas.
             </p>
             <Button
               asChild
               variant="outline"
               className="border-bosozoku text-bosozoku hover:bg-bosozoku/10 transition-colors"
             >
-              <Link href="/about">Learn More About Our Story</Link>
+              <Link href="/about">Conoce más sobre nuestra historia</Link>
             </Button>
           </div>
         </div>
@@ -396,12 +393,11 @@ export default function BosoZokuPage() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Interested in Collaborating?</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Whether you're a fellow game developer, artist, or storyteller, we're always open to exciting
-              collaborations.
+              Ya seas un desarrollador de juegos, artista o narrador, siempre estamos abiertos a colaboraciones emocionantes.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button asChild size="lg" className="bg-bosozoku hover:bg-bosozoku/90 transition-colors">
-                <Link href="/contact">Get in Touch</Link>
+                <Link href="/contact">Contáctanos</Link>
               </Button>
               <Button
                 asChild
@@ -409,7 +405,7 @@ export default function BosoZokuPage() {
                 variant="outline"
                 className="border-bosozoku text-bosozoku hover:bg-bosozoku/10 transition-colors"
               >
-                <Link href="/maikonik">Explore Maikonik Media</Link>
+                <Link href="/maikonik">Explora Maikonik Media</Link>
               </Button>
             </div>
           </motion.div>

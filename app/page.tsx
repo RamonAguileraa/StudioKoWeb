@@ -47,12 +47,12 @@ export default function Home() {
         discoverMaikonik: "Discover Maikonik",
       },
       divisions: {
-        title: "Our Divisions",
-        subtitle: "StudioKó brings together two specialized divisions to deliver comprehensive digital solutions",
+        title: "Our Collaborations",
+        subtitle: "StudioKó collaborates with talented partners and manages its own creative division",
         bosozoku: {
           title: "BosoZoku",
           description:
-            "Our game development division creating immersive experiences inspired by rich cultural mythology and unique visual styles.",
+            "An independent game studio led by Ramón Aguilera, creating immersive experiences inspired by rich cultural mythology and unique visual styles.",
           flagshipGame: "Flagship Game:",
           tibucami: "Tibucami",
           tibucamiDesc: "Inspired by Rarámuri mythology with stop-motion clay visuals",
@@ -100,12 +100,12 @@ export default function Home() {
         discoverMaikonik: "Descubrir Maikonik",
       },
       divisions: {
-        title: "Nuestras Divisiones",
-        subtitle: "StudioKó reúne dos divisiones especializadas para ofrecer soluciones digitales integrales",
+        title: "Nuestras Colaboraciones",
+        subtitle: "StudioKó colabora con socios talentosos y gestiona su propia división creativa",
         bosozoku: {
           title: "BosoZoku",
           description:
-            "Nuestra división de desarrollo de juegos que crea experiencias inmersivas inspiradas en rica mitología cultural y estilos visuales únicos.",
+            "Un estudio independiente de videojuegos liderado por Ramón Aguilera, que crea experiencias inmersivas inspiradas en rica mitología cultural y estilos visuales únicos.",
           flagshipGame: "Juego Principal:",
           tibucami: "Tibucami",
           tibucamiDesc: "Inspirado en la mitología Rarámuri con visuales de arcilla en stop-motion",

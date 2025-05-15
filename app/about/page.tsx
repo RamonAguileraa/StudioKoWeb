@@ -110,7 +110,7 @@ export default function AboutPage() {
             >
               <div className="relative rounded-xl overflow-hidden aspect-square shadow-2xl">
                 <Image
-                  src="/studiokous.png"
+                  src="/ourstory.png"
                   alt="StudioKó Story"
                   width={800}
                   height={800}
@@ -139,8 +139,8 @@ export default function AboutPage() {
             >
               <div className="relative rounded-xl overflow-hidden aspect-square">
                 <Image
-                  src="/placeholder.svg?height=800&width=800&text=Miguel Kó"
-                  alt="Miguel Kó - Founder"
+                  src="/founder.png?height=800&width=800&text=Ramón Aguilera"
+                  alt="Ramón Aguilera - Founder"
                   width={800}
                   height={800}
                   className="object-cover"
@@ -165,7 +165,7 @@ export default function AboutPage() {
             He continues to innovate across every project—whether it's building digital worlds or shaping unique brand experiences.
               </p>
               <div className="flex space-x-4 mt-6">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="https://www.linkedin.com/in/ram%C3%B3n-aguilera-95a2732a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="text-muted-foreground hover:text-primary transition-colors">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -319,48 +319,42 @@ export default function AboutPage() {
 
             {[
               {
-                year: "2018",
-                title: "Foundation",
-                description: "StudioKó was founded as an indie game development studio",
-                side: "left",
-              },
-              {
-                year: "2019",
-                title: "First Game Release",
-                description: "Released our first indie game title to critical acclaim",
-                side: "right",
-              },
-              {
-                year: "2020",
-                title: "Expansion",
-                description: "Launched Maikonik Media division to offer creative and software services",
-                side: "left",
-              },
-              {
-                year: "2021",
-                title: "Team Growth",
-                description: "Expanded our team to include specialists across multiple disciplines",
-                side: "right",
-              },
-              {
-                year: "2022",
-                title: "Tibucami Development",
-                description: "Began development of our flagship game Tibucami",
-                side: "left",
-              },
-              {
-                year: "2023",
-                title: "New Studio",
-                description: "Moved to a larger studio space to accommodate our growing team",
-                side: "right",
-              },
-              {
                 year: "2024",
-                title: "Today",
-                description: "Continuing to grow and innovate across both divisions",
+                title: "Birth of the Idea",
+                description:
+                  "At the end of 2024, the vision of creating a digital company is born — combining video game development and creative solutions. This led to the early concepts of Maikonik and StudioKó.",
                 side: "left",
               },
-            ].map((item, index) => (
+              {
+                year: "February 2025",
+                title: "Ludic Jam Begins",
+                description:
+                  "The founder learns about the Ludic Jam and begins assembling a multidisciplinary team from classmates to compete with purpose and creativity.",
+                side: "right",
+              },
+              {
+                year: "March 2025",
+                title: "Tibucami is Born",
+                description:
+                  "The core idea of Tibucami takes shape — a culturally rich action-adventure game inspired by Rarámuri mythology, with unique storytelling and visual identity.",
+                side: "left",
+              },
+              {
+                year: "April 2025",
+                title: "Ludic Jam Achievement",
+                description:
+                  "During the 3-day event, BosoZoku Studio stands out among 29 teams and becomes one of the 10 winners, earning a full scholarship by winning the Entrepreneurship category.",
+                side: "right",
+              },
+              {
+                year: "May 2025",
+                title: "StudioKó is Formed",
+                description:
+                  "StudioKó is officially founded by merging BosoZoku Studio and Maikonik Media — unifying game development and digital solutions under one creative vision.",
+                side: "left",
+              },
+            ]
+.map((item, index) => (
               <div key={index} className="relative z-10 mb-12">
                 <div className={`flex items-center ${item.side === "left" ? "md:flex-row-reverse" : "md:flex-row"}`}>
                   <div className="md:w-1/2"></div>
@@ -386,184 +380,188 @@ export default function AboutPage() {
       </SectionTransition>
 
       {/* Team Section */}
-      <SectionTransition>
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              The talented individuals who make StudioKó's vision a reality
-            </p>
-          </div>
+<SectionTransition>
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
+      <p className="text-muted-foreground max-w-2xl mx-auto">
+        The talented individuals who make StudioKó's vision a reality
+      </p>
+    </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { name: "Miguel Kó", role: "Founder & Creative Director", image: "1" },
-              { name: "Alex Rivera", role: "Game Director", image: "2" },
-              { name: "Maya Chen", role: "Lead Artist", image: "3" },
-              { name: "Carlos Mendez", role: "Lead Programmer", image: "4" },
-              { name: "Sophia Kim", role: "Narrative Designer", image: "5" },
-              { name: "David Park", role: "UI/UX Director", image: "6" },
-              { name: "Elena Rodriguez", role: "Marketing Strategist", image: "7" },
-              { name: "James Wilson", role: "Technical Director", image: "8" },
-            ].map((member, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -10 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="glassmorphism rounded-xl p-6 text-center"
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        { name: "Ramón Aguilera", role: "Founder", image: "/founder.png" },
+        { name: "Dorle Pérez", role: "Game Director", image: "/dorle.png" },
+        { name: "Jean Lozano", role: "Lead Artist", image: "/jean.png" },
+        { name: "Bernardo Islas", role: "Technical Director", image: "/berny.png" },
+        { name: "David Salas", role: "Narrative Designer", image: "/deivi.png" },
+        { name: "Gabriel Muñoz", role: "UI/UX Director", image: "/gabo.png" },
+        { name: "Miguel Millán", role: "Lead Editor", image: "/enligne.png" }
+      ].map((member, index) => (
+        <motion.div
+          key={index}
+          whileHover={{ y: -10 }}
+          transition={{ type: "spring", stiffness: 300 }}
+          className="glassmorphism rounded-xl p-6 text-center"
+        >
+          <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+            <Image
+              src={member.image}
+              alt={member.name}
+              width={200}
+              height={200}
+              className="object-cover"
+            />
+          </div>
+          <h3 className="text-xl font-bold mb-1">{member.name}</h3>
+          <p className="text-muted-foreground mb-4">{member.role}</p>
+          <div className="flex justify-center space-x-3">
+            <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <span className="sr-only">Twitter</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-twitter"
               >
-                <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
-                  <Image
-                    src={`/placeholder.svg?height=200&width=200&text=${member.name}`}
-                    alt={member.name}
-                    width={200}
-                    height={200}
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                <p className="text-muted-foreground mb-4">{member.role}</p>
-                <div className="flex justify-center space-x-3">
-                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    <span className="sr-only">Twitter</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-twitter"
-                    >
-                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                    </svg>
-                  </Link>
-                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    <span className="sr-only">LinkedIn</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-linkedin"
-                    >
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                      <rect width="4" height="12" x="2" y="9" />
-                      <circle cx="4" cy="4" r="2" />
-                    </svg>
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+              </svg>
+            </Link>
+            <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <span className="sr-only">LinkedIn</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-linkedin"
+              >
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect width="4" height="12" x="2" y="9" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </Link>
           </div>
+        </motion.div>
+      ))}
+    </div>
 
-          <div className="mt-16 text-center">
-            <Button asChild variant="outline">
-              <Link href="/careers">
-                Join Our Team
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </SectionTransition>
+    <div className="mt-16 text-center">
+      <Button asChild variant="outline">
+        <Link href="/careers">
+          Join Our Team
+          <ArrowRight className="ml-2 h-4 w-4" />
+        </Link>
+      </Button>
+    </div>
+  </div>
+</SectionTransition>
+
 
       {/* Achievements */}
-      <SectionTransition className="bg-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Achievements & Awards</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Recognition of our work and contributions to the industry
-            </p>
+<SectionTransition className="bg-muted/50">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">Achievements & Awards</h2>
+      <p className="text-muted-foreground max-w-2xl mx-auto">
+        Recognition of our journey, talent, and meaningful participation in the creative industry
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Ludic Jam */}
+      <motion.div
+        whileHover={{ y: -10 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        className="glassmorphism rounded-xl p-6 relative overflow-hidden group"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-bosozoku/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="relative z-10">
+          <div className="mb-6 rounded-lg overflow-hidden aspect-video">
+            <Image
+              src="/ludicjam.png"
+              alt="Ludic Jam 2025"
+              width={600}
+              height={400}
+              className="object-cover"
+            />
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 relative overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-bosozoku/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="mb-6 rounded-lg overflow-hidden aspect-video">
-                  <Image
-                    src="/placeholder.svg?height=400&width=600&text=Ludic Jam Winner"
-                    alt="Ludic Jam Winner"
-                    width={600}
-                    height={400}
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Ludic Jam Winner</h3>
-                <p className="text-muted-foreground mb-4">
-                  Our team won first place at the Ludic Game Jam with an innovative game concept that combined unique
-                  mechanics and storytelling.
-                </p>
-                <div className="text-sm text-muted-foreground">2022</div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 relative overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="mb-6 rounded-lg overflow-hidden aspect-video">
-                  <Image
-                    src="/placeholder.svg?height=400&width=600&text=NASA Space Apps"
-                    alt="NASA Space Apps Mentor"
-                    width={600}
-                    height={400}
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-2">NASA Space Apps Mentor</h3>
-                <p className="text-muted-foreground mb-4">
-                  Our founder served as a mentor for the NASA Space Apps Challenge, guiding teams in developing
-                  innovative solutions to space-related challenges.
-                </p>
-                <div className="text-sm text-muted-foreground">2021</div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 relative overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="mb-6 rounded-lg overflow-hidden aspect-video">
-                  <Image
-                    src="/placeholder.svg?height=400&width=600&text=Design Excellence"
-                    alt="Design Excellence Award"
-                    width={600}
-                    height={400}
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Design Excellence Award</h3>
-                <p className="text-muted-foreground mb-4">
-                  Maikonik Media received recognition for outstanding design work in the annual Digital Design Awards
-                  for a client project.
-                </p>
-                <div className="text-sm text-muted-foreground">2023</div>
-              </div>
-            </motion.div>
-          </div>
+          <h3 className="text-xl font-bold mb-2">Ludic Jam Winner – Entrepreneurship</h3>
+          <p className="text-muted-foreground mb-4">
+            Our team, Bosozoku, was selected as one of the 10 winners among 29 teams in the Ludic Jam 2025, winning the
+            Entrepreneurship category and earning a 100% scholarship.
+          </p>
+          <div className="text-sm text-muted-foreground">April 2025</div>
         </div>
-      </SectionTransition>
+      </motion.div>
+
+      {/* NASA Space Apps Mentor */}
+      <motion.div
+        whileHover={{ y: -10 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        className="glassmorphism rounded-xl p-6 relative overflow-hidden group"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-maikonik/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="relative z-10">
+          <div className="mb-6 rounded-lg overflow-hidden aspect-video">
+            <Image
+              src="/nasa.png"
+              alt="NASA Space Apps Mentor"
+              width={600}
+              height={400}
+              className="object-cover"
+            />
+          </div>
+          <h3 className="text-xl font-bold mb-2">NASA Space Apps Challenge – Mentor</h3>
+          <p className="text-muted-foreground mb-4">
+            We participated as mentors in the International NASA Space Apps Challenge, helping teams improve their UX,
+            communication, and storytelling strategies.
+          </p>
+          <div className="text-sm text-muted-foreground">October 2024</div>
+        </div>
+      </motion.div>
+
+      {/* Tibucami – Cultural Impact */}
+      <motion.div
+        whileHover={{ y: -10 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        className="glassmorphism rounded-xl p-6 relative overflow-hidden group"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="relative z-10">
+          <div className="mb-6 rounded-lg overflow-hidden aspect-video">
+            <Image
+              src="/tibucami.png"
+              alt="Tibucami - Cultural Game"
+              width={600}
+              height={400}
+              className="object-cover"
+            />
+          </div>
+          <h3 className="text-xl font-bold mb-2">Tibucami – Cultural & Artistic Recognition</h3>
+          <p className="text-muted-foreground mb-4">
+            Tibucami, our original 3D action-adventure game, has been recognized for its unique visual identity and
+            Rarámuri cultural inspiration, blending mythology with gameplay innovation.
+          </p>
+          <div className="text-sm text-muted-foreground">March 2025</div>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</SectionTransition>
+
 
       {/* Call to Action */}
       <SectionTransition className="bg-gradient-to-r from-bosozoku/10 to-maikonik/10 dark:from-bosozoku/20 dark:to-maikonik/20">

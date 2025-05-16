@@ -22,6 +22,8 @@ export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [activeTab, setActiveTab] = useState("form")
   const [formStep, setFormStep] = useState(1)
+  const [selectedDay, setSelectedDay] = useState<string>("")
+  const [selectedTime, setSelectedTime] = useState<string>("")
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -56,9 +58,42 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would normally send the form data to your backend
-    console.log("Form submitted:", formData)
+    // Aquí agregamos la lógica para enviar el correo
+    const mailtoLink = `mailto:contact.studioko.dev@gmail.com?subject=Contact from ${formData.name}&body=${formData.message}`
+    window.location.href = mailtoLink
     setFormSubmitted(true)
+  }
+
+  const handleScheduleCall = () => {
+    if (!selectedDay || !selectedTime) {
+      return
+    }
+
+    const startDate = new Date()
+    startDate.setHours(parseInt(selectedTime.split(":")[0]))
+    startDate.setMinutes(0)
+    startDate.setSeconds(0)
+
+    const endDate = new Date(startDate)
+    endDate.setMinutes(30) // Duración de 30 minutos
+
+    const eventDetails = {
+      text: "Llamada con StudioKó",
+      details: "Consulta de 30 minutos con el equipo de StudioKó",
+      location: "Llamada telefónica",
+      start: startDate.toISOString(),
+      end: endDate.toISOString(),
+    }
+
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+      eventDetails.text
+    )}&details=${encodeURIComponent(eventDetails.details)}&location=${encodeURIComponent(
+      eventDetails.location
+    )}&dates=${eventDetails.start.replace(/[-:]/g, "").split(".")[0]}Z/${eventDetails.end
+      .replace(/[-:]/g, "")
+      .split(".")[0]}Z`
+
+    window.open(googleCalendarUrl, "_blank")
   }
 
   // Text content based on language
@@ -245,12 +280,6 @@ export default function ContactPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.3 }}
                   >
-                    <div className="bg-primary/10 rounded-full p-3 mr-4">
-                      <MapPin className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold">{t.office}</h3>
-                    </div>
                   </motion.div>
                 </div>
 
@@ -263,7 +292,7 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold mb-4">{t.followUs}</h3>
                   <div className="flex space-x-4">
                     <a
-                      href="#"
+                      href="https://www.instagram.com/bosozoku.studio/"
                       className="bg-muted p-3 rounded-full hover:bg-primary/10 transition-colors hover:scale-110 transform duration-200"
                     >
                       <svg
@@ -297,27 +326,6 @@ export default function ContactPage() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="lucide lucide-linkedin"
-                      >
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                        <rect width="4" height="12" x="2" y="9" />
-                        <circle cx="4" cy="4" r="2" />
-                      </svg>
-                    </a>
-                    <a
-                      href="#"
-                      className="bg-muted p-3 rounded-full hover:bg-primary/10 transition-colors hover:scale-110 transform duration-200"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
                         className="lucide lucide-twitter"
                       >
                         <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
@@ -326,22 +334,7 @@ export default function ContactPage() {
                   </div>
                 </motion.div>
 
-                <motion.div
-                  className="mt-12 relative overflow-hidden rounded-xl"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.5 }}
-                >
-                  <div className="aspect-video bg-muted relative overflow-hidden rounded-xl">
-                    <Image
-                      src="/placeholder.svg?height=400&width=600&text=StudioKó Office"
-                      alt="StudioKó Office"
-                      width={600}
-                      height={400}
-                      className="object-cover hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                </motion.div>
+
               </motion.div>
             </div>
 
@@ -674,7 +667,7 @@ export default function ContactPage() {
                     <Button
                       className="bg-green-500 hover:bg-green-600 transition-colors"
                       size="lg"
-                      onClick={() => window.open("https://wa.me/15551234567", "_blank")}
+                      onClick={() => window.open("https://wa.me/52614283958", "_blank")}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -717,7 +710,12 @@ export default function ContactPage() {
                       {["Mon", "Tue", "Wed", "Thu", "Fri"].map((day) => (
                         <div
                           key={day}
-                          className="p-4 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-colors cursor-pointer"
+                          className={`p-4 rounded-lg border ${
+                            selectedDay === day
+                              ? "border-primary bg-primary/5"
+                              : "border-border hover:border-primary hover:bg-primary/5"
+                          } transition-colors cursor-pointer`}
+                          onClick={() => setSelectedDay(day)}
                         >
                           <div className="font-bold mb-2">{day}</div>
                           <div className="text-sm text-muted-foreground">9:00 AM - 5:00 PM</div>
@@ -729,30 +727,29 @@ export default function ContactPage() {
                       {["9:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00"].map((time) => (
                         <div
                           key={time}
-                          className="p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-colors cursor-pointer text-center"
+                          className={`p-3 rounded-lg border ${
+                            selectedTime === time
+                              ? "border-primary bg-primary/5"
+                              : "border-border hover:border-primary hover:bg-primary/5"
+                          } transition-colors cursor-pointer text-center`}
+                          onClick={() => setSelectedTime(time)}
                         >
                           {time}
                         </div>
                       ))}
                     </div>
 
-                    <Button className="w-full bg-gradient-to-r from-bosozoku to-maikonik hover:opacity-90" size="lg">
+                    <Button 
+                      className="w-full bg-gradient-to-r from-bosozoku to-maikonik hover:opacity-90" 
+                      size="lg"
+                      onClick={handleScheduleCall}
+                      disabled={!selectedDay || !selectedTime}
+                    >
                       {t.callButton}
                     </Button>
                   </motion.div>
                 </TabsContent>
               </Tabs>
-            </div>
-          </div>
-        </div>
-      </SectionTransition>
-
-      {/* Map Section */}
-      <SectionTransition>
-        <div className="container mx-auto px-4">
-          <div className="rounded-xl overflow-hidden h-[400px] relative">
-            <div className="absolute inset-0 bg-muted flex items-center justify-center">
-              <p className="text-muted-foreground">Interactive map would be displayed here</p>
             </div>
           </div>
         </div>

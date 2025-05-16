@@ -686,7 +686,7 @@ export default function AboutPage() {
               <div className="relative z-10">
                 <div className="mb-6 rounded-lg overflow-hidden aspect-video">
                   <Image
-                    src="/ludicjam.png"
+                    src="/reconocimiento.png"
                     alt="Ludic Jam 2025"
                     width={600}
                     height={400}
@@ -713,7 +713,7 @@ export default function AboutPage() {
               <div className="relative z-10">
                 <div className="mb-6 rounded-lg overflow-hidden aspect-video">
                   <Image
-                    src="/nasa.png"
+                    src="/recospace.png"
                     alt="NASA Space Apps Mentor"
                     width={600}
                     height={400}
@@ -726,33 +726,6 @@ export default function AboutPage() {
                 </p>
                 <div className="text-sm text-muted-foreground">
                   {t.achievements.nasa.date}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Tibucami – Cultural Impact */}
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 relative overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="mb-6 rounded-lg overflow-hidden aspect-video">
-                  <Image
-                    src="/tibucami.png"
-                    alt="Tibucami - Cultural Game"
-                    width={600}
-                    height={400}
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-2">{t.achievements.tibucami.title}</h3>
-                <p className="text-muted-foreground mb-4">
-                  {t.achievements.tibucami.desc}
-                </p>
-                <div className="text-sm text-muted-foreground">
-                  {t.achievements.tibucami.date}
                 </div>
               </div>
             </motion.div>

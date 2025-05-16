@@ -219,7 +219,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold">{t.email}</h3>
-                      <p className="text-muted-foreground">hello@studioko.com</p>
+                      <p className="text-muted-foreground">contact.studioko.dev@gmail.com
+                      </p>
                     </div>
                   </motion.div>
 
@@ -234,7 +235,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold">{t.phone}</h3>
-                      <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                      <p className="text-muted-foreground">+52 (614) 465-9147</p>
                     </div>
                   </motion.div>
 
@@ -249,13 +250,6 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold">{t.office}</h3>
-                      <p className="text-muted-foreground">
-                        123 Creative Avenue
-                        <br />
-                        Digital District
-                        <br />
-                        San Francisco, CA 94103
-                      </p>
                     </div>
                   </motion.div>
                 </div>

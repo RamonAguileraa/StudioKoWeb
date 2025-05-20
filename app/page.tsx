@@ -272,7 +272,7 @@ const projectList: Project[] = [
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-maikonik hover:bg-maikonik/10 transition-colors"
+                className="border-maikonik text-maikonik hover:bg-maikonik/10 transition-colors"
               >
                 <Link href="/maikonik">
                   {t.hero.discoverMaikonik}
@@ -372,8 +372,7 @@ const projectList: Project[] = [
                 </div>
                 <Button
                   asChild
-                  variant="outline"
-                  className="border-maikonik text-maikonik hover:bg-maikonik/10 transition-colors"
+                  className="bg-gradient-to-r from-maikonik to-maikonik/80 hover:opacity-90 transition-opacity"
                 >
                   <Link href="/maikonik">
                     {t.divisions.maikonik.learnMore}

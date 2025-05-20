@@ -426,8 +426,7 @@ export default function MaikonikPage() {
           <div className="mt-12 text-center">
             <Button
               asChild
-              variant="outline"
-              className="border-maikonik text-maikonik hover:bg-maikonik/10 transition-colors"
+              className="bg-gradient-to-r from-maikonik to-maikonik/80 hover:opacity-90 transition-opacity"
             >
               <Link href="/maikonik/portfolio">
                 View All Projects
@@ -494,7 +493,7 @@ export default function MaikonikPage() {
                   <p className="text-sm text-muted-foreground">Monthly active users</p>
                 </div>
               </div>
-              <Button asChild className="bg-maikonik hover:bg-maikonik/90 transition-colors">
+              <Button asChild className="bg-gradient-to-r from-maikonik to-maikonik/80 hover:opacity-90 transition-opacity">
                 <Link href="/maikonik/case-studies/ecommerce-redesign">
                   Read Full Case Study
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -627,7 +626,7 @@ export default function MaikonikPage() {
               Let's work together to create exceptional digital experiences that drive results for your business.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button asChild size="lg" className="bg-maikonik hover:bg-maikonik/90 transition-colors">
+              <Button asChild size="lg" className="bg-gradient-to-r from-maikonik to-maikonik/80 hover:opacity-90 transition-opacity">
                 <Link href="/contact">Start a Project</Link>
               </Button>
               <Button
@@ -636,7 +635,7 @@ export default function MaikonikPage() {
                 variant="outline"
                 className="border-maikonik text-maikonik hover:bg-maikonik/10 transition-colors"
               >
-                <Link href="/bosozoku">Explore BosoZoku</Link>
+                <Link href="/studioko">Explore StudioKo</Link>
               </Button>
             </div>
           </motion.div>

@@ -1,0 +1,436 @@
+"use client"
+
+import { motion } from "framer-motion"
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowRight, Code, Film, Globe, Smartphone, Palette, MessageSquare, TrendingUp } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import SectionTransition from "@/components/section-transition"
+import AnimatedBlob from "@/components/animated-blob"
+import { useLanguage } from "@/context/language-context"
+
+export default function ServicesPage() {
+  const { language } = useLanguage()
+
+  const content = {
+    en: {
+      hero: {
+        title: "Our Services",
+        subtitle: "Comprehensive digital solutions for your business",
+      },
+      studioko: {
+        title: "StudioKo Services",
+        subtitle: "Technical excellence in software development",
+        webDev: {
+          title: "Web Development",
+          description: "Modern and responsive websites and web applications that drive your digital presence.",
+          features: [
+            "Responsive Design",
+            "E-commerce Solutions",
+            "Web Applications",
+            "CMS Development",
+            "API Integration",
+            "Performance Optimization"
+          ]
+        },
+        mobileDev: {
+          title: "Mobile Development",
+          description: "Native and cross-platform mobile applications that deliver exceptional user experiences.",
+          features: [
+            "iOS Development",
+            "Android Development",
+            "Cross-platform Solutions",
+            "UI/UX Design",
+            "App Store Optimization",
+            "Performance Tuning"
+          ]
+        }
+      },
+      maikonik: {
+        title: "Maikonik Media Services",
+        subtitle: "Creative excellence in media production",
+        videoProd: {
+          title: "Video Production",
+          description: "High-quality video content for marketing, training, and storytelling.",
+          features: [
+            "Corporate Videos",
+            "Product Demonstrations",
+            "Motion Graphics",
+            "Animation",
+            "Video Editing",
+            "Post-production"
+          ]
+        },
+        marketing: {
+          title: "Digital Marketing",
+          description: "Strategic marketing solutions to grow your online presence and drive results.",
+          features: [
+            "SEO & SEM",
+            "Social Media Marketing",
+            "Email Marketing",
+            "Content Strategy",
+            "Analytics & Reporting",
+            "Campaign Management"
+          ]
+        }
+      },
+      cta: {
+        title: "Ready to Start Your Project?",
+        subtitle: "Let's work together to bring your vision to life",
+        button: "Get in Touch"
+      }
+    },
+    es: {
+      hero: {
+        title: "Nuestros Servicios",
+        subtitle: "Soluciones digitales integrales para tu negocio",
+      },
+      studioko: {
+        title: "Servicios StudioKo",
+        subtitle: "Excelencia técnica en desarrollo de software",
+        webDev: {
+          title: "Desarrollo Web",
+          description: "Sitios web y aplicaciones web modernas y responsivas que impulsan tu presencia digital.",
+          features: [
+            "Diseño Responsivo",
+            "Soluciones E-commerce",
+            "Aplicaciones Web",
+            "Desarrollo CMS",
+            "Integración de APIs",
+            "Optimización de Rendimiento"
+          ]
+        },
+        mobileDev: {
+          title: "Desarrollo Móvil",
+          description: "Aplicaciones móviles nativas y multiplataforma que ofrecen experiencias excepcionales.",
+          features: [
+            "Desarrollo iOS",
+            "Desarrollo Android",
+            "Soluciones Cross-platform",
+            "Diseño UI/UX",
+            "Optimización App Store",
+            "Ajuste de Rendimiento"
+          ]
+        }
+      },
+      maikonik: {
+        title: "Servicios Maikonik Media",
+        subtitle: "Excelencia creativa en producción de medios",
+        videoProd: {
+          title: "Producción de Video",
+          description: "Contenido audiovisual de alta calidad para marketing, entrenamiento y storytelling.",
+          features: [
+            "Videos Corporativos",
+            "Demostraciones de Productos",
+            "Motion Graphics",
+            "Animación",
+            "Edición de Video",
+            "Post-producción"
+          ]
+        },
+        marketing: {
+          title: "Marketing Digital",
+          description: "Estrategias de marketing digital para aumentar tu presencia online y generar resultados.",
+          features: [
+            "SEO & SEM",
+            "Marketing en Redes Sociales",
+            "Email Marketing",
+            "Estrategia de Contenido",
+            "Analítica y Reportes",
+            "Gestión de Campañas"
+          ]
+        }
+      },
+      cta: {
+        title: "¿Listo para Comenzar tu Proyecto?",
+        subtitle: "Trabajemos juntos para dar vida a tu visión",
+        button: "Contáctanos"
+      }
+    }
+  }
+
+  const t = content[language]
+
+  return (
+    <div className="relative pt-20">
+      {/* Hero Section */}
+      <section className="relative min-h-[50vh] flex items-center">
+        <AnimatedBlob color="#6C2BD9" size="600px" top="-300px" left="-300px" opacity={0.1} />
+        <AnimatedBlob color="#F43F5E" size="500px" bottom="-250px" right="-250px" opacity={0.1} delay={2} />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            className="max-w-4xl mx-auto text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.h1
+              className="text-4xl md:text-6xl font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {t.hero.title}
+            </motion.h1>
+            <motion.p
+              className="text-xl md:text-2xl mb-8 text-muted-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              {t.hero.subtitle}
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* StudioKo Services */}
+      <SectionTransition className="bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.studioko.title}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t.studioko.subtitle}</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="bg-primary/10 rounded-full p-4 inline-flex mb-6">
+                  <Globe className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t.studioko.webDev.title}</h3>
+                <p className="text-muted-foreground mb-6">{t.studioko.webDev.description}</p>
+                <div className="space-y-4 mb-6">
+                  {t.studioko.webDev.features.map((feature, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="mr-3 mt-1 bg-primary/10 rounded-full p-1">
+                        <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium">{feature}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {language === 'en' 
+                            ? 'Custom solutions tailored to your needs'
+                            : 'Soluciones personalizadas adaptadas a tus necesidades'}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center justify-between">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-primary text-primary hover:bg-primary/10 transition-colors"
+                  >
+                    <Link href="/studioko">
+                      {language === 'en' ? 'Learn More' : 'Saber Más'}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs text-muted-foreground">
+                      {language === 'en' ? 'Starting at' : 'Desde'}
+                    </span>
+                    <span className="text-sm font-medium">$999</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="bg-primary/10 rounded-full p-4 inline-flex mb-6">
+                  <Smartphone className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t.studioko.mobileDev.title}</h3>
+                <p className="text-muted-foreground mb-6">{t.studioko.mobileDev.description}</p>
+                <div className="space-y-4 mb-6">
+                  {t.studioko.mobileDev.features.map((feature, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="mr-3 mt-1 bg-primary/10 rounded-full p-1">
+                        <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium">{feature}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {language === 'en' 
+                            ? 'Native and cross-platform solutions'
+                            : 'Soluciones nativas y multiplataforma'}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center justify-between">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-primary text-primary hover:bg-primary/10 transition-colors"
+                  >
+                    <Link href="/studioko">
+                      {language === 'en' ? 'Learn More' : 'Saber Más'}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs text-muted-foreground">
+                      {language === 'en' ? 'Starting at' : 'Desde'}
+                    </span>
+                    <span className="text-sm font-medium">$1,499</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </SectionTransition>
+
+      {/* Maikonik Services */}
+      <SectionTransition>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.maikonik.title}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t.maikonik.subtitle}</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="bg-maikonik/10 rounded-full p-4 inline-flex mb-6">
+                  <Film className="h-8 w-8 text-maikonik" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t.maikonik.videoProd.title}</h3>
+                <p className="text-muted-foreground mb-6">{t.maikonik.videoProd.description}</p>
+                <div className="space-y-4 mb-6">
+                  {t.maikonik.videoProd.features.map((feature, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="mr-3 mt-1 bg-maikonik/10 rounded-full p-1">
+                        <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium">{feature}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {language === 'en' 
+                            ? 'Professional video production services'
+                            : 'Servicios profesionales de producción de video'}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center justify-between">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-maikonik text-maikonik hover:bg-maikonik/10 transition-colors"
+                  >
+                    <Link href="/maikonik">
+                      {language === 'en' ? 'Learn More' : 'Saber Más'}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs text-muted-foreground">
+                      {language === 'en' ? 'Starting at' : 'Desde'}
+                    </span>
+                    <span className="text-sm font-medium">$799</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="bg-maikonik/10 rounded-full p-4 inline-flex mb-6">
+                  <TrendingUp className="h-8 w-8 text-maikonik" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t.maikonik.marketing.title}</h3>
+                <p className="text-muted-foreground mb-6">{t.maikonik.marketing.description}</p>
+                <div className="space-y-4 mb-6">
+                  {t.maikonik.marketing.features.map((feature, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="mr-3 mt-1 bg-maikonik/10 rounded-full p-1">
+                        <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium">{feature}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {language === 'en' 
+                            ? 'Data-driven marketing strategies'
+                            : 'Estrategias de marketing basadas en datos'}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center justify-between">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-maikonik text-maikonik hover:bg-maikonik/10 transition-colors"
+                  >
+                    <Link href="/maikonik">
+                      {language === 'en' ? 'Learn More' : 'Saber Más'}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs text-muted-foreground">
+                      {language === 'en' ? 'Starting at' : 'Desde'}
+                    </span>
+                    <span className="text-sm font-medium">$599</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </SectionTransition>
+
+      {/* Call to Action */}
+      <SectionTransition className="bg-gradient-to-r from-primary/10 to-maikonik/10 dark:from-primary/20 dark:to-maikonik/20">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.cta.title}</h2>
+            <p className="text-xl text-muted-foreground mb-8">{t.cta.subtitle}</p>
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-primary to-maikonik hover:opacity-90 transition-opacity"
+            >
+              <Link href="/contact">{t.cta.button}</Link>
+            </Button>
+          </motion.div>
+        </div>
+      </SectionTransition>
+    </div>
+  )
+} 

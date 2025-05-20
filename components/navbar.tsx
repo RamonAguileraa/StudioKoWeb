@@ -23,8 +23,9 @@ export default function Navbar() {
     en: {
       home: "Home",
       divisions: "Divisions",
-      bosozoku: "BosoZoku",
+      studioko: "StudioKo",
       maikonik: "Maikonik Media",
+      services: "Services",
       about: "About Us",
       contact: "Contact",
       getInTouch: "Get in Touch",
@@ -32,8 +33,9 @@ export default function Navbar() {
     es: {
       home: "Inicio",
       divisions: "Divisiones",
-      bosozoku: "BosoZoku",
+      studioko: "StudioKo",
       maikonik: "Maikonik Media",
+      services: "Servicios",
       about: "Nosotros",
       contact: "Contacto",
       getInTouch: "Contáctanos",
@@ -49,10 +51,11 @@ export default function Navbar() {
       name: t.divisions,
       href: "#",
       submenu: [
-        { name: t.bosozoku, href: "/bosozoku" },
+        { name: t.studioko, href: "/studioko" },
         { name: t.maikonik, href: "/maikonik" },
       ],
     },
+    { name: t.services, href: "/services" },
     { name: t.about, href: "/about" },
     { name: t.contact, href: "/contact" },
   ]
@@ -86,7 +89,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-2xl font-bold bg-gradient-to-r from-bosozoku to-maikonik bg-clip-text text-transparent"
+            className="text-2xl font-bold bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent"
           >
             StudioKó
           </motion.div>
@@ -149,7 +152,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center space-x-4">
           <LanguageToggle />
           <ModeToggle />
-          <Button asChild className="bg-gradient-to-r from-bosozoku to-maikonik hover:opacity-90 transition-opacity">
+          <Button asChild className="bg-gradient-to-r from-primary to-maikonik hover:opacity-90 transition-opacity">
             <Link href="/contact">{t.getInTouch}</Link>
           </Button>
         </div>
@@ -224,7 +227,7 @@ export default function Navbar() {
               ))}
               <Button
                 asChild
-                className="w-full bg-gradient-to-r from-bosozoku to-maikonik hover:opacity-90 transition-opacity"
+                className="w-full bg-gradient-to-r from-primary to-maikonik hover:opacity-90 transition-opacity"
               >
                 <Link href="/contact">{t.getInTouch}</Link>
               </Button>

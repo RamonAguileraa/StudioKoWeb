@@ -372,13 +372,170 @@ const projectList: Project[] = [
                 </div>
                 <Button
                   asChild
-                  className="bg-gradient-to-r from-maikonik to-maikonik/80 hover:opacity-90 transition-opacity"
+                  variant="outline"
+                  className="border-maikonik text-maikonik hover:bg-maikonik/10 transition-colors"
                 >
                   <Link href="/maikonik">
                     {t.divisions.maikonik.learnMore}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </SectionTransition>
+
+      {/* Services Section */}
+      <SectionTransition>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Nuestros Servicios</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Soluciones digitales integrales para impulsar tu negocio
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* StudioKo Services */}
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <Code className="h-12 w-12 mb-6 text-primary" />
+                <h3 className="text-xl font-bold mb-3">Desarrollo Web</h3>
+                <p className="text-muted-foreground mb-6">
+                  Creamos sitios web y aplicaciones web modernas y responsivas que impulsan tu presencia digital.
+                </p>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-center text-sm">
+                    <div className="mr-2 bg-primary/10 rounded-full p-1">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
+                    </div>
+                    Diseño responsivo
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <div className="mr-2 bg-primary/10 rounded-full p-1">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
+                    </div>
+                    E-commerce
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <div className="mr-2 bg-primary/10 rounded-full p-1">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
+                    </div>
+                    Aplicaciones web
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <Code className="h-12 w-12 mb-6 text-primary" />
+                <h3 className="text-xl font-bold mb-3">Desarrollo Móvil</h3>
+                <p className="text-muted-foreground mb-6">
+                  Aplicaciones móviles nativas y multiplataforma que ofrecen experiencias excepcionales.
+                </p>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-center text-sm">
+                    <div className="mr-2 bg-primary/10 rounded-full p-1">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
+                    </div>
+                    iOS y Android
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <div className="mr-2 bg-primary/10 rounded-full p-1">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
+                    </div>
+                    Cross-platform
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <div className="mr-2 bg-primary/10 rounded-full p-1">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
+                    </div>
+                    UI/UX optimizado
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* Maikonik Services */}
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <Film className="h-12 w-12 mb-6 text-maikonik" />
+                <h3 className="text-xl font-bold mb-3">Producción de Video</h3>
+                <p className="text-muted-foreground mb-6">
+                  Contenido audiovisual de alta calidad para marketing, entrenamiento y storytelling.
+                </p>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-center text-sm">
+                    <div className="mr-2 bg-maikonik/10 rounded-full p-1">
+                      <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
+                    </div>
+                    Videos corporativos
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <div className="mr-2 bg-maikonik/10 rounded-full p-1">
+                      <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
+                    </div>
+                    Motion graphics
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <div className="mr-2 bg-maikonik/10 rounded-full p-1">
+                      <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
+                    </div>
+                    Animaciones
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <Film className="h-12 w-12 mb-6 text-maikonik" />
+                <h3 className="text-xl font-bold mb-3">Marketing Digital</h3>
+                <p className="text-muted-foreground mb-6">
+                  Estrategias de marketing digital para aumentar tu presencia online y generar resultados.
+                </p>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-center text-sm">
+                    <div className="mr-2 bg-maikonik/10 rounded-full p-1">
+                      <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
+                    </div>
+                    SEO y SEM
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <div className="mr-2 bg-maikonik/10 rounded-full p-1">
+                      <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
+                    </div>
+                    Redes sociales
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <div className="mr-2 bg-maikonik/10 rounded-full p-1">
+                      <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
+                    </div>
+                    Email marketing
+                  </li>
+                </ul>
               </div>
             </motion.div>
           </div>

@@ -43,28 +43,30 @@ export default function Home() {
       hero: {
         title: "Crafting Digital Experiences",
         subtitle: "Where creativity meets technology to build exceptional digital products",
-        exploreBosozoku: "Explore BosoZoku",
+        exploreStudioKo: "Explore StudioKo",
         discoverMaikonik: "Discover Maikonik",
       },
       divisions: {
-        title: "Our Collaborations",
-        subtitle: "StudioKó collaborates with talented partners and manages its own creative division",
-        bosozoku: {
-          title: "BosoZoku",
+        title: "Our Divisions",
+        subtitle: "Two specialized divisions working together to deliver comprehensive digital solutions",
+        studioko: {
+          title: "StudioKo",
           description:
-            "An independent game studio led by Ramón Aguilera, creating immersive experiences inspired by rich cultural mythology and unique visual styles.",
-          flagshipGame: "Flagship Game:",
-          tibucami: "Tibucami",
-          tibucamiDesc: "Inspired by Rarámuri mythology with stop-motion clay visuals",
+            "Our technical division specializing in software development, web applications, and digital solutions. We bring technical excellence to every project.",
+          services: "Services:",
+          webDev: "Web Development",
+          mobileDev: "Mobile Development",
+          softwareDev: "Software Development",
           learnMore: "Learn More",
         },
         maikonik: {
           title: "Maikonik Media",
           description:
-            "Our creative and software agency delivering cutting-edge digital solutions for brands and businesses.",
-          webMobile: "Web & Mobile",
-          uiuxDesign: "UI/UX Design",
-          videoMedia: "Video & Media",
+            "Our creative division focused on media production, marketing strategies, and brand development. We create compelling visual content and marketing campaigns.",
+          services: "Services:",
+          videoProduction: "Video Production",
+          marketing: "Digital Marketing",
+          brandDesign: "Brand Design",
           learnMore: "Learn More",
         },
       },
@@ -78,16 +80,16 @@ export default function Home() {
       vision: {
         title: "Our Vision",
         description1:
-          "StudioKó was founded with a clear vision: to create digital experiences that blend artistic expression with technical excellence. Our founder's background in both game development and digital design has shaped our unique approach.",
+          "We believe in the power of combining technical excellence with creative innovation. Our two divisions work in harmony to deliver comprehensive digital solutions that make a real impact.",
         description2:
-          "We believe in the power of storytelling across all digital mediums, whether it's an immersive game or a brand's digital presence. This philosophy guides everything we create.",
+          "Whether you need cutting-edge software development or compelling media content, we have the expertise to bring your vision to life.",
         aboutStory: "About Our Story",
         getInTouch: "Get in Touch",
       },
       cta: {
         title: "Ready to Create Something Amazing?",
         subtitle:
-          "Whether you're looking for game development or creative digital solutions, we're here to bring your vision to life.",
+          "Whether you need technical solutions or creative content, we're here to help you achieve your goals.",
         startProject: "Start a Project",
         learnMore: "Learn More About Us",
       },
@@ -96,28 +98,30 @@ export default function Home() {
       hero: {
         title: "Creando Experiencias Digitales",
         subtitle: "Donde la creatividad se une a la tecnología para construir productos digitales excepcionales",
-        exploreBosozoku: "Explorar BosoZoku",
+        exploreStudioKo: "Explorar StudioKo",
         discoverMaikonik: "Descubrir Maikonik",
       },
       divisions: {
-        title: "Nuestras Colaboraciones",
-        subtitle: "StudioKó colabora con socios talentosos y gestiona su propia división creativa",
-        bosozoku: {
-          title: "BosoZoku",
+        title: "Nuestras Divisiones",
+        subtitle: "Dos divisiones especializadas trabajando juntas para ofrecer soluciones digitales integrales",
+        studioko: {
+          title: "StudioKo",
           description:
-            "Un estudio independiente de videojuegos liderado por Ramón Aguilera, que crea experiencias inmersivas inspiradas en rica mitología cultural y estilos visuales únicos.",
-          flagshipGame: "Juego Principal:",
-          tibucami: "Tibucami",
-          tibucamiDesc: "Inspirado en la mitología Rarámuri con visuales de arcilla en stop-motion",
+            "Nuestra división técnica especializada en desarrollo de software, aplicaciones web y soluciones digitales. Llevamos la excelencia técnica a cada proyecto.",
+          services: "Servicios:",
+          webDev: "Desarrollo Web",
+          mobileDev: "Desarrollo Móvil",
+          softwareDev: "Desarrollo de Software",
           learnMore: "Saber Más",
         },
         maikonik: {
           title: "Maikonik Media",
           description:
-            "Nuestra agencia creativa y de software que ofrece soluciones digitales de vanguardia para marcas y empresas.",
-          webMobile: "Web y Móvil",
-          uiuxDesign: "Diseño UI/UX",
-          videoMedia: "Video y Media",
+            "Nuestra división creativa enfocada en producción de medios, estrategias de marketing y desarrollo de marca. Creamos contenido visual impactante y campañas de marketing.",
+          services: "Servicios:",
+          videoProduction: "Producción de Video",
+          marketing: "Marketing Digital",
+          brandDesign: "Diseño de Marca",
           learnMore: "Saber Más",
         },
       },
@@ -131,16 +135,16 @@ export default function Home() {
       vision: {
         title: "Nuestra Visión",
         description1:
-          "StudioKó fue fundado con una visión clara: crear experiencias digitales que combinen la expresión artística con la excelencia técnica. La experiencia de nuestro fundador tanto en desarrollo de juegos como en diseño digital ha dado forma a nuestro enfoque único.",
+          "Creemos en el poder de combinar la excelencia técnica con la innovación creativa. Nuestras dos divisiones trabajan en armonía para ofrecer soluciones digitales integrales que generan un impacto real.",
         description2:
-          "Creemos en el poder de la narrativa en todos los medios digitales, ya sea un juego inmersivo o la presencia digital de una marca. Esta filosofía guía todo lo que creamos.",
+          "Ya sea que necesites desarrollo de software de vanguardia o contenido multimedia impactante, tenemos la experiencia para dar vida a tu visión.",
         aboutStory: "Sobre Nuestra Historia",
         getInTouch: "Contáctanos",
       },
       cta: {
         title: "¿Listo para Crear Algo Increíble?",
         subtitle:
-          "Ya sea que busques desarrollo de juegos o soluciones digitales creativas, estamos aquí para dar vida a tu visión.",
+          "Ya sea que necesites soluciones técnicas o contenido creativo, estamos aquí para ayudarte a alcanzar tus objetivos.",
         startProject: "Iniciar un Proyecto",
         learnMore: "Conoce Más Sobre Nosotros",
       },
@@ -233,7 +237,7 @@ const projectList: Project[] = [
             transition={{ duration: 0.8 }}
           >
             <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-bosozoku via-primary to-maikonik bg-clip-text text-transparent"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -257,11 +261,11 @@ const projectList: Project[] = [
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-bosozoku to-primary hover:opacity-90 transition-opacity"
+                className="bg-gradient-to-r from-primary to-primary/80 hover:opacity-90 transition-opacity"
               >
-                <Link href="/bosozoku">
-                  {t.hero.exploreBosozoku}
-                  <GamepadIcon className="ml-2 h-4 w-4" />
+                <Link href="/studioko">
+                  {t.hero.exploreStudioKo}
+                  <Code className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button
@@ -272,7 +276,7 @@ const projectList: Project[] = [
               >
                 <Link href="/maikonik">
                   {t.hero.discoverMaikonik}
-                  <PenToolIcon className="ml-2 h-4 w-4" />
+                  <Film className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </motion.div>
@@ -296,7 +300,7 @@ const projectList: Project[] = [
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent"></div>
       </section>
 
-      {/* Divisions Overview */}
+      {/* Divisions Section */}
       <SectionTransition className="bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -310,36 +314,32 @@ const projectList: Project[] = [
               transition={{ type: "spring", stiffness: 300 }}
               className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-bosozoku/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative z-10">
-                <GamepadIcon className="h-12 w-12 mb-6 text-bosozoku" />
-                <h3 className="text-2xl font-bold mb-4">{t.divisions.bosozoku.title}</h3>
-                <p className="text-muted-foreground mb-6">{t.divisions.bosozoku.description}</p>
-                <div className="mb-8">
-                  <h4 className="font-medium mb-2">{t.divisions.bosozoku.flagshipGame}</h4>
-                  <div className="flex items-center space-x-4">
-                    <div className="h-16 w-16 rounded-md overflow-hidden">
-                      <Image
-                        src="/presentaciongame.png?height=200&width=200"
-                        alt="Tibucami"
-                        width={200}
-                        height={200}
-                        className="object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h5 className="font-bold">{t.divisions.bosozoku.tibucami}</h5>
-                      <p className="text-sm text-muted-foreground">{t.divisions.bosozoku.tibucamiDesc}</p>
-                    </div>
+                <Code className="h-12 w-12 mb-6 text-primary" />
+                <h3 className="text-2xl font-bold mb-4">{t.divisions.studioko.title}</h3>
+                <p className="text-muted-foreground mb-6">{t.divisions.studioko.description}</p>
+                <div className="mb-8 grid grid-cols-3 gap-4">
+                  <div className="flex flex-col items-center">
+                    <Code className="h-8 w-8 mb-2 text-primary" />
+                    <span className="text-xs text-center">{t.divisions.studioko.webDev}</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Code className="h-8 w-8 mb-2 text-primary" />
+                    <span className="text-xs text-center">{t.divisions.studioko.mobileDev}</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Code className="h-8 w-8 mb-2 text-primary" />
+                    <span className="text-xs text-center">{t.divisions.studioko.softwareDev}</span>
                   </div>
                 </div>
                 <Button
                   asChild
                   variant="outline"
-                  className="border-bosozoku text-bosozoku hover:bg-bosozoku/10 transition-colors"
+                  className="border-primary text-primary hover:bg-primary/10 transition-colors"
                 >
-                  <Link href="/bosozoku">
-                    {t.divisions.bosozoku.learnMore}
+                  <Link href="/studioko">
+                    {t.divisions.studioko.learnMore}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -353,21 +353,21 @@ const projectList: Project[] = [
             >
               <div className="absolute inset-0 bg-gradient-to-br from-maikonik/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative z-10">
-                <PenToolIcon className="h-12 w-12 mb-6 text-maikonik" />
+                <Film className="h-12 w-12 mb-6 text-maikonik" />
                 <h3 className="text-2xl font-bold mb-4">{t.divisions.maikonik.title}</h3>
                 <p className="text-muted-foreground mb-6">{t.divisions.maikonik.description}</p>
                 <div className="mb-8 grid grid-cols-3 gap-4">
                   <div className="flex flex-col items-center">
-                    <Code className="h-8 w-8 mb-2 text-maikonik" />
-                    <span className="text-xs text-center">{t.divisions.maikonik.webMobile}</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <Palette className="h-8 w-8 mb-2 text-maikonik" />
-                    <span className="text-xs text-center">{t.divisions.maikonik.uiuxDesign}</span>
+                    <Film className="h-8 w-8 mb-2 text-maikonik" />
+                    <span className="text-xs text-center">{t.divisions.maikonik.videoProduction}</span>
                   </div>
                   <div className="flex flex-col items-center">
                     <Film className="h-8 w-8 mb-2 text-maikonik" />
-                    <span className="text-xs text-center">{t.divisions.maikonik.videoMedia}</span>
+                    <span className="text-xs text-center">{t.divisions.maikonik.marketing}</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Film className="h-8 w-8 mb-2 text-maikonik" />
+                    <span className="text-xs text-center">{t.divisions.maikonik.brandDesign}</span>
                   </div>
                 </div>
                 <Button
@@ -386,89 +386,87 @@ const projectList: Project[] = [
         </div>
       </SectionTransition>
 
-    {/* Latest Projects */}
-<SectionTransition>
-  <div className="container mx-auto px-4">
-    <div className="text-center mb-16">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.projects.title}</h2>
-      <p className="text-muted-foreground max-w-2xl mx-auto">{t.projects.subtitle}</p>
-    </div>
+      {/* Latest Projects */}
+      <SectionTransition>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.projects.title}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t.projects.subtitle}</p>
+          </div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {projectList.map((project) => (
-        <motion.div
-          key={project.id}
-          whileHover={{ y: -10 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
-          <Card className="overflow-hidden h-full">
-            <div className="relative aspect-video overflow-hidden">
-              {project.youtubeId ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${project.youtubeId}&modestbranding=1&rel=0`}
-                  title={project.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
-              ) : project.video ? (
-                <video
-                  src={project.video}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <Image
-                  src={project.image || "/placeholder.png"}
-                  alt={project.title}
-                  width={600}
-                  height={400}
-                  className="object-cover transition-transform duration-500 hover:scale-110"
-                />
-              )}
-              <div className="absolute top-2 right-2 text-xs font-medium px-2 py-1 rounded-full bg-background/80 backdrop-blur-sm">
-                {project.type}
-              </div>
-            </div>
-            <CardContent className="p-6">
-              <h3 className="font-bold mb-2">{project.title}</h3>
-              <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
-              <div className="flex items-center gap-2 mb-4">
-                {project.technologies.map((tech, index) => (
-                  <div key={index} className="flex items-center gap-1 text-muted-foreground">
-                    <tech.icon className="w-4 h-4" />
-                    <span className="text-xs">{tech.name}</span>
-                  </div>
-                ))}
-              </div>
-              <Link
-                href={`/projects/${project.id}`}
-                className="text-sm font-medium text-primary flex items-center hover:underline"
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projectList.map((project) => (
+              <motion.div
+                key={project.id}
+                whileHover={{ y: -10 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
-                {t.projects.viewProject}
-                <ArrowRight className="ml-1 h-3 w-3" />
+                <Card className="overflow-hidden h-full">
+                  <div className="relative aspect-video overflow-hidden">
+                    {project.youtubeId ? (
+                      <iframe
+                        src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${project.youtubeId}&modestbranding=1&rel=0`}
+                        title={project.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full"
+                      />
+                    ) : project.video ? (
+                      <video
+                        src={project.video}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <Image
+                        src={project.image || "/placeholder.png"}
+                        alt={project.title}
+                        width={600}
+                        height={400}
+                        className="object-cover transition-transform duration-500 hover:scale-110"
+                      />
+                    )}
+                    <div className="absolute top-2 right-2 text-xs font-medium px-2 py-1 rounded-full bg-background/80 backdrop-blur-sm">
+                      {project.type}
+                    </div>
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="font-bold mb-2">{project.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+                    <div className="flex items-center gap-2 mb-4">
+                      {project.technologies.map((tech, index) => (
+                        <div key={index} className="flex items-center gap-1 text-muted-foreground">
+                          <tech.icon className="w-4 h-4" />
+                          <span className="text-xs">{tech.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <Link
+                      href={`/projects/${project.id}`}
+                      className="text-sm font-medium text-primary flex items-center hover:underline"
+                    >
+                      {t.projects.viewProject}
+                      <ArrowRight className="ml-1 h-3 w-3" />
+                    </Link>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Button asChild variant="outline">
+              <Link href="/projects">
+                {t.projects.viewAll}
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
-            </CardContent>
-          </Card>
-        </motion.div>
-      ))}
-    </div>
-
-    <div className="mt-12 text-center">
-      <Button asChild variant="outline">
-        <Link href="/projects">
-          {t.projects.viewAll}
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Link>
-      </Button>
-    </div>
-  </div>
-</SectionTransition>
-
-
+            </Button>
+          </div>
+        </div>
+      </SectionTransition>
 
       {/* Founder Section */}
       <SectionTransition className="bg-muted/50">
@@ -495,7 +493,7 @@ const projectList: Project[] = [
                 </div>
               </motion.div>
               <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-primary rounded-xl opacity-30"></div>
-              <div className="absolute -bottom-12 -right-12 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl"></div>
+              <div className="absolute -bottom-12 -right-12 w-full h-full bg-gradient-to-br from-primary/20 to-maikonik/20 rounded-xl blur-xl"></div>
             </div>
 
             <motion.div
@@ -524,7 +522,7 @@ const projectList: Project[] = [
       </SectionTransition>
 
       {/* Call to Action */}
-      <SectionTransition className="bg-gradient-to-r from-bosozoku/10 to-maikonik/10 dark:from-bosozoku/20 dark:to-maikonik/20">
+      <SectionTransition className="bg-gradient-to-r from-primary/10 to-maikonik/10 dark:from-primary/20 dark:to-maikonik/20">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -539,7 +537,7 @@ const projectList: Project[] = [
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-bosozoku to-maikonik hover:opacity-90 transition-opacity"
+                className="bg-gradient-to-r from-primary to-maikonik hover:opacity-90 transition-opacity"
               >
                 <Link href="/contact">{t.cta.startProject}</Link>
               </Button>

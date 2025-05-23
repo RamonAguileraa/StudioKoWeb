@@ -1,10 +1,12 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Code, Film, Globe, Smartphone, Palette, MessageSquare, TrendingUp } from "lucide-react"
+import { motion } from "framer-motion"
+import { ArrowRight, Globe, Code, Server, Smartphone, Database, Palette, Film, TrendingUp, MessageSquare, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import SectionTransition from "@/components/section-transition"
 import AnimatedBlob from "@/components/animated-blob"
 import { useLanguage } from "@/context/language-context"
@@ -72,6 +74,54 @@ export default function ServicesPage() {
             "Analytics & Reporting",
             "Campaign Management"
           ]
+        },
+        brandDev: {
+          title: "Brand Development",
+          description: "We create comprehensive brand strategies that connect with your audience and drive growth.",
+          features: [
+            "Brand Strategy",
+            "Visual Identity",
+            "Brand Guidelines",
+            "Positioning",
+            "Design System",
+            "Brand Resources"
+          ]
+        },
+        photography: {
+          title: "Photography",
+          description: "Professional photography and retouching services for your brand.",
+          features: [
+            "Product Photography",
+            "Corporate Photography",
+            "Photographic Retouching",
+            "Commercial Photography",
+            "Event Photography",
+            "Professional Editing"
+          ]
+        },
+        socialMedia: {
+          title: "Social Media",
+          description: "Community management and content creation for social media that connects with your audience.",
+          features: [
+            "Community Management",
+            "Content for Social Media",
+            "Social Strategy",
+            "Editorial Calendar",
+            "Metrics Analysis",
+            "Social Campaigns"
+          ]
+        },
+        strategicMarketing: {
+          title: "Strategic Marketing",
+          description: "Comprehensive marketing strategies for your brand.",
+          features: [
+            "Strategic Planning",
+            "Advertising Campaigns",
+            "Results Analysis",
+            "Market Strategy",
+            "Brand Positioning",
+            "ROI and Metrics"
+          ]
         }
       },
       cta: {
@@ -138,6 +188,54 @@ export default function ServicesPage() {
             "Estrategia de Contenido",
             "Analítica y Reportes",
             "Gestión de Campañas"
+          ]
+        },
+        brandDev: {
+          title: "Desarrollo de Marca",
+          description: "Creamos estrategias de marca integrales que conectan con tu audiencia y generan crecimiento.",
+          features: [
+            "Estrategia de Marca",
+            "Identidad Visual",
+            "Guías de Marca",
+            "Posicionamiento",
+            "Sistema de Diseño",
+            "Recursos de Marca"
+          ]
+        },
+        photography: {
+          title: "Fotografía",
+          description: "Servicios profesionales de fotografía y retoque para tu marca.",
+          features: [
+            "Fotografía de Producto",
+            "Fotografía Corporativa",
+            "Retoque Fotográfico",
+            "Fotografía Comercial",
+            "Fotografía de Eventos",
+            "Edición Profesional"
+          ]
+        },
+        socialMedia: {
+          title: "Redes Sociales",
+          description: "Gestión y creación de contenido para redes sociales que conecta con tu audiencia.",
+          features: [
+            "Gestión de Comunidad",
+            "Contenido para Redes",
+            "Estrategia Social",
+            "Calendario Editorial",
+            "Análisis de Métricas",
+            "Campañas Sociales"
+          ]
+        },
+        strategicMarketing: {
+          title: "Marketing Estratégico",
+          description: "Estrategias de marketing integrales para tu marca.",
+          features: [
+            "Planificación Estratégica",
+            "Campañas Publicitarias",
+            "Análisis de Resultados",
+            "Estrategia de Mercado",
+            "Posicionamiento de Marca",
+            "ROI y Métricas"
           ]
         }
       },
@@ -305,7 +403,7 @@ export default function ServicesPage() {
             <p className="text-muted-foreground max-w-2xl mx-auto">{t.maikonik.subtitle}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <motion.div
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -401,6 +499,206 @@ export default function ServicesPage() {
                       {language === 'en' ? 'Starting at' : 'Desde'}
                     </span>
                     <span className="text-sm font-medium">$599</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="bg-maikonik/10 rounded-full p-4 inline-flex mb-6">
+                  <Palette className="h-8 w-8 text-maikonik" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t.maikonik.brandDev.title}</h3>
+                <p className="text-muted-foreground mb-6">{t.maikonik.brandDev.description}</p>
+                <div className="space-y-4 mb-6">
+                  {t.maikonik.brandDev.features.map((feature, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="mr-3 mt-1 bg-maikonik/10 rounded-full p-1">
+                        <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium">{feature}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {language === 'en' 
+                            ? 'Comprehensive brand development'
+                            : 'Desarrollo integral de marca'}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center justify-between">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-maikonik text-maikonik hover:bg-maikonik/10 transition-colors"
+                  >
+                    <Link href="/maikonik">
+                      {language === 'en' ? 'Learn More' : 'Saber Más'}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs text-muted-foreground">
+                      {language === 'en' ? 'Starting at' : 'Desde'}
+                    </span>
+                    <span className="text-sm font-medium">$899</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="bg-maikonik/10 rounded-full p-4 inline-flex mb-6">
+                  <MessageSquare className="h-8 w-8 text-maikonik" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t.maikonik.photography.title}</h3>
+                <p className="text-muted-foreground mb-6">{t.maikonik.photography.description}</p>
+                <div className="space-y-4 mb-6">
+                  {t.maikonik.photography.features.map((feature, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="mr-3 mt-1 bg-maikonik/10 rounded-full p-1">
+                        <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium">{feature}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {language === 'en' 
+                            ? 'Professional photography services'
+                            : 'Servicios profesionales de fotografía'}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center justify-between">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-maikonik text-maikonik hover:bg-maikonik/10 transition-colors"
+                  >
+                    <Link href="/maikonik">
+                      {language === 'en' ? 'Learn More' : 'Saber Más'}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs text-muted-foreground">
+                      {language === 'en' ? 'Starting at' : 'Desde'}
+                    </span>
+                    <span className="text-sm font-medium">$699</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="bg-maikonik/10 rounded-full p-4 inline-flex mb-6">
+                  <Globe className="h-8 w-8 text-maikonik" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t.maikonik.socialMedia.title}</h3>
+                <p className="text-muted-foreground mb-6">{t.maikonik.socialMedia.description}</p>
+                <div className="space-y-4 mb-6">
+                  {t.maikonik.socialMedia.features.map((feature, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="mr-3 mt-1 bg-maikonik/10 rounded-full p-1">
+                        <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium">{feature}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {language === 'en' 
+                            ? 'Social media management and content'
+                            : 'Gestión y contenido para redes sociales'}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center justify-between">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-maikonik text-maikonik hover:bg-maikonik/10 transition-colors"
+                  >
+                    <Link href="/maikonik">
+                      {language === 'en' ? 'Learn More' : 'Saber Más'}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs text-muted-foreground">
+                      {language === 'en' ? 'Starting at' : 'Desde'}
+                    </span>
+                    <span className="text-sm font-medium">$499</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="bg-maikonik/10 rounded-full p-4 inline-flex mb-6">
+                  <Zap className="h-8 w-8 text-maikonik" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t.maikonik.strategicMarketing.title}</h3>
+                <p className="text-muted-foreground mb-6">{t.maikonik.strategicMarketing.description}</p>
+                <div className="space-y-4 mb-6">
+                  {t.maikonik.strategicMarketing.features.map((feature, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="mr-3 mt-1 bg-maikonik/10 rounded-full p-1">
+                        <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium">{feature}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {language === 'en' 
+                            ? 'Strategic marketing solutions'
+                            : 'Soluciones de marketing estratégico'}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center justify-between">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-maikonik text-maikonik hover:bg-maikonik/10 transition-colors"
+                  >
+                    <Link href="/maikonik">
+                      {language === 'en' ? 'Learn More' : 'Saber Más'}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs text-muted-foreground">
+                      {language === 'en' ? 'Starting at' : 'Desde'}
+                    </span>
+                    <span className="text-sm font-medium">$799</span>
                   </div>
                 </div>
               </div>

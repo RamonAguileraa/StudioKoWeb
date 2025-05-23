@@ -9,49 +9,95 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import SectionTransition from "@/components/section-transition"
 import AnimatedBlob from "@/components/animated-blob"
+import { useLanguage } from "@/context/language-context"
 
 export default function BosoZokuPage() {
   const [videoPlaying, setVideoPlaying] = useState(false)
   const videoRef = useRef<HTMLDivElement>(null)
   const isVideoInView = useInView(videoRef, { once: true, amount: 0.3 })
+  const [activeTab, setActiveTab] = useState("story")
+  const { language } = useLanguage()
 
   return (
     <div className="relative pt-20">
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center">
-        {/* Animated blobs */}
-        <AnimatedBlob color="#6C2BD9" size="600px" top="-300px" left="-300px" opacity={0.15} />
-        <AnimatedBlob color="#8B5CF6" size="400px" bottom="-200px" right="-200px" opacity={0.1} delay={2} />
+      <section className="relative min-h-[90vh] flex items-center">
+        {/* Animated blobs con mejor posicionamiento y animación */}
+        <AnimatedBlob 
+          color="#6C2BD9" 
+          size="800px" 
+          top="-400px" 
+          left="-400px" 
+          opacity={0.15}
+          animationDuration={20}
+        />
+        <AnimatedBlob 
+          color="#8B5CF6" 
+          size="600px" 
+          bottom="-300px" 
+          right="-300px" 
+          opacity={0.1} 
+          delay={2}
+          animationDuration={25}
+        />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-bosozoku">BosoZoku</h1>
-              <p className="text-xl md:text-2xl mb-8 text-muted-foreground">
-                Un estudio independiente de desarrollo de videojuegos creando experiencias inmersivas inspiradas en mitologías culturales y estilos visuales únicos.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="bg-bosozoku hover:bg-bosozoku/90 transition-colors">
-                  <a href="#tibucami">Discover Tibucami</a>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }} 
+              animate={{ opacity: 1, x: 0 }} 
+              transition={{ duration: 0.8 }}
+              className="space-y-8"
+            >
+              <div className="space-y-4">
+                <motion.h1 
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold text-bosozoku"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  BosoZoku
+                </motion.h1>
+                <motion.p 
+                  className="text-xl md:text-2xl text-muted-foreground"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  Un estudio independiente de desarrollo de videojuegos creando experiencias inmersivas inspiradas en mitologías culturales y estilos visuales únicos.
+                </motion.p>
+              </div>
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                <Button 
+                  asChild 
+                  size="lg" 
+                  className="bg-bosozoku hover:bg-bosozoku/90 transition-all duration-300 transform hover:scale-105"
+                >
+                  <a href="#tibucami">Descubre Tibucami</a>
                 </Button>
                 <Button
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-bosozoku text-bosozoku hover:bg-bosozoku/10 transition-colors"
+                  className="border-bosozoku text-bosozoku hover:bg-bosozoku/10 transition-all duration-300 transform hover:scale-105"
                 >
-                  <a href="#team">Meet the Team</a>
+                  <a href="#team">Conoce al Equipo</a>
                 </Button>
-              </div>
+              </motion.div>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              className="relative group"
             >
-              <div className="relative rounded-xl overflow-hidden aspect-video">
+              <div className="relative rounded-xl overflow-hidden aspect-video transform transition-transform duration-500 group-hover:scale-105">
                 <Image
                   src="/placeholder.svg?height=720&width=1280&text=BosoZoku"
                   alt="BosoZoku Game Development"
@@ -60,80 +106,89 @@ export default function BosoZokuPage() {
                   className="object-cover"
                   priority
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-bosozoku rounded-xl"></div>
+              <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-bosozoku rounded-xl transform transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <SectionTransition id="about" className="bg-muted/50">
+      {/* About Section con mejor diseño y animaciones */}
+      <SectionTransition id="about" className="bg-muted/50 py-24">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">About BosoZoku</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Creando juegos que combinan narrativas culturales con gameplay innovador
+          <motion.div 
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-bosozoku to-bosozoku-light bg-clip-text text-transparent">
+              Sobre BosoZoku
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Creando juegos que combinan narrativas culturales con gameplay innovador y experiencias únicas
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 text-center"
-            >
-              <div className="bg-bosozoku/10 rounded-full p-4 inline-flex mb-6">
-                <Lightbulb className="h-8 w-8 text-bosozoku" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Creative Vision</h3>
-              <p className="text-muted-foreground">
-                We draw inspiration from diverse cultural mythologies to create unique gaming experiences that tell
-                meaningful stories.
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 text-center"
-            >
-              <div className="bg-bosozoku/10 rounded-full p-4 inline-flex mb-6">
-                <Palette className="h-8 w-8 text-bosozoku" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Artistic Style</h3>
-              <p className="text-muted-foreground">
-                Our distinctive visual approach combines traditional art forms with modern game design techniques.
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 text-center"
-            >
-              <div className="bg-bosozoku/10 rounded-full p-4 inline-flex mb-6">
-                <Code className="h-8 w-8 text-bosozoku" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Technical Excellence</h3>
-              <p className="text-muted-foreground">
-                We leverage cutting-edge game development technologies to bring our creative visions to life.
-              </p>
-            </motion.div>
+            {[
+              {
+                icon: <Lightbulb className="h-8 w-8 text-bosozoku" />,
+                title: "Visión Creativa",
+                description: "Nos inspiramos en diversas mitologías culturales para crear experiencias de juego únicas que cuentan historias significativas."
+              },
+              {
+                icon: <Palette className="h-8 w-8 text-bosozoku" />,
+                title: "Estilo Artístico",
+                description: "Nuestro enfoque visual distintivo combina formas de arte tradicionales con técnicas modernas de diseño de juegos."
+              },
+              {
+                icon: <Code className="h-8 w-8 text-bosozoku" />,
+                title: "Excelencia Técnica",
+                description: "Utilizamos tecnologías de vanguardia en el desarrollo de juegos para dar vida a nuestras visiones creativas."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -10 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="glassmorphism rounded-xl p-8 text-center transform transition-all duration-300 hover:shadow-xl"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+              >
+                <div className="bg-bosozoku/10 rounded-full p-4 inline-flex mb-6 transform transition-transform duration-300 hover:scale-110">
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
+                <p className="text-muted-foreground text-lg">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
 
-          <div className="mt-16 text-center">
-            <p className="text-muted-foreground max-w-3xl mx-auto mb-8">
-              BosoZoku fue fundado con la misión de crear juegos que no solo entretengan sino que también preserven y celebren el patrimonio cultural a través de la narrativa interactiva. Nuestro equipo combina experiencia técnica con visión artística para crear experiencias de juego únicas.
+          <motion.div 
+            className="mt-20 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+              BosoZoku fue fundado con la misión de crear juegos que no solo entretengan sino que también preserven y celebren el patrimonio cultural a través de la narrativa interactiva. Nuestro equipo combina experiencia técnica con visión artística para crear experiencias de juego únicas y memorables.
             </p>
             <Button
               asChild
               variant="outline"
-              className="border-bosozoku text-bosozoku hover:bg-bosozoku/10 transition-colors"
+              className="border-bosozoku text-bosozoku hover:bg-bosozoku/10 transition-all duration-300 transform hover:scale-105"
             >
-              <Link href="/about">Conoce más sobre nuestra historia</Link>
+              <Link href="/about">Descubre nuestra historia</Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </SectionTransition>
 

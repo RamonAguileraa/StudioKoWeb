@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
@@ -10,7 +10,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import SectionTransition from "@/components/section-transition"
 import AnimatedBlob from "@/components/animated-blob"
 import { useLanguage } from "@/context/language-context"
-import { SiNextdotjs, SiReact, SiTailwindcss, SiTypescript,SiAdobepremierepro, SiAdobeaftereffects, SiUnity, SiBlender, SiFigma, SiAdobexd } from "react-icons/si"
+import { SiNextdotjs, SiReact, SiTailwindcss, SiTypescript,SiAdobepremierepro, SiAdobeaftereffects, SiUnity, SiBlender, SiFigma, SiAdobexd, SiNodedotjs, SiPython, SiDocker, SiAmazon, SiAdobephotoshop, SiAdobeillustrator, SiDavinciresolve } from "react-icons/si"
+import TestimonialsCarousel from "@/app/components/testimonials-carousel"
 
 interface Project {
   id: number;
@@ -224,20 +225,20 @@ const projectList: Project[] = [
   return (
     <div className="relative overflow-hidden">
       {/* Hero Section */}
-      <section ref={targetRef} className="relative min-h-screen flex items-center pt-20">
+      <section ref={targetRef} className="relative h-[90vh] flex items-center pt-60 bg-background">
         {/* Animated blobs */}
-        <AnimatedBlob color="#6C2BD9" size="600px" top="-300px" left="-300px" opacity={0.1} />
-        <AnimatedBlob color="#F43F5E" size="500px" bottom="-250px" right="-250px" opacity={0.1} delay={2} />
+        <AnimatedBlob color="#6C2BD9" size="600px" top="-300px" left="-300px" opacity={0.2} />
+        <AnimatedBlob color="#F43F5E" size="500px" bottom="-250px" right="-250px" opacity={0.2} delay={2} />
 
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-3xl mx-auto text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -245,7 +246,7 @@ const projectList: Project[] = [
               {t.hero.title}
             </motion.h1>
             <motion.p
-              className="text-xl md:text-2xl mb-8 text-muted-foreground"
+              className="text-lg md:text-xl mb-6 text-muted-foreground"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -253,7 +254,7 @@ const projectList: Project[] = [
               {t.hero.subtitle}
             </motion.p>
             <motion.div
-              className="flex flex-col sm:flex-row justify-center gap-4"
+              className="flex flex-col sm:flex-row justify-center gap-4 mb-16"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -282,29 +283,27 @@ const projectList: Project[] = [
             </motion.div>
           </motion.div>
 
-          <motion.div className="mt-16 relative" style={{ y, opacity }}>
-            <div className="relative mx-auto max-w-5xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl">
+          <motion.div className="relative" style={{ y, opacity }}>
+            <div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl">
               <Image
                 src="/digitalmedia.png"
                 alt="StudioKó Showcase"
                 width={1920}
                 height={1080}
-                className="object-cover height=1080&width=1920"
+                className="object-cover"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
             </div>
           </motion.div>
         </div>
-
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent"></div>
       </section>
 
       {/* Divisions Section */}
-      <SectionTransition className="bg-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.divisions.title}</h2>
+      <SectionTransition>
+        <div className="container mx-auto px-4 pt-12">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent">{t.divisions.title}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">{t.divisions.subtitle}</p>
           </div>
 
@@ -314,10 +313,10 @@ const projectList: Project[] = [
               transition={{ type: "spring", stiffness: 300 }}
               className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative z-10">
                 <Code className="h-12 w-12 mb-6 text-primary" />
-                <h3 className="text-2xl font-bold mb-4">{t.divisions.studioko.title}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-primary">{t.divisions.studioko.title}</h3>
                 <p className="text-muted-foreground mb-6">{t.divisions.studioko.description}</p>
                 <div className="mb-8 grid grid-cols-3 gap-4">
                   <div className="flex flex-col items-center">
@@ -333,6 +332,7 @@ const projectList: Project[] = [
                     <span className="text-xs text-center">{t.divisions.studioko.softwareDev}</span>
                   </div>
                 </div>
+
                 <Button
                   asChild
                   variant="outline"
@@ -351,10 +351,10 @@ const projectList: Project[] = [
               transition={{ type: "spring", stiffness: 300 }}
               className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative z-10">
                 <Film className="h-12 w-12 mb-6 text-maikonik" />
-                <h3 className="text-2xl font-bold mb-4">{t.divisions.maikonik.title}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-maikonik">{t.divisions.maikonik.title}</h3>
                 <p className="text-muted-foreground mb-6">{t.divisions.maikonik.description}</p>
                 <div className="mb-8 grid grid-cols-3 gap-4">
                   <div className="flex flex-col items-center">
@@ -386,178 +386,22 @@ const projectList: Project[] = [
         </div>
       </SectionTransition>
 
-      {/* Services Section */}
-      <SectionTransition>
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Nuestros Servicios</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Soluciones digitales integrales para impulsar tu negocio
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* StudioKo Services */}
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <Code className="h-12 w-12 mb-6 text-primary" />
-                <h3 className="text-xl font-bold mb-3">Desarrollo Web</h3>
-                <p className="text-muted-foreground mb-6">
-                  Creamos sitios web y aplicaciones web modernas y responsivas que impulsan tu presencia digital.
-                </p>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center text-sm">
-                    <div className="mr-2 bg-primary/10 rounded-full p-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
-                    </div>
-                    Diseño responsivo
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <div className="mr-2 bg-primary/10 rounded-full p-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
-                    </div>
-                    E-commerce
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <div className="mr-2 bg-primary/10 rounded-full p-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
-                    </div>
-                    Aplicaciones web
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <Code className="h-12 w-12 mb-6 text-primary" />
-                <h3 className="text-xl font-bold mb-3">Desarrollo Móvil</h3>
-                <p className="text-muted-foreground mb-6">
-                  Aplicaciones móviles nativas y multiplataforma que ofrecen experiencias excepcionales.
-                </p>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center text-sm">
-                    <div className="mr-2 bg-primary/10 rounded-full p-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
-                    </div>
-                    iOS y Android
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <div className="mr-2 bg-primary/10 rounded-full p-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
-                    </div>
-                    Cross-platform
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <div className="mr-2 bg-primary/10 rounded-full p-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
-                    </div>
-                    UI/UX optimizado
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-
-            {/* Maikonik Services */}
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <Film className="h-12 w-12 mb-6 text-maikonik" />
-                <h3 className="text-xl font-bold mb-3">Producción de Video</h3>
-                <p className="text-muted-foreground mb-6">
-                  Contenido audiovisual de alta calidad para marketing, entrenamiento y storytelling.
-                </p>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center text-sm">
-                    <div className="mr-2 bg-maikonik/10 rounded-full p-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
-                    </div>
-                    Videos corporativos
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <div className="mr-2 bg-maikonik/10 rounded-full p-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
-                    </div>
-                    Motion graphics
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <div className="mr-2 bg-maikonik/10 rounded-full p-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
-                    </div>
-                    Animaciones
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <Film className="h-12 w-12 mb-6 text-maikonik" />
-                <h3 className="text-xl font-bold mb-3">Marketing Digital</h3>
-                <p className="text-muted-foreground mb-6">
-                  Estrategias de marketing digital para aumentar tu presencia online y generar resultados.
-                </p>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center text-sm">
-                    <div className="mr-2 bg-maikonik/10 rounded-full p-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
-                    </div>
-                    SEO y SEM
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <div className="mr-2 bg-maikonik/10 rounded-full p-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
-                    </div>
-                    Redes sociales
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <div className="mr-2 bg-maikonik/10 rounded-full p-1">
-                      <div className="h-1.5 w-1.5 rounded-full bg-maikonik"></div>
-                    </div>
-                    Email marketing
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </SectionTransition>
-
       {/* Latest Projects */}
       <SectionTransition>
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.projects.title}</h2>
+        <div className="container mx-auto px-4 pt-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent">{t.projects.title}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">{t.projects.subtitle}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projectList.map((project) => (
               <motion.div
                 key={project.id}
                 whileHover={{ y: -10 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Card className="overflow-hidden h-full">
+                <Card className="overflow-hidden h-full border-2 hover:border-primary/50 transition-colors">
                   <div className="relative aspect-video overflow-hidden">
                     {project.youtubeId ? (
                       <iframe
@@ -585,16 +429,16 @@ const projectList: Project[] = [
                         className="object-cover transition-transform duration-500 hover:scale-110"
                       />
                     )}
-                    <div className="absolute top-2 right-2 text-xs font-medium px-2 py-1 rounded-full bg-background/80 backdrop-blur-sm">
+                    <div className="absolute top-2 right-2 text-xs font-medium px-3 py-1 rounded-full bg-background/80 backdrop-blur-sm border border-primary/20">
                       {project.type}
                     </div>
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="font-bold mb-2">{project.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
-                    <div className="flex items-center gap-2 mb-4">
+                    <h3 className="font-bold text-lg mb-2">{project.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{project.description}</p>
+                    <div className="flex items-center gap-2 mb-4 flex-wrap">
                       {project.technologies.map((tech, index) => (
-                        <div key={index} className="flex items-center gap-1 text-muted-foreground">
+                        <div key={index} className="flex items-center gap-1 text-muted-foreground bg-muted/50 px-2 py-1 rounded-md">
                           <tech.icon className="w-4 h-4" />
                           <span className="text-xs">{tech.name}</span>
                         </div>
@@ -614,13 +458,28 @@ const projectList: Project[] = [
           </div>
 
           <div className="mt-12 text-center">
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10">
               <Link href="/projects">
                 {t.projects.viewAll}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
+        </div>
+      </SectionTransition>
+
+      {/* Testimonials Section */}
+      <SectionTransition>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {language === "es" ? "Lo que dicen nuestros clientes" : "What Our Clients Say"}
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              {language === "es" ? "Experiencias de quienes han confiado en nuestro trabajo" : "Experiences from those who have trusted our work"}
+            </p>
+          </div>
+          <TestimonialsCarousel />
         </div>
       </SectionTransition>
 

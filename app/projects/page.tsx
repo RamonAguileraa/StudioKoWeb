@@ -12,9 +12,8 @@ const projects = {
   en: [
     {
       title: "StudioKo Website",
-      description: "Modern and responsive website built with Next.js 14, featuring a beautiful design and smooth animations.",
-      image: "/projects/studioko.png",
-      video: "https://www.youtube.com/embed/your-video-id",
+      description: "Modern and responsive website built with Next.js 15, featuring a beautiful design and smooth animations.",
+      image: "/studiokous.png",
       technologies: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
       category: "Web Development",
       icon: Code2,
@@ -22,34 +21,31 @@ const projects = {
       live: "https://studioko.com"
     },
     {
-      title: "Maikonik Branding",
+      title: "Mikiyyo Branding",
       description: "Complete brand identity design including logo, color palette, typography, and brand guidelines.",
-      image: "/projects/maikonik.png",
-      video: "https://www.youtube.com/embed/your-video-id",
+      image: "/mikiyyo.png",
       technologies: ["Branding", "UI/UX", "Typography", "Color Theory"],
       category: "Branding",
       icon: Palette,
-      github: "https://github.com/yourusername/maikonik",
-      live: "https://maikonik.com"
+      github: "https://github.com/yourusername/mikiyyo",
+      live: "https://mikiyyo.com"
     },
     {
-      title: "BosoZoku App",
-      description: "Mobile application for motorcycle enthusiasts, featuring real-time tracking and community features.",
-      image: "/projects/bosozoku.png",
-      video: "https://www.youtube.com/embed/your-video-id",
-      technologies: ["React Native", "Firebase", "Maps API", "Push Notifications"],
-      category: "Mobile Development",
+      title: "Digital Media Studio",
+      description: "Professional digital media studio showcasing creative projects and innovative solutions.",
+      image: "/digitalmedia.png",
+      technologies: ["Digital Media", "Creative Design", "Visual Effects", "Animation"],
+      category: "Digital Media",
       icon: Briefcase,
-      github: "https://github.com/yourusername/bosozoku",
-      live: "https://bosozoku.app"
+      github: "https://github.com/yourusername/digitalmedia",
+      live: "https://digitalmedia.studio"
     }
   ],
   es: [
     {
       title: "Sitio Web StudioKo",
       description: "Sitio web moderno y responsivo construido con Next.js 14, con un diseño hermoso y animaciones suaves.",
-      image: "/projects/studioko.png",
-      video: "https://www.youtube.com/embed/your-video-id",
+      image: "/studiokous.png",
       technologies: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
       category: "Desarrollo Web",
       icon: Code2,
@@ -57,26 +53,24 @@ const projects = {
       live: "https://studioko.com"
     },
     {
-      title: "Branding Maikonik",
+      title: "Branding Mikiyyo",
       description: "Diseño completo de identidad de marca incluyendo logo, paleta de colores, tipografía y guías de marca.",
-      image: "/projects/maikonik.png",
-      video: "https://www.youtube.com/embed/your-video-id",
+      image: "/mikiyyo.png",
       technologies: ["Branding", "UI/UX", "Tipografía", "Teoría del Color"],
       category: "Branding",
       icon: Palette,
-      github: "https://github.com/yourusername/maikonik",
-      live: "https://maikonik.com"
+      github: "https://github.com/yourusername/mikiyyo",
+      live: "https://mikiyyo.com"
     },
     {
-      title: "App BosoZoku",
-      description: "Aplicación móvil para entusiastas de motocicletas, con seguimiento en tiempo real y funciones comunitarias.",
-      image: "/projects/bosozoku.png",
-      video: "https://www.youtube.com/embed/your-video-id",
-      technologies: ["React Native", "Firebase", "API de Mapas", "Notificaciones Push"],
-      category: "Desarrollo Móvil",
+      title: "Estudio de Medios Digitales",
+      description: "Estudio profesional de medios digitales que muestra proyectos creativos y soluciones innovadoras.",
+      image: "/digitalmedia.png",
+      technologies: ["Medios Digitales", "Diseño Creativo", "Efectos Visuales", "Animación"],
+      category: "Medios Digitales",
       icon: Briefcase,
-      github: "https://github.com/yourusername/bosozoku",
-      live: "https://bosozoku.app"
+      github: "https://github.com/yourusername/digitalmedia",
+      live: "https://digitalmedia.studio"
     }
   ]
 }

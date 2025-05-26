@@ -462,7 +462,7 @@ const projectList: Project[] = [
                 transition={{ duration: 0.6 }}
                 className="relative z-10"
               >
-                <div className="relative rounded-xl overflow-hidden aspect-[4/5] shadow-2xl">
+                <div className="relative rounded-xl overflow-hidden aspect-[4/5] shadow-none md:shadow-2xl">
                   <Image
                     src="/studioimg.png"
                     alt="StudioKó Team"
@@ -474,8 +474,8 @@ const projectList: Project[] = [
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
               </motion.div>
-              <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-primary rounded-xl opacity-30"></div>
-              <div className="absolute -bottom-12 -right-12 w-full h-full bg-gradient-to-br from-primary/20 to-maikonik/20 rounded-xl blur-xl"></div>
+              <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-primary rounded-xl opacity-30 hidden md:block"></div>
+              <div className="absolute -bottom-12 -right-12 w-full h-full bg-gradient-to-br from-primary/20 to-maikonik/20 rounded-xl blur-xl hidden md:block"></div>
             </div>
  
             <motion.div
@@ -484,13 +484,14 @@ const projectList: Project[] = [
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="pl-12">
+              <div className="px-12">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.vision.title}</h2>
                 <p className="text-muted-foreground mb-6">{t.vision.description1}</p>
                 <p className="text-muted-foreground mb-6">{t.vision.description2}</p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
               </div>
-                <Button asChild>
+              <div className="flex flex-col sm:flex-row gap-4 mt-8">
+              <Button asChild>
                   <Link href="/about">
                     {t.vision.aboutStory}
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -499,6 +500,8 @@ const projectList: Project[] = [
                 <Button asChild variant="outline">
                   <Link href="/contact">{t.vision.getInTouch}</Link>
                 </Button>
+              </div>
+                
               </div>
             </motion.div>
           </div>

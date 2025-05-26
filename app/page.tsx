@@ -517,10 +517,12 @@ const projectList: Project[] = [
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.vision.title}</h2>
-              <p className="text-muted-foreground mb-6">{t.vision.description1}</p>
-              <p className="text-muted-foreground mb-6">{t.vision.description2}</p>
-              <div className="flex flex-col sm:flex-row gap-4 mt-8">
+              <div className="pl-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.vision.title}</h2>
+                <p className="text-muted-foreground mb-6">{t.vision.description1}</p>
+                <p className="text-muted-foreground mb-6">{t.vision.description2}</p>
+                <div className="flex flex-col sm:flex-row gap-4 mt-8">
+              </div>
                 <Button asChild>
                   <Link href="/about">
                     {t.vision.aboutStory}

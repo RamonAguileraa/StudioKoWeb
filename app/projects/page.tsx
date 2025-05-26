@@ -11,66 +11,156 @@ import { Card, CardContent } from "@/components/ui/card"
 const projects = {
   en: [
     {
-      title: "StudioKo Website",
-      description: "Modern and responsive website built with Next.js 15, featuring a beautiful design and smooth animations.",
-      image: "/studiokous.png",
-      technologies: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+      title: "Aroma Café",
+      description: "Platform for independent coffee shops where users can discover, rate, and share their experiences in different cafés around the city.",
+      image: "/projects/aromacafe.png",
+      technologies: ["Next.js", "React", "Firebase", "Tailwind CSS"],
       category: "Web Development",
       icon: Code2,
-      github: "https://github.com/yourusername/studioko",
-      live: "https://studioko.com"
+      github: "https://github.com/yourusername/aromacafe",
+      live: "https://aromacafe.com"
     },
     {
-      title: "Mikiyyo Branding",
-      description: "Complete brand identity design including logo, color palette, typography, and brand guidelines.",
-      image: "/mikiyyo.png",
-      technologies: ["Branding", "UI/UX", "Typography", "Color Theory"],
+      title: "Ramón Aguilera Portafolio",
+      description: "Platform for independent coffee shops where users can discover, rate, and share their experiences in different cafés around the city.",
+      image: "/projects/aromacafe.png",
+      technologies: ["Next.js", "React", "Firebase", "Tailwind CSS"],
+      category: "Web Development",
+      icon: Code2,
+      github: "https://github.com/yourusername/aromacafe",
+      live: "https://aromacafe.com"
+    },
+    {
+      title: "Miguel Millán Portafolio",
+      description: "Platform for independent coffee shops where users can discover, rate, and share their experiences in different cafés around the city.",
+      image: "/projects/aromacafe.png",
+      technologies: ["Next.js", "React", "Firebase", "Tailwind CSS"],
+      category: "Web Development",
+      icon: Code2,
+      github: "https://github.com/yourusername/aromacafe",
+      live: "https://aromacafe.com"
+    },
+    {
+      title: "Portafolio de Editor de Video",
+      description: "Platform for independent coffee shops where users can discover, rate, and share their experiences in different cafés around the city.",
+      image: "/projects/aromacafe.png",
+      technologies: ["Next.js", "React", "Firebase", "Tailwind CSS"],
+      category: "Web Development",
+      icon: Code2,
+      github: "https://github.com/yourusername/aromacafe",
+      live: "https://aromacafe.com"
+    },
+    {
+      title: "Enligne",
+      description: "App for managing virtual queues in local businesses, allowing users to book their turn from anywhere.",
+      image: "/projects/enligne.png",
+      technologies: ["React Native", "Node.js", "MongoDB", "Socket.io"],
+      category: "Mobile Development",
+      icon: Briefcase,
+      github: "https://github.com/yourusername/enligne",
+      live: "https://enligne.app"
+    },
+    {
+      title: "Rincón Café",
+      description: "Social network for coffee lovers to share recipes, reviews, and events related to the coffee world.",
+      image: "/projects/rinconcafe.png",
+      technologies: ["Next.js", "Prisma", "PostgreSQL", "Chakra UI"],
+      category: "Web Development",
+      icon: Code2,
+      github: "https://github.com/yourusername/rinconcafe",
+      live: "https://rinconcafe.com"
+    },
+    {
+      title: "TibuCami Page",
+      description: "Personal page for content creators, with portfolio, blog, and social media links.",
+      image: "/projects/tibucamipage.png",
+      technologies: ["Gatsby", "GraphQL", "Styled Components"],
       category: "Branding",
       icon: Palette,
-      github: "https://github.com/yourusername/mikiyyo",
-      live: "https://mikiyyo.com"
+      github: "https://github.com/yourusername/tibucami",
+      live: "https://tibucami.com"
     },
     {
-      title: "Digital Media Studio",
-      description: "Professional digital media studio showcasing creative projects and innovative solutions.",
-      image: "/digitalmedia.png",
-      technologies: ["Digital Media", "Creative Design", "Visual Effects", "Animation"],
-      category: "Digital Media",
+      title: "Spot Café Promo",
+      description: "Promotional video for coffee shops, highlighting atmosphere, menu, and customer experience.",
+      image: "/projects/aromacafe.png",
+      technologies: ["Adobe Premiere", "After Effects", "DaVinci Resolve"],
+      category: "Video Editing",
       icon: Briefcase,
-      github: "https://github.com/yourusername/digitalmedia",
-      live: "https://digitalmedia.studio"
+      github: "https://github.com/yourusername/spotcafepromo",
+      live: "https://cafepromospot.com"
+    },
+    {
+      title: "Enligne Motion",
+      description: "Explainer animation for the Enligne app, showing user flow and benefits of the virtual queue system.",
+      image: "/projects/enligne.png",
+      technologies: ["After Effects", "Illustrator"],
+      category: "Video Editing",
+      icon: Briefcase,
+      github: "https://github.com/yourusername/enlignemotion",
+      live: "https://enligne.app/video"
     }
   ],
   es: [
     {
-      title: "Sitio Web StudioKo",
-      description: "Sitio web moderno y responsivo construido con Next.js 14, con un diseño hermoso y animaciones suaves.",
-      image: "/studiokous.png",
-      technologies: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+      title: "Aroma Café",
+      description: "Plataforma web para cafeterías independientes donde los usuarios pueden descubrir, calificar y compartir sus experiencias en diferentes cafés de la ciudad.",
+      image: "/projects/aromacafe.png",
+      technologies: ["Next.js", "React", "Firebase", "Tailwind CSS"],
       category: "Desarrollo Web",
       icon: Code2,
-      github: "https://github.com/yourusername/studioko",
-      live: "https://studioko.com"
+      github: "https://github.com/yourusername/aromacafe",
+      live: "https://aromacafe.com"
     },
     {
-      title: "Branding Mikiyyo",
-      description: "Diseño completo de identidad de marca incluyendo logo, paleta de colores, tipografía y guías de marca.",
-      image: "/mikiyyo.png",
-      technologies: ["Branding", "UI/UX", "Tipografía", "Teoría del Color"],
+      title: "Enligne",
+      description: "Aplicación para gestión de filas virtuales en negocios locales, permitiendo a los usuarios reservar su turno desde cualquier lugar.",
+      image: "/projects/enligne.png",
+      technologies: ["React Native", "Node.js", "MongoDB", "Socket.io"],
+      category: "Desarrollo Móvil",
+      icon: Briefcase,
+      github: "https://github.com/yourusername/enligne",
+      live: "https://enligne.app"
+    },
+    {
+      title: "Rincón Café",
+      description: "Red social para amantes del café, donde pueden compartir recetas, reseñas y eventos relacionados con el mundo cafetero.",
+      image: "/projects/rinconcafe.png",
+      technologies: ["Next.js", "Prisma", "PostgreSQL", "Chakra UI"],
+      category: "Desarrollo Web",
+      icon: Code2,
+      github: "https://github.com/yourusername/rinconcafe",
+      live: "https://rinconcafe.com"
+    },
+    {
+      title: "TibuCami Page",
+      description: "Página personal para creadores de contenido, con portafolio, blog y enlaces a redes sociales.",
+      image: "/projects/tibucamipage.png",
+      technologies: ["Gatsby", "GraphQL", "Styled Components"],
       category: "Branding",
       icon: Palette,
-      github: "https://github.com/yourusername/mikiyyo",
-      live: "https://mikiyyo.com"
+      github: "https://github.com/yourusername/tibucami",
+      live: "https://tibucami.com"
     },
     {
-      title: "Estudio de Medios Digitales",
-      description: "Estudio profesional de medios digitales que muestra proyectos creativos y soluciones innovadoras.",
-      image: "/digitalmedia.png",
-      technologies: ["Medios Digitales", "Diseño Creativo", "Efectos Visuales", "Animación"],
-      category: "Medios Digitales",
+      title: "Spot Café Promo",
+      description: "Video promocional para cafeterías, destacando ambiente, menú y experiencia del cliente.",
+      image: "/projects/aromacafe.png",
+      technologies: ["Adobe Premiere", "After Effects", "DaVinci Resolve"],
+      category: "Edición de Video",
       icon: Briefcase,
-      github: "https://github.com/yourusername/digitalmedia",
-      live: "https://digitalmedia.studio"
+      github: "https://github.com/yourusername/spotcafepromo",
+      live: "https://cafepromospot.com"
+    },
+    {
+      title: "Enligne Motion",
+      description: "Animación explicativa para la app Enligne, mostrando el flujo de usuario y beneficios del sistema de filas virtuales.",
+      image: "/projects/enligne.png",
+      technologies: ["After Effects", "Illustrator"],
+      category: "Edición de Video",
+      icon: Briefcase,
+      github: "https://github.com/yourusername/enlignemotion",
+      live: "https://enligne.app/video"
     }
   ]
 }

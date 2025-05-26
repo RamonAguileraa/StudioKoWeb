@@ -158,7 +158,7 @@ const projectList: Project[] = [
     title: "BosoZoku Studio",
     description: "Página estudio indie de videojuegos BosoZoku, acepta donaciones y descarga el juego Tibucami.",
     image: "/projects/tibucamipage.png?height=200&width=200",
-    type: "Maikonik",
+    type: "StudioKó",
     technologies: [
       { name: "Next.js", icon: SiNextdotjs },
       { name: "Tailwind", icon: SiTailwindcss }
@@ -166,10 +166,10 @@ const projectList: Project[] = [
   },
   {
     id: 2,
-    title: "Project 2",
-    description: "Short description of Project 4 and what makes it special.",
+    title: "Video Youtube",
+    description: "Video para canal de youtube con animaciones y motion graphics.",
     youtubeId: "nSLwgQ8VFp0",
-    type: "BosoZoku",
+    type: "Maikonik",
     technologies: [
       { name: "Premiere Pro", icon: SiAdobepremierepro },
       { name: "After Effects", icon: SiAdobeaftereffects }
@@ -180,7 +180,7 @@ const projectList: Project[] = [
     title: "Aroma Café",
     description: "Landing page inspirada en un café auténtico. Transmite calidez, calidad y estilo moderno con un diseño fluido pensado para conectar con los amantes del buen café.",
     image: "/cafearoma.png?height=200&width=200",
-    type: "Maikonik",
+    type: "StudioKó",
     technologies: [
       { name: "Figma", icon: SiFigma },
       { name: "Adobe XD", icon: SiAdobexd }

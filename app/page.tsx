@@ -165,8 +165,8 @@ const projectList: Project[] = [
     ]
   },
   {
-    id: 4,
-    title: "Project 4",
+    id: 2,
+    title: "Project 2",
     description: "Short description of Project 4 and what makes it special.",
     youtubeId: "nSLwgQ8VFp0",
     type: "BosoZoku",
@@ -176,7 +176,7 @@ const projectList: Project[] = [
     ]
   },
   {
-    id: 5,
+    id: 3,
     title: "Aroma Café",
     description: "Landing page inspirada en un café auténtico. Transmite calidez, calidad y estilo moderno con un diseño fluido pensado para conectar con los amantes del buen café.",
     image: "/cafearoma.png?height=200&width=200",

@@ -106,25 +106,8 @@ export default function AboutPage() {
           },
         ]
       },
-      achievements: {
-        title: "Achievements & Awards",
-        subtitle: "Recognition of our journey, talent, and meaningful participation in the creative industry",
-        ludicJam: {
-          title: "Ludic Jam Winner – Entrepreneurship",
-          desc: "The BosoZoku team, led by Ramón Aguilera, was selected as one of the 10 winners among 29 teams in the Ludic Jam 2025, winning the Entrepreneurship category and earning a 100% scholarship.",
-          date: "April 2025"
-        },
-        nasa: {
-          title: "NASA Space Apps Challenge – Mentor",
-          desc: "We participated as mentors in the International NASA Space Apps Challenge, helping teams improve their UX, communication, and storytelling strategies.",
-          date: "October 2024"
-        },
-        tibucami: {
-          title: "Tibucami – Cultural & Artistic Recognition",
-          desc: "Tibucami, the original 3D adventure game developed by BosoZoku, has been recognized for its unique visual identity and Rarámuri cultural inspiration, blending mythology with gameplay innovation.",
-          date: "March 2025"
-        }
-      },
+     
+        
       cta: {
         title: "Let's Create Something Amazing Together",
         subtitle: "Whether you're interested in BosoZoku's games or Maikonik Media's creative agency services, we'd love to hear from you.",
@@ -664,74 +647,6 @@ export default function AboutPage() {
           <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent"></div>
         </div>
       </div>
-
-      {/* Achievements */}
-      <SectionTransition className="bg-gradient-to-br from-bosozoku/5 via-background to-maikonik/5">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.achievements.title}</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t.achievements.subtitle}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Ludic Jam */}
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 relative overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-bosozoku/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="mb-6 rounded-lg overflow-hidden aspect-video">
-                  <Image
-                    src="/reconocimiento.png"
-                    alt="Ludic Jam 2025"
-                    width={600}
-                    height={400}
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-2">{t.achievements.ludicJam.title}</h3>
-                <p className="text-muted-foreground mb-4">
-                  {t.achievements.ludicJam.desc}
-                </p>
-                <div className="text-sm text-muted-foreground">
-                  {t.achievements.ludicJam.date}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* NASA Space Apps Mentor */}
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 relative overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-maikonik/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="mb-6 rounded-lg overflow-hidden aspect-video">
-                  <Image
-                    src="/recospace.png"
-                    alt="NASA Space Apps Mentor"
-                    width={600}
-                    height={400}
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-2">{t.achievements.nasa.title}</h3>
-                <p className="text-muted-foreground mb-4">
-                  {t.achievements.nasa.desc}
-                </p>
-                <div className="text-sm text-muted-foreground">
-                  {t.achievements.nasa.date}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </SectionTransition>
 
       {/* Call to Action */}
       <SectionTransition className="bg-gradient-to-r from-bosozoku/10 to-maikonik/10 dark:from-bosozoku/20 dark:to-maikonik/20">

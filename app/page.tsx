@@ -156,9 +156,9 @@ const projectList: Project[] = [
   {
     id: 1,
     title: "BosoZoku Studio",
-    description: "Estudio indie de videojuegos BosoZoku, donde puedes descargar nuestro primer juego Tibucami, apoyar el desarrollo con donaciones y conocer más sobre el proyecto y el equipo detrás. Diseñada para conectar con la comunidad y mostrar el alma del estudio.",
-    image: "/tibucamipage.png?height=200&width=200",
-    type: "Maikonik",
+    description: "Página estudio indie de videojuegos BosoZoku, acepta donaciones y descarga el juego Tibucami.",
+    image: "/projects/tibucamipage.png?height=200&width=200",
+    type: "StudioKó",
     technologies: [
       { name: "Next.js", icon: SiNextdotjs },
       { name: "Tailwind", icon: SiTailwindcss }
@@ -166,59 +166,26 @@ const projectList: Project[] = [
   },
   {
     id: 2,
-    title: "Tibucami",
-    description: "Tibucami es un juego de acción y aventura inspirado en la mitología Rarámuri. Acompaña a un joven espíritu en su viaje por tierras ancestrales y modernas, enfrentando desafíos y descubriendo su verdadero propósito.",
-    image: "/presentaciongame.png?height=200&width=200",
-    type: "BosoZoku",
-    technologies: [
-      { name: "Unity", icon: SiUnity },
-      { name: "Blender", icon: SiBlender }
-    ]
-  },
-  {
-    id: 3,
-    title: "€nligne",
-    description: "Aplicación web que permite convertir monedas en tiempo real con datos precisos gracias a la API de Fixer. Rápida, confiable y fácil de usar para usuarios que necesitan tasas de cambio actualizadas al instante.",
-    image: "/enligne.png?height=200&width=200",
-    type: "Maikonik",
-    technologies: [
-      { name: "React", icon: SiReact },
-      { name: "TypeScript", icon: SiTypescript }
-    ]
-  },
-  {
-    id: 4,
-    title: "Project 4",
-    description: "Short description of Project 4 and what makes it special.",
+    title: "Video Youtube",
+    description: "Video para canal de youtube con animaciones y motion graphics.",
     youtubeId: "nSLwgQ8VFp0",
-    type: "BosoZoku",
+    type: "Maikonik",
     technologies: [
       { name: "Premiere Pro", icon: SiAdobepremierepro },
       { name: "After Effects", icon: SiAdobeaftereffects }
     ]
   },
   {
-    id: 5,
+    id: 3,
     title: "Aroma Café",
     description: "Landing page inspirada en un café auténtico. Transmite calidez, calidad y estilo moderno con un diseño fluido pensado para conectar con los amantes del buen café.",
-    image: "/cafearoma.png?height=200&width=200",
-    type: "Maikonik",
+    image: "/projects/aromacafe.png?height=200&width=200",
+    type: "StudioKó",
     technologies: [
       { name: "Figma", icon: SiFigma },
       { name: "Adobe XD", icon: SiAdobexd }
     ]
   },
-  {
-    id: 6,
-    title: "Project 6",
-    description: "Short description of Project 6 and what makes it special.",
-    youtubeId: "joM3O1P0GZ4",
-    type: "BosoZoku",
-    technologies: [
-      { name: "Premiere Pro", icon: SiAdobepremierepro },
-      { name: "After Effects", icon: SiAdobeaftereffects }
-    ]
-  }
 ]
   const t = content[language]
 
@@ -510,7 +477,7 @@ const projectList: Project[] = [
               <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-primary rounded-xl opacity-30"></div>
               <div className="absolute -bottom-12 -right-12 w-full h-full bg-gradient-to-br from-primary/20 to-maikonik/20 rounded-xl blur-xl"></div>
             </div>
-
+ 
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}

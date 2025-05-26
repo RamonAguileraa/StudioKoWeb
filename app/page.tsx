@@ -179,7 +179,7 @@ const projectList: Project[] = [
     id: 3,
     title: "Aroma Café",
     description: "Landing page inspirada en un café auténtico. Transmite calidez, calidad y estilo moderno con un diseño fluido pensado para conectar con los amantes del buen café.",
-    image: "/cafearoma.png?height=200&width=200",
+    image: "/projects/aromacafe.png?height=200&width=200",
     type: "StudioKó",
     technologies: [
       { name: "Figma", icon: SiFigma },

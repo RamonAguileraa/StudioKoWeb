@@ -17,17 +17,136 @@ import {
   Search,
   Layout,
   CheckCircle,
-  Rocket
+  Rocket,
+  LucideIcon
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import SectionTransition from "@/components/section-transition"
 import { useLanguage } from "@/context/language-context"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useMemo } from "react"
 import { SiNextdotjs, SiReact, SiTypescript, SiTailwindcss, SiNodedotjs, SiPython, SiDocker, SiAmazon } from "react-icons/si"
-import { Tooltip } from "@/components/ui/tooltip"
-import { TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
+import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
+
+// Interfaces para tipado
+interface Feature {
+  title: string
+  description: string
+  icon: LucideIcon
+}
+
+interface TechItem {
+  title: string
+  technologies: string[]
+  icon: LucideIcon
+}
+
+interface ProcessStep {
+  title: string
+  description: string
+  icon: LucideIcon
+}
+
+interface ServiceSection {
+  title: string
+  description: string
+  features: Feature[]
+}
+
+interface Content {
+  hero: {
+    title: string
+    subtitle: string
+    description: string
+  }
+  services: {
+    title: string
+    subtitle: string
+    webDev: ServiceSection
+    mobileDev: ServiceSection
+  }
+  tech: {
+    title: string
+    subtitle: string
+    items: TechItem[]
+  }
+  process: {
+    title: string
+    subtitle: string
+    steps: ProcessStep[]
+  }
+  cta: {
+    title: string
+    subtitle: string
+    button: string
+  }
+}
 
 type LogoSlot = { left: number; top: number; size: number; techIdx: number }
+
+// Componente de tarjeta de tecnología
+const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
+  return (
+    <div className="mb-2">
+      <div className="flex items-center gap-3 mb-4">
+        <motion.div
+          className="bg-gradient-to-tr from-violet-500/30 to-blue-400/30 rounded-full p-3 shadow-lg"
+          animate={{ rotate: [0, 10, -10, 0] }}
+          transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+        >
+          <Icon className="h-6 w-6 text-violet-600 dark:text-violet-300" />
+        </motion.div>
+        <h5 className="text-xl font-bold text-gray-900 dark:text-violet-300 tracking-tight border-b-2 border-violet-500/30 pb-1 flex-1">
+          {title}
+        </h5>
+      </div>
+      <div className="space-y-3">
+        {technologies.map((tech, techIndex) => (
+          <TooltipProvider key={techIndex} delayDuration={0}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className="group flex items-start gap-3 cursor-pointer transition-transform hover:scale-[1.03] hover:shadow-violet-500/20 hover:bg-violet-500/5 rounded-lg px-2 py-1">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-violet-400 to-blue-400 shadow-violet-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
+                  <div>
+                    <h6 className="text-base font-semibold text-gray-900 dark:text-violet-100 leading-tight group-hover:text-violet-300 transition-colors">
+                      {tech}
+                    </h6>
+                    <p className="text-sm text-gray-600 dark:text-blue-200 leading-snug group-hover:text-blue-100 transition-colors">
+                      {getTechDescription(tech)}
+                    </p>
+                  </div>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent side="right" className="bg-violet-900/90 text-white border-violet-500/40 shadow-xl">
+                {getTechDescription(tech)}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// Componente de paso del proceso
+const ProcessStep = ({ title, description, icon: Icon }: ProcessStep) => {
+  return (
+    <motion.div
+      className="bg-white dark:bg-[#1E1F2E] backdrop-blur-lg p-8 rounded-2xl border border-violet-200 dark:border-white/10 shadow-lg hover:shadow-violet-200/50 dark:hover:shadow-primary/20 text-center flex flex-col items-center transform transition-all duration-300 hover:scale-105"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className="bg-gradient-to-br from-violet-100 to-blue-100 dark:from-primary/20 dark:to-primary/10 rounded-full p-4 mb-6">
+        <div className="text-violet-600 dark:text-primary">
+          <Icon className="h-6 w-6" />
+        </div>
+      </div>
+      <h3 className="text-xl font-bold mb-4 text-violet-700 dark:text-primary">{title}</h3>
+      <p className="text-gray-600 dark:text-gray-300">{description}</p>
+    </motion.div>
+  )
+}
 
 export default function StudioKoPage() {
   const { language } = useLanguage()
@@ -50,7 +169,9 @@ export default function StudioKoPage() {
   }>>([])
   const [logoSlots, setLogoSlots] = useState<LogoSlot[]>([])
   const [mounted, setMounted] = useState(false)
-  const technologies = [
+  const [isLargeScreen, setIsLargeScreen] = useState(false)
+
+  const technologies = useMemo(() => [
     { name: "React", icon: <SiReact className="h-12 w-12" />, color: "#61DAFB" },
     { name: "Next.js", icon: <SiNextdotjs className="h-12 w-12" />, color: "#000000" },
     { name: "TypeScript", icon: <SiTypescript className="h-12 w-12" />, color: "#3178C6" },
@@ -59,7 +180,18 @@ export default function StudioKoPage() {
     { name: "Docker", icon: <SiDocker className="h-12 w-12" />, color: "#2496ED" },
     { name: "AWS", icon: <SiAmazon className="h-12 w-12" />, color: "#FF9900" },
     { name: "Tailwind", icon: <SiTailwindcss className="h-12 w-12" />, color: "#06B6D4" },
-  ]
+  ], [])
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024) // lg breakpoint
+    }
+    
+    checkScreenSize()
+    window.addEventListener('resize', checkScreenSize)
+    
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
 
   function getRandomSlot(size = 40): LogoSlot {
     return {
@@ -90,7 +222,6 @@ export default function StudioKoPage() {
   }, [mounted, logoSlots.length])
 
   useEffect(() => {
-    // Generar valores aleatorios solo en el cliente
     const techValues = Array(18).fill(null).map(() => ({
       width: 24 + Math.random() * 32,
       height: 24 + Math.random() * 32,
@@ -120,7 +251,7 @@ export default function StudioKoPage() {
     return () => clearInterval(interval)
   }, [])
 
-  const content = {
+  const content = useMemo(() => ({
     en: {
       hero: {
         title: "StudioKo",
@@ -351,9 +482,11 @@ export default function StudioKoPage() {
         button: "Contáctanos"
       }
     }
-  }
+  }), [])
 
-  const t = content[language]
+  const t = useMemo(() => content[language], [content, language])
+
+  if (!mounted) return null
 
   return (
     <div className="relative pt-20 bg-white dark:bg-gray-900" ref={containerRef}>
@@ -474,28 +607,30 @@ export default function StudioKoPage() {
             </p>
           </motion.div>
           <div className="flex justify-center relative mt-2">
-            {/* Carrusel a la izquierda */}
-            <div className="hidden md:flex flex-col gap-4 absolute left-[-60px] top-0 h-full justify-center z-20">
-              {technologies.slice(0, Math.ceil(technologies.length / 2)).map((tech, index) => (
-                <motion.div
-                  key={index}
-                  className="p-3 rounded-xl flex flex-col items-center group transform transition-all duration-300 hover:scale-110 relative bg-transparent"
-                  whileHover={{ y: -6 }}
-                >
-                  <div className="relative">
-                    <div
-                      className="text-primary/80 flex justify-center drop-shadow-[0_0_16px_rgba(99,102,241,0.5)] group-hover:drop-shadow-[0_0_32px_rgba(99,102,241,0.8)] transition-all duration-300"
-                      style={{ transform: `rotate(${index % 2 === 0 ? -10 : 10}deg)` }}
-                    >
-                      {tech.icon}
+            {/* Carrusel a la izquierda - solo visible en pantallas grandes */}
+            {isLargeScreen && (
+              <div className="hidden lg:flex flex-col gap-4 absolute left-[-60px] top-0 h-full justify-center z-20">
+                {technologies.slice(0, Math.ceil(technologies.length / 2)).map((tech, index) => (
+                  <motion.div
+                    key={index}
+                    className="p-3 rounded-xl flex flex-col items-center group transform transition-all duration-300 hover:scale-110 relative bg-transparent"
+                    whileHover={{ y: -6 }}
+                  >
+                    <div className="relative">
+                      <div
+                        className="text-primary/80 flex justify-center drop-shadow-[0_0_16px_rgba(99,102,241,0.5)] group-hover:drop-shadow-[0_0_32px_rgba(99,102,241,0.8)] transition-all duration-300"
+                        style={{ transform: `rotate(${index % 2 === 0 ? -10 : 10}deg)` }}
+                      >
+                        {tech.icon}
+                      </div>
                     </div>
-                  </div>
-                  <p className="text-xs text-primary mt-1 text-center font-medium tracking-wide group-hover:text-primary/80 transition-colors">
-                    {tech.name}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+                    <p className="text-xs text-primary mt-1 text-center font-medium tracking-wide group-hover:text-primary/80 transition-colors">
+                      {tech.name}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            )}
             <motion.div
               className="w-full max-w-4xl bg-white/10 dark:bg-white/5 backdrop-blur-2xl p-8 md:p-14 rounded-3xl border-2 border-violet-500/40 shadow-2xl relative overflow-hidden"
               style={{ boxShadow: "0 0 32px 4px #7c3aed33, 0 2px 32px 0 #0ea5e933", marginTop: 0 }}
@@ -507,78 +642,34 @@ export default function StudioKoPage() {
               <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-violet-500/10 via-blue-400/5 to-transparent rounded-3xl" />
               <div className="relative grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
                 {t.tech.items.map((item, index) => (
-                  <div key={index} className="mb-2">
-                    <div className="flex items-center gap-3 mb-4">
-                      <motion.div
-                        className="bg-gradient-to-tr from-violet-500/30 to-blue-400/30 rounded-full p-3 shadow-lg"
-                        animate={{ rotate: [0, 10, -10, 0] }}
-                        transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", delay: index * 0.2 }}
-                      >
-                        {item.icon}
-                      </motion.div>
-                      <h5 className="text-xl font-bold text-gray-900 dark:text-violet-300 tracking-tight border-b-2 border-violet-500/30 pb-1 flex-1">
-                        {item.title}
-                      </h5>
-                    </div>
-                    <div className="space-y-3">
-                      {item.technologies.map((tech, techIndex) => (
-                        <TooltipProvider key={techIndex} delayDuration={0}>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <div className="group flex items-start gap-3 cursor-pointer transition-transform hover:scale-[1.03] hover:shadow-violet-500/20 hover:bg-violet-500/5 rounded-lg px-2 py-1">
-                                <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-violet-400 to-blue-400 shadow-violet-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
-                                <div>
-                                  <h6 className="text-base font-semibold text-gray-900 dark:text-violet-100 leading-tight group-hover:text-violet-300 transition-colors">
-                                    {tech}
-                                  </h6>
-                                  <p className="text-sm text-gray-600 dark:text-blue-200 leading-snug group-hover:text-blue-100 transition-colors">
-                                    {getTechDescription(tech)}
-                                  </p>
-                                </div>
-                              </div>
-                            </TooltipTrigger>
-                            <TooltipContent side="right" className="bg-violet-900/90 text-white border-violet-500/40 shadow-xl">
-                              {getTechDescription(tech)}
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      ))}
-                    </div>
-                    {index < t.tech.items.length - 1 && (
-                      <motion.div
-                        className="w-2/3 h-0.5 mx-auto my-6 bg-gradient-to-r from-violet-500/0 via-violet-500/40 to-violet-500/0 rounded-full"
-                        initial={{ scaleX: 0 }}
-                        whileInView={{ scaleX: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7, delay: 0.2 }}
-                      />
-                    )}
-                  </div>
+                  <TechCard key={index} {...item} />
                 ))}
               </div>
             </motion.div>
-            {/* Carrusel a la derecha */}
-            <div className="hidden md:flex flex-col gap-4 absolute right-[-60px] top-0 h-full justify-center z-20">
-              {technologies.slice(Math.ceil(technologies.length / 2)).map((tech, index) => (
-                <motion.div
-                  key={index}
-                  className="p-3 rounded-xl flex flex-col items-center group transform transition-all duration-300 hover:scale-110 relative bg-transparent"
-                  whileHover={{ y: -6 }}
-                >
-                  <div className="relative">
-                    <div
-                      className="text-primary/80 flex justify-center drop-shadow-[0_0_16px_rgba(99,102,241,0.5)] group-hover:drop-shadow-[0_0_32px_rgba(99,102,241,0.8)] transition-all duration-300"
-                      style={{ transform: `rotate(${index % 2 === 0 ? 10 : -10}deg)` }}
-                    >
-                      {tech.icon}
+            {/* Carrusel a la derecha - solo visible en pantallas grandes */}
+            {isLargeScreen && (
+              <div className="hidden lg:flex flex-col gap-4 absolute right-[-60px] top-0 h-full justify-center z-20">
+                {technologies.slice(Math.ceil(technologies.length / 2)).map((tech, index) => (
+                  <motion.div
+                    key={index}
+                    className="p-3 rounded-xl flex flex-col items-center group transform transition-all duration-300 hover:scale-110 relative bg-transparent"
+                    whileHover={{ y: -6 }}
+                  >
+                    <div className="relative">
+                      <div
+                        className="text-primary/80 flex justify-center drop-shadow-[0_0_16px_rgba(99,102,241,0.5)] group-hover:drop-shadow-[0_0_32px_rgba(99,102,241,0.8)] transition-all duration-300"
+                        style={{ transform: `rotate(${index % 2 === 0 ? 10 : -10}deg)` }}
+                      >
+                        {tech.icon}
+                      </div>
                     </div>
-                  </div>
-                  <p className="text-xs text-primary mt-1 text-center font-medium tracking-wide group-hover:text-primary/80 transition-colors">
-                    {tech.name}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+                    <p className="text-xs text-primary mt-1 text-center font-medium tracking-wide group-hover:text-primary/80 transition-colors">
+                      {tech.name}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </SectionTransition>
@@ -603,22 +694,7 @@ export default function StudioKoPage() {
 
           <div className="grid md:grid-cols-5 gap-8">
             {t.process.steps.map((step, index) => (
-              <motion.div
-                key={index}
-                className="bg-white dark:bg-[#1E1F2E] backdrop-blur-lg p-8 rounded-2xl border border-violet-200 dark:border-white/10 shadow-lg hover:shadow-violet-200/50 dark:hover:shadow-primary/20 text-center flex flex-col items-center transform transition-all duration-300 hover:scale-105"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-              >
-                <div className="bg-gradient-to-br from-violet-100 to-blue-100 dark:from-primary/20 dark:to-primary/10 rounded-full p-4 mb-6">
-                  <div className="text-violet-600 dark:text-primary">
-                    {step.icon}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-violet-700 dark:text-primary">{step.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
-              </motion.div>
+              <ProcessStep key={index} {...step} />
             ))}
           </div>
         </div>

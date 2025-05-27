@@ -133,25 +133,29 @@ const ProcessStep = ({ title, description, icon: Icon }: ProcessStep) => {
   return (
     <motion.div
       className="bg-white dark:bg-[#1E1F2E] backdrop-blur-lg p-8 rounded-2xl border border-violet-200 dark:border-white/10 shadow-lg hover:shadow-violet-200/50 dark:hover:shadow-primary/20 text-center flex flex-col items-center transform transition-all duration-300 hover:scale-105"
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      initial={{ opacity: 0, y: 10, scale: 0.98 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-20px" }}
       transition={{ 
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1], // Curva de aceleración personalizada
-        opacity: { duration: 0.6 },
-        scale: { duration: 0.7 }
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        mass: 0.5,
+        opacity: { duration: 0.4 },
+        scale: { duration: 0.4 }
       }}
     >
       <motion.div 
         className="bg-gradient-to-br from-violet-100 to-blue-100 dark:from-primary/20 dark:to-primary/10 rounded-full p-4 mb-6"
-        initial={{ scale: 0.8, opacity: 0 }}
+        initial={{ scale: 0.9, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ 
-          duration: 0.6,
-          delay: 0.2,
-          ease: "easeOut"
+          type: "spring",
+          stiffness: 100,
+          damping: 20,
+          mass: 0.5,
+          delay: 0.1
         }}
       >
         <div className="text-violet-600 dark:text-primary">
@@ -160,26 +164,30 @@ const ProcessStep = ({ title, description, icon: Icon }: ProcessStep) => {
       </motion.div>
       <motion.h3 
         className="text-xl font-bold mb-4 text-violet-700 dark:text-primary"
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 5 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ 
-          duration: 0.5,
-          delay: 0.3,
-          ease: "easeOut"
+          type: "spring",
+          stiffness: 100,
+          damping: 20,
+          mass: 0.5,
+          delay: 0.15
         }}
       >
         {title}
       </motion.h3>
       <motion.p 
         className="text-gray-600 dark:text-gray-300"
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 5 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ 
-          duration: 0.5,
-          delay: 0.4,
-          ease: "easeOut"
+          type: "spring",
+          stiffness: 100,
+          damping: 20,
+          mass: 0.5,
+          delay: 0.2
         }}
       >
         {description}
@@ -719,12 +727,14 @@ export default function StudioKoPage() {
         <div className="container mx-auto px-4 py-24 relative z-10">
           <motion.div 
             className="text-center mb-20"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ 
-              duration: 0.8,
-              ease: [0.16, 1, 0.3, 1]
+              type: "spring",
+              stiffness: 100,
+              damping: 20,
+              mass: 0.5
             }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 drop-shadow-[0_2px_32px_rgba(236,72,153,0.5)] animate-fade-in">
@@ -739,11 +749,14 @@ export default function StudioKoPage() {
             className="grid md:grid-cols-5 gap-8"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ 
-              duration: 0.6,
-              staggerChildren: 0.1,
-              delayChildren: 0.2
+              type: "spring",
+              stiffness: 100,
+              damping: 20,
+              mass: 0.5,
+              staggerChildren: 0.05,
+              delayChildren: 0.1
             }}
           >
             {t.process.steps.map((step, index) => (

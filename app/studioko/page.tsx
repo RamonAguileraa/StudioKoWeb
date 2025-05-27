@@ -133,18 +133,57 @@ const ProcessStep = ({ title, description, icon: Icon }: ProcessStep) => {
   return (
     <motion.div
       className="bg-white dark:bg-[#1E1F2E] backdrop-blur-lg p-8 rounded-2xl border border-violet-200 dark:border-white/10 shadow-lg hover:shadow-violet-200/50 dark:hover:shadow-primary/20 text-center flex flex-col items-center transform transition-all duration-300 hover:scale-105"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ 
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1], // Curva de aceleración personalizada
+        opacity: { duration: 0.6 },
+        scale: { duration: 0.7 }
+      }}
     >
-      <div className="bg-gradient-to-br from-violet-100 to-blue-100 dark:from-primary/20 dark:to-primary/10 rounded-full p-4 mb-6">
+      <motion.div 
+        className="bg-gradient-to-br from-violet-100 to-blue-100 dark:from-primary/20 dark:to-primary/10 rounded-full p-4 mb-6"
+        initial={{ scale: 0.8, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ 
+          duration: 0.6,
+          delay: 0.2,
+          ease: "easeOut"
+        }}
+      >
         <div className="text-violet-600 dark:text-primary">
           {Icon}
         </div>
-      </div>
-      <h3 className="text-xl font-bold mb-4 text-violet-700 dark:text-primary">{title}</h3>
-      <p className="text-gray-600 dark:text-gray-300">{description}</p>
+      </motion.div>
+      <motion.h3 
+        className="text-xl font-bold mb-4 text-violet-700 dark:text-primary"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ 
+          duration: 0.5,
+          delay: 0.3,
+          ease: "easeOut"
+        }}
+      >
+        {title}
+      </motion.h3>
+      <motion.p 
+        className="text-gray-600 dark:text-gray-300"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ 
+          duration: 0.5,
+          delay: 0.4,
+          ease: "easeOut"
+        }}
+      >
+        {description}
+      </motion.p>
     </motion.div>
   )
 }
@@ -682,8 +721,11 @@ export default function StudioKoPage() {
             className="text-center mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ 
+              duration: 0.8,
+              ease: [0.16, 1, 0.3, 1]
+            }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 drop-shadow-[0_2px_32px_rgba(236,72,153,0.5)] animate-fade-in">
               {t.process.title}
@@ -693,11 +735,21 @@ export default function StudioKoPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-5 gap-8">
+          <motion.div 
+            className="grid md:grid-cols-5 gap-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ 
+              duration: 0.6,
+              staggerChildren: 0.1,
+              delayChildren: 0.2
+            }}
+          >
             {t.process.steps.map((step, index) => (
               <ProcessStep key={index} {...step} />
             ))}
-          </div>
+          </motion.div>
         </div>
       </SectionTransition>
 

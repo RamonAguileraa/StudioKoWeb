@@ -336,7 +336,9 @@ export default function ServicesPage() {
                     <span className="text-xs text-muted-foreground">
                       {language === 'en' ? 'Starting at' : 'Desde'}
                     </span>
-                    <span className="text-sm font-medium">$999</span>
+                    <span className="text-sm font-medium">
+                      {language === 'en' ? '$999 USD' : '$12,999 MXN'}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -386,7 +388,9 @@ export default function ServicesPage() {
                     <span className="text-xs text-muted-foreground">
                       {language === 'en' ? 'Starting at' : 'Desde'}
                     </span>
-                    <span className="text-sm font-medium">$1,499</span>
+                    <span className="text-sm font-medium">
+                      {language === 'en' ? '$1,499 USD' : '$19,999 MXN'}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -448,7 +452,9 @@ export default function ServicesPage() {
                     <span className="text-xs text-muted-foreground">
                       {language === 'en' ? 'Starting at' : 'Desde'}
                     </span>
-                    <span className="text-sm font-medium">$799</span>
+                    <span className="text-sm font-medium">
+                      {language === 'en' ? '$799 USD' : '$9,999 MXN'}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -498,7 +504,9 @@ export default function ServicesPage() {
                     <span className="text-xs text-muted-foreground">
                       {language === 'en' ? 'Starting at' : 'Desde'}
                     </span>
-                    <span className="text-sm font-medium">$599</span>
+                    <span className="text-sm font-medium">
+                      {language === 'en' ? '$599 USD' : '$7,999 MXN'}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -548,7 +556,9 @@ export default function ServicesPage() {
                     <span className="text-xs text-muted-foreground">
                       {language === 'en' ? 'Starting at' : 'Desde'}
                     </span>
-                    <span className="text-sm font-medium">$899</span>
+                    <span className="text-sm font-medium">
+                      {language === 'en' ? '$999 USD' : '$12,999 MXN'}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -598,7 +608,9 @@ export default function ServicesPage() {
                     <span className="text-xs text-muted-foreground">
                       {language === 'en' ? 'Starting at' : 'Desde'}
                     </span>
-                    <span className="text-sm font-medium">$699</span>
+                    <span className="text-sm font-medium">
+                      {language === 'en' ? '$799 USD' : '$9,999 MXN'}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -648,7 +660,9 @@ export default function ServicesPage() {
                     <span className="text-xs text-muted-foreground">
                       {language === 'en' ? 'Starting at' : 'Desde'}
                     </span>
-                    <span className="text-sm font-medium">$499</span>
+                    <span className="text-sm font-medium">
+                      {language === 'en' ? '$499 USD' : '$6,999 MXN'}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -698,7 +712,9 @@ export default function ServicesPage() {
                     <span className="text-xs text-muted-foreground">
                       {language === 'en' ? 'Starting at' : 'Desde'}
                     </span>
-                    <span className="text-sm font-medium">$799</span>
+                    <span className="text-sm font-medium">
+                      {language === 'en' ? '$999 USD' : '$12,999 MXN'}
+                    </span>
                   </div>
                 </div>
               </div>

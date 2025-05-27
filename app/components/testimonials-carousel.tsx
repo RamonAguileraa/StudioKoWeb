@@ -82,7 +82,6 @@ export default function TestimonialsCarousel() {
         items={movingItems}
         direction="right"
         speed="normal"
-        pauseOnHover
       />
     </div>
   );

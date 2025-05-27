@@ -6,8 +6,8 @@ import React, { useEffect, useState } from "react";
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
-  speed = "fast",
-  pauseOnHover = true,
+  speed = "normal",
+  pauseOnHover = false,
   className,
 }: {
   items: {
@@ -92,7 +92,7 @@ export const InfiniteMovingCards = ({
             className="group relative w-[350px] md:w-[450px] max-w-full shrink-0 rounded-2xl border border-border bg-card px-8 py-6 overflow-hidden backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300"
           >
             {/* gradient overlay on hover */}
-            <span className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/10 group-hover:via-primary/5 group-hover:to-primary/10 transition-all duration-300" />
+            <span className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent via-transparent to-transparent group-hover:from-primary/15 group-hover:via-primary/8 group-hover:to-primary/15 dark:group-hover:from-primary/20 dark:group-hover:via-primary/10 dark:group-hover:to-primary/20 transition-all duration-300" />
 
             <blockquote className="relative z-10">
               <span className="block text-sm leading-relaxed font-normal text-muted-foreground">

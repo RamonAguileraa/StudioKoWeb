@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
@@ -21,15 +21,39 @@ import {
   Search, 
   Rocket, 
   Database,
-  ChevronRight
+  ChevronRight,
+  LucideIcon
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import SectionTransition from "@/components/section-transition"
 import AnimatedBlob from "@/components/animated-blob"
-import { ReactNode } from "react"
 import { useLanguage } from "@/context/language-context"
-import { Tooltip } from "@/components/ui/tooltip"
-import { TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
+import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
+
+// Interfaces para tipado
+interface Feature {
+  title: string
+  description: string
+  icon: LucideIcon
+}
+
+interface TechItem {
+  title: string
+  technologies: string[]
+  icon: LucideIcon
+}
+
+interface ProcessStep {
+  title: string
+  description: string
+  icon: LucideIcon
+}
+
+interface ServiceSection {
+  title: string
+  description: string
+  features: Feature[]
+}
 
 interface Content {
   hero: {
@@ -40,42 +64,18 @@ interface Content {
   services: {
     title: string
     subtitle: string
-    webDev: {
-      title: string
-      description: string
-      features: {
-        title: string
-        description: string
-        icon: ReactNode
-      }[]
-    }
-    mobileDev: {
-      title: string
-      description: string
-      features: {
-        title: string
-        description: string
-        icon: ReactNode
-      }[]
-    }
+    webDev: ServiceSection
+    mobileDev: ServiceSection
   }
   tech: {
     title: string
     subtitle: string
-    items: {
-      title: string
-      technologies: string[]
-      icon: ReactNode
-    }[]
+    items: TechItem[]
   }
   process: {
     title: string
     subtitle: string
-    steps: {
-      title: string
-      description: string
-      icon: ReactNode
-    }[]
+    steps: ProcessStep[]
   }
   cta: {
     title: string
@@ -106,17 +106,17 @@ const content: ContentObject = {
           {
             title: "Brand Strategy",
             description: "Strategic brand positioning and development",
-            icon: <Globe className="h-6 w-6" />
+            icon: Globe
           },
           {
             title: "Visual Identity",
             description: "Complete brand identity and design system",
-            icon: <ShoppingCart className="h-6 w-6" />
+            icon: ShoppingCart
           },
           {
             title: "Brand Guidelines",
             description: "Comprehensive brand guidelines and assets",
-            icon: <Zap className="h-6 w-6" />
+            icon: Zap
           }
         ]
       },
@@ -127,17 +127,17 @@ const content: ContentObject = {
           {
             title: "Photo & Video",
             description: "Professional photography and videography services",
-            icon: <Smartphone className="h-6 w-6" />
+            icon: Smartphone
           },
           {
             title: "Social Media Content",
             description: "Engaging content for all social platforms",
-            icon: <Smartphone className="h-6 w-6" />
+            icon: Smartphone
           },
           {
             title: "Motion Graphics",
             description: "Dynamic animations and visual effects",
-            icon: <Globe className="h-6 w-6" />
+            icon: Globe
           }
         ]
       }
@@ -149,22 +149,22 @@ const content: ContentObject = {
         {
           title: "Design & Branding",
           technologies: ["Adobe Creative Suite", "Figma", "Blender", "Canva Pro"],
-          icon: <Code className="h-6 w-6" />
+          icon: Code
         },
         {
           title: "Photo & Video",
           technologies: ["Photoshop", "Lightroom", "Premiere Pro", "After Effects"],
-          icon: <Server className="h-6 w-6" />
+          icon: Server
         },
         {
           title: "Social Media",
           technologies: ["Instagram", "Facebook", "TikTok", "LinkedIn"],
-          icon: <Smartphone className="h-6 w-6" />
+          icon: Smartphone
         },
         {
           title: "Marketing Tools",
           technologies: ["Meta Business", "Google Analytics", "Hootsuite", "Later"],
-          icon: <Database className="h-6 w-6" />
+          icon: Database
         }
       ]
     },
@@ -175,27 +175,27 @@ const content: ContentObject = {
         {
           title: "Discovery",
           description: "Understanding your brand and design needs",
-          icon: <Search className="h-6 w-6" />
+          icon: Search
         },
         {
           title: "Concept",
           description: "Developing creative concepts and ideas",
-          icon: <Layout className="h-6 w-6" />
+          icon: Layout
         },
         {
           title: "Design",
           description: "Creating high-quality visual designs",
-          icon: <Code className="h-6 w-6" />
+          icon: Code
         },
         {
           title: "Refinement",
           description: "Perfecting every detail of your design",
-          icon: <CheckCircle className="h-6 w-6" />
+          icon: CheckCircle
         },
         {
           title: "Delivery",
           description: "Providing final files and assets",
-          icon: <Rocket className="h-6 w-6" />
+          icon: Rocket
         }
       ]
     },
@@ -221,17 +221,17 @@ const content: ContentObject = {
           {
             title: "Estrategia de Marca",
             description: "Posicionamiento y desarrollo estratégico de marca",
-            icon: <Globe className="h-6 w-6" />
+            icon: Globe
           },
           {
             title: "Identidad Visual",
             description: "Sistema completo de identidad y diseño de marca",
-            icon: <ShoppingCart className="h-6 w-6" />
+            icon: ShoppingCart
           },
           {
             title: "Guías de Marca",
             description: "Guías de marca y recursos completos",
-            icon: <Zap className="h-6 w-6" />
+            icon: Zap
           }
         ]
       },
@@ -242,17 +242,17 @@ const content: ContentObject = {
           {
             title: "Foto y Video",
             description: "Servicios profesionales de fotografía y videografía",
-            icon: <Smartphone className="h-6 w-6" />
+            icon: Smartphone
           },
           {
             title: "Contenido para Redes",
             description: "Contenido atractivo para todas las plataformas",
-            icon: <Smartphone className="h-6 w-6" />
+            icon: Smartphone
           },
           {
             title: "Motion Graphics",
             description: "Animaciones y efectos visuales dinámicos",
-            icon: <Globe className="h-6 w-6" />
+            icon: Globe
           }
         ]
       }
@@ -264,22 +264,22 @@ const content: ContentObject = {
         {
           title: "Diseño",
           technologies: ["Adobe Creative Suite", "Figma", "Blender", "Canva Pro"],
-          icon: <Code className="h-6 w-6" />
+          icon: Code
         },
         {
           title: "Foto y Video",
           technologies: ["Photoshop", "Lightroom", "Premiere Pro", "After Effects"],
-          icon: <Server className="h-6 w-6" />
+          icon: Server
         },
         {
           title: "3D y Motion",
           technologies: ["Blender", "Cinema 4D", "After Effects", "DaVinci Resolve"],
-          icon: <Smartphone className="h-6 w-6" />
+          icon: Smartphone
         },
         {
           title: "Herramientas Adicionales",
           technologies: ["Procreate", "Illustrator", "InDesign", "XD"],
-          icon: <Database className="h-6 w-6" />
+          icon: Database
         }
       ]
     },
@@ -290,27 +290,27 @@ const content: ContentObject = {
         {
           title: "Descubrimiento",
           description: "Entendiendo tu marca y necesidades de diseño",
-          icon: <Search className="h-6 w-6" />
+          icon: Search
         },
         {
           title: "Concepto",
           description: "Desarrollando conceptos e ideas creativas",
-          icon: <Layout className="h-6 w-6" />
+          icon: Layout
         },
         {
           title: "Diseño",
           description: "Creando diseños visuales de alta calidad",
-          icon: <Code className="h-6 w-6" />
+          icon: Code
         },
         {
           title: "Refinamiento",
           description: "Perfeccionando cada detalle de tu diseño",
-          icon: <CheckCircle className="h-6 w-6" />
+          icon: CheckCircle
         },
         {
           title: "Entrega",
           description: "Proporcionando archivos y recursos finales",
-          icon: <Rocket className="h-6 w-6" />
+          icon: Rocket
         }
       ]
     },
@@ -322,24 +322,94 @@ const content: ContentObject = {
   }
 }
 
+// Componente de tarjeta de tecnología
+const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
+  return (
+    <motion.div
+      className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-lg p-8 rounded-3xl border border-maikonik/20 shadow-xl hover:shadow-maikonik/20 transition-all duration-300"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className="flex items-center gap-4 mb-6">
+        <div className="bg-maikonik/10 p-3 rounded-2xl">
+          <Icon className="h-6 w-6 text-maikonik" />
+        </div>
+        <h3 className="text-2xl font-bold text-maikonik">{title}</h3>
+      </div>
+      <div className="space-y-4">
+        {technologies.map((tech, index) => (
+          <TooltipProvider key={index} delayDuration={0}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <motion.div
+                  className="group flex items-center gap-3 p-3 rounded-xl bg-white/50 dark:bg-gray-700/50 hover:bg-maikonik/5 transition-all duration-300"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="w-2 h-2 rounded-full bg-maikonik" />
+                  <span className="font-medium text-gray-800 dark:text-gray-200">
+                    {tech}
+                  </span>
+                </motion.div>
+              </TooltipTrigger>
+              <TooltipContent side="right" className="bg-maikonik text-white border-maikonik/40">
+                {getTechDescription(tech)}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        ))}
+      </div>
+    </motion.div>
+  )
+}
+
+// Componente de paso del proceso
+const ProcessStep = ({ title, description, icon: Icon, isLast }: ProcessStep & { isLast: boolean }) => {
+  return (
+    <motion.div
+      className="relative group"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-6 rounded-2xl border border-maikonik/20 shadow-lg hover:shadow-maikonik/20 transition-all duration-300 h-full">
+        <div className="flex flex-col items-center text-center">
+          <div className="bg-maikonik/10 p-4 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+            <Icon className="h-6 w-6 text-maikonik" />
+          </div>
+          <h3 className="text-xl font-bold mb-2 text-maikonik">{title}</h3>
+          <p className="text-gray-600 dark:text-gray-300">{description}</p>
+        </div>
+      </div>
+      {!isLast && (
+        <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-maikonik/20" />
+      )}
+    </motion.div>
+  )
+}
+
+// Componente principal
 export default function MaikonikPage() {
   const { language } = useLanguage()
   const { scrollYProgress } = useScroll()
   const [mounted, setMounted] = useState(false)
-  const currentContent = content[language as keyof typeof content]
+  
+  const currentContent = useMemo(() => content[language as keyof typeof content], [language])
+  const y = useTransform(scrollYProgress, [0, 1], [0, -100])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, -100])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  if (!mounted) return null
 
   return (
     <div className="relative pt-20 bg-gradient-to-b from-white via-pink-50/50 to-white dark:from-gray-900 dark:via-pink-950/20 dark:to-gray-900">
       {/* Hero Section */}
       <SectionTransition id="hero" className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Animated blobs */}
         <AnimatedBlob color="#F43F5E" size="600px" top="-300px" right="-300px" opacity={0.15} />
         <AnimatedBlob color="#FB7185" size="400px" bottom="-200px" left="-200px" opacity={0.1} delay={2} />
 
@@ -440,43 +510,7 @@ export default function MaikonikPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {currentContent.tech.items.map((item, index) => (
-              <motion.div
-                key={index}
-                className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-lg p-8 rounded-3xl border border-maikonik/20 shadow-xl hover:shadow-maikonik/20 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="bg-maikonik/10 p-3 rounded-2xl">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-maikonik">{item.title}</h3>
-                </div>
-                <div className="space-y-4">
-                  {item.technologies.map((tech, techIndex) => (
-                    <TooltipProvider key={techIndex} delayDuration={0}>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <motion.div
-                            className="group flex items-center gap-3 p-3 rounded-xl bg-white/50 dark:bg-gray-700/50 hover:bg-maikonik/5 transition-all duration-300"
-                            whileHover={{ x: 5 }}
-                          >
-                            <div className="w-2 h-2 rounded-full bg-maikonik" />
-                            <span className="font-medium text-gray-800 dark:text-gray-200">
-                              {tech}
-                            </span>
-                          </motion.div>
-                        </TooltipTrigger>
-                        <TooltipContent side="right" className="bg-maikonik text-white border-maikonik/40">
-                          {getTechDescription(tech)}
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  ))}
-                </div>
-              </motion.div>
+              <TechCard key={index} {...item} />
             ))}
           </div>
         </div>
@@ -502,27 +536,11 @@ export default function MaikonikPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
             {currentContent.process.steps.map((step, index) => (
-              <motion.div
-                key={index}
-                className="relative group"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-6 rounded-2xl border border-maikonik/20 shadow-lg hover:shadow-maikonik/20 transition-all duration-300 h-full">
-                  <div className="flex flex-col items-center text-center">
-                    <div className="bg-maikonik/10 p-4 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
-                      {step.icon}
-                    </div>
-                    <h3 className="text-xl font-bold mb-2 text-maikonik">{step.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
-                  </div>
-                </div>
-                {index < currentContent.process.steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-maikonik/20" />
-                )}
-              </motion.div>
+              <ProcessStep 
+                key={index} 
+                {...step} 
+                isLast={index === currentContent.process.steps.length - 1} 
+              />
             ))}
           </div>
         </div>

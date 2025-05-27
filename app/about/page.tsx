@@ -363,7 +363,7 @@ export default function AboutPage() {
               <div className="absolute -bottom-12 -right-12 lg:-bottom-12 lg:-right-12 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl hidden sm:block"></div>
               <div className="relative z-10 rounded-xl overflow-hidden aspect-square shadow-2xl">
                 <Image
-                  src="/founder.png?height=800&width=800&text=Ramón Aguilera"
+                  src="/rmn.png?height=800&width=800&text=Ramón Aguilera"
                   alt="Ramón Aguilera - CEO"
                   width={800}
                   height={800}
@@ -525,7 +525,7 @@ export default function AboutPage() {
               <div className="absolute -bottom-12 -left-12 w-full h-full bg-gradient-to-bl from-maikonik/20 to-bosozoku/20 rounded-xl blur-xl hidden sm:block"></div>
               <div className="relative z-10 rounded-xl overflow-hidden aspect-square shadow-2xl">
                 <Image
-                  src="/mikey.png"
+                  src="/mki.jpg"
                   alt="Miguel Millán - COO"
                   width={800}
                   height={800}
@@ -620,7 +620,7 @@ export default function AboutPage() {
               <div className="absolute -bottom-12 -right-12 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl hidden sm:block"></div>
               <div className="relative z-10 rounded-xl overflow-hidden aspect-square shadow-2xl">
                 <Image
-                  src="/ferxa.png"
+                  src="/fer.jpg"
                   alt="Fernanda Torres - Marketing Lead"
                   width={800}
                   height={800}

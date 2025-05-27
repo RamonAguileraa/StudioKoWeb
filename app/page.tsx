@@ -251,7 +251,7 @@ const projectList: Project[] = [
           </motion.div>
 
           <motion.div className="relative" style={{ y, opacity }}>
-            <div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl">
+            <div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl ">
               <Image
                 src="/digitalmedia.png"
                 alt="StudioKó Showcase"

@@ -26,24 +26,25 @@ import { useLanguage } from "@/context/language-context"
 import { useEffect, useState, useRef, useMemo } from "react"
 import { SiNextdotjs, SiReact, SiTypescript, SiTailwindcss, SiNodedotjs, SiPython, SiDocker, SiAmazon } from "react-icons/si"
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
+import React from "react"
 
 // Interfaces para tipado
 interface Feature {
   title: string
   description: string
-  icon: LucideIcon
+  icon: React.ReactNode
 }
 
 interface TechItem {
   title: string
   technologies: string[]
-  icon: LucideIcon
+  icon: React.ReactNode
 }
 
 interface ProcessStep {
   title: string
   description: string
-  icon: LucideIcon
+  icon: React.ReactNode
 }
 
 interface ServiceSection {
@@ -93,7 +94,7 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
           animate={{ rotate: [0, 10, -10, 0] }}
           transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
         >
-          <Icon className="h-6 w-6 text-violet-600 dark:text-violet-300" />
+          {Icon}
         </motion.div>
         <h5 className="text-xl font-bold text-gray-900 dark:text-violet-300 tracking-tight border-b-2 border-violet-500/30 pb-1 flex-1">
           {title}
@@ -139,7 +140,7 @@ const ProcessStep = ({ title, description, icon: Icon }: ProcessStep) => {
     >
       <div className="bg-gradient-to-br from-violet-100 to-blue-100 dark:from-primary/20 dark:to-primary/10 rounded-full p-4 mb-6">
         <div className="text-violet-600 dark:text-primary">
-          <Icon className="h-6 w-6" />
+          {Icon}
         </div>
       </div>
       <h3 className="text-xl font-bold mb-4 text-violet-700 dark:text-primary">{title}</h3>

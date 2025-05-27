@@ -325,35 +325,66 @@ const content: ContentObject = {
 // Componente de tarjeta de tecnología
 const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
   return (
-    <motion.div
-      className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-lg p-8 rounded-3xl border border-maikonik/20 shadow-xl hover:shadow-maikonik/20 transition-all duration-300"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+    <motion.div 
+      className="mb-2"
+      initial={{ opacity: 0, y: 5, scale: 0.99 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ 
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        mass: 0.5,
+        duration: 0.2
+      }}
     >
-      <div className="flex items-center gap-4 mb-6">
-        <div className="bg-maikonik/10 p-3 rounded-2xl">
-          <Icon className="h-6 w-6 text-maikonik" />
-        </div>
-        <h3 className="text-2xl font-bold text-maikonik">{title}</h3>
+      <div className="flex items-center gap-3 mb-4">
+        <motion.div
+          className="bg-gradient-to-tr from-violet-500/30 to-blue-400/30 rounded-full p-3 shadow-lg"
+          animate={{ rotate: [0, 5, -5, 0] }}
+          transition={{ 
+            duration: 2,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut"
+          }}
+        >
+          {Icon}
+        </motion.div>
+        <h5 className="text-xl font-bold text-gray-900 dark:text-violet-300 tracking-tight border-b-2 border-violet-500/30 pb-1 flex-1">
+          {title}
+        </h5>
       </div>
-      <div className="space-y-4">
-        {technologies.map((tech, index) => (
-          <TooltipProvider key={index} delayDuration={0}>
+      <div className="space-y-3">
+        {technologies.map((tech, techIndex) => (
+          <TooltipProvider key={techIndex} delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <motion.div
-                  className="group flex items-center gap-3 p-3 rounded-xl bg-white/50 dark:bg-gray-700/50 hover:bg-maikonik/5 transition-all duration-300"
-                  whileHover={{ x: 5 }}
+                <motion.div 
+                  className="group flex items-start gap-3 cursor-pointer transition-transform hover:scale-[1.02] hover:shadow-violet-500/20 hover:bg-violet-500/5 rounded-lg px-2 py-1"
+                  initial={{ opacity: 0, x: -5 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ 
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 20,
+                    mass: 0.5,
+                    delay: techIndex * 0.02
+                  }}
                 >
-                  <div className="w-2 h-2 rounded-full bg-maikonik" />
-                  <span className="font-medium text-gray-800 dark:text-gray-200">
-                    {tech}
-                  </span>
+                  <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-violet-400 to-blue-400 shadow-violet-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
+                  <div>
+                    <h6 className="text-base font-semibold text-gray-900 dark:text-violet-100 leading-tight group-hover:text-violet-300 transition-colors">
+                      {tech}
+                    </h6>
+                    <p className="text-sm text-gray-600 dark:text-blue-200 leading-snug group-hover:text-blue-100 transition-colors">
+                      {getTechDescription(tech)}
+                    </p>
+                  </div>
                 </motion.div>
               </TooltipTrigger>
-              <TooltipContent side="right" className="bg-maikonik text-white border-maikonik/40">
+              <TooltipContent side="right" className="bg-violet-900/90 text-white border-violet-500/40 shadow-xl">
                 {getTechDescription(tech)}
               </TooltipContent>
             </Tooltip>

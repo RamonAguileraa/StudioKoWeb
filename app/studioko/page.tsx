@@ -133,29 +133,29 @@ const ProcessStep = ({ title, description, icon: Icon }: ProcessStep) => {
   return (
     <motion.div
       className="bg-white dark:bg-[#1E1F2E] backdrop-blur-lg p-8 rounded-2xl border border-violet-200 dark:border-white/10 shadow-lg hover:shadow-violet-200/50 dark:hover:shadow-primary/20 text-center flex flex-col items-center transform transition-all duration-300 hover:scale-105"
-      initial={{ opacity: 0, y: 5, scale: 0.99 }}
+      initial={{ opacity: 0, y: 3, scale: 0.995 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ 
         type: "spring",
-        stiffness: 100,
-        damping: 20,
-        mass: 0.5,
-        opacity: { duration: 0.2 },
-        scale: { duration: 0.2 }
+        stiffness: 120,
+        damping: 25,
+        mass: 0.4,
+        opacity: { duration: 0.15 },
+        scale: { duration: 0.15 }
       }}
     >
       <motion.div 
         className="bg-gradient-to-br from-violet-100 to-blue-100 dark:from-primary/20 dark:to-primary/10 rounded-full p-4 mb-6"
-        initial={{ scale: 0.95, opacity: 0 }}
+        initial={{ scale: 0.97, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ 
           type: "spring",
-          stiffness: 100,
-          damping: 20,
-          mass: 0.5,
-          delay: 0.02
+          stiffness: 120,
+          damping: 25,
+          mass: 0.4,
+          delay: 0.01
         }}
       >
         <div className="text-violet-600 dark:text-primary">
@@ -164,30 +164,30 @@ const ProcessStep = ({ title, description, icon: Icon }: ProcessStep) => {
       </motion.div>
       <motion.h3 
         className="text-xl font-bold mb-4 text-violet-700 dark:text-primary"
-        initial={{ opacity: 0, y: 3 }}
+        initial={{ opacity: 0, y: 2 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ 
           type: "spring",
-          stiffness: 100,
-          damping: 20,
-          mass: 0.5,
-          delay: 0.04
+          stiffness: 120,
+          damping: 25,
+          mass: 0.4,
+          delay: 0.02
         }}
       >
         {title}
       </motion.h3>
       <motion.p 
         className="text-gray-600 dark:text-gray-300"
-        initial={{ opacity: 0, y: 3 }}
+        initial={{ opacity: 0, y: 2 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ 
           type: "spring",
-          stiffness: 100,
-          damping: 20,
-          mass: 0.5,
-          delay: 0.06
+          stiffness: 120,
+          damping: 25,
+          mass: 0.4,
+          delay: 0.03
         }}
       >
         {description}

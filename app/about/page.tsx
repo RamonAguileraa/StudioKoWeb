@@ -127,7 +127,7 @@ export default function AboutPage() {
       },
       story: {
         title: "Nuestra Historia",
-        p1: "StudioKó nació de la idea de que el arte y la tecnología no deberían vivir separados. Fundada en 2018, comenzó como un centro creativo moldeado por una profunda pasión por el diseño, la narrativa y el desarrollo. Con raíces tanto en el arte digital como en las experiencias interactivas, nuestro fundador imaginó un estudio donde la creatividad se encuentra con el código.",
+        p1: "StudioKó nació de la idea de que el arte y la tecnología no deberían vivir separados. Fundada en 2025, comenzó como un centro creativo moldeado por una profunda pasión por el diseño, la narrativa y el desarrollo. Con raíces tanto en el arte digital como en las experiencias interactivas, nuestro fundador imaginó un estudio donde la creatividad se encuentra con el código.",
         p2: "Lo que comenzó como un pequeño equipo creativo se convirtió en una empresa digital de espectro completo, combinando estética audaz con funcionalidad inteligente. A medida que evolucionamos, también lo hizo nuestra misión: ofrecer experiencias digitales significativas que conecten emocionalmente y funcionen a la perfección.",
         p3: "Hoy, StudioKó colabora estrechamente con dos proyectos principales:",
         division1: "BosoZoku",
@@ -419,7 +419,7 @@ export default function AboutPage() {
                     <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
                   </svg>
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="https://www.instagram.com/ramon_aguileraa/" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -459,7 +459,7 @@ export default function AboutPage() {
                 {t.coo.bio}
               </p>
               <div className="flex space-x-4 mt-6">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="https://www.linkedin.com/in/miguel-mill%C3%A1n-675506307/" className="text-muted-foreground hover:text-primary transition-colors">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -493,7 +493,7 @@ export default function AboutPage() {
                     <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
                   </svg>
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="https://www.instagram.com/miguel.millaan/" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -588,7 +588,7 @@ export default function AboutPage() {
                     <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
                   </svg>
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="https://www.instagram.com/_torrejas/" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

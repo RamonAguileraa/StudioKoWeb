@@ -340,7 +340,7 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
     >
       <div className="flex items-center gap-3 mb-4">
         <motion.div
-          className="bg-gradient-to-tr from-violet-500/30 to-blue-400/30 rounded-full p-3 shadow-lg"
+          className="bg-gradient-to-tr from-rose-500/30 to-pink-400/30 rounded-full p-3 shadow-lg"
           animate={{ rotate: [0, 5, -5, 0] }}
           transition={{ 
             duration: 2,
@@ -349,9 +349,9 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
             ease: "easeInOut"
           }}
         >
-          {Icon}
+          <Icon />
         </motion.div>
-        <h5 className="text-xl font-bold text-gray-900 dark:text-violet-300 tracking-tight border-b-2 border-violet-500/30 pb-1 flex-1">
+        <h5 className="text-xl font-bold text-gray-900 dark:text-rose-300 tracking-tight border-b-2 border-rose-500/30 pb-1 flex-1">
           {title}
         </h5>
       </div>
@@ -361,7 +361,7 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <motion.div 
-                  className="group flex items-start gap-3 cursor-pointer transition-transform hover:scale-[1.02] hover:shadow-violet-500/20 hover:bg-violet-500/5 rounded-lg px-2 py-1"
+                  className="group flex items-start gap-3 cursor-pointer transition-transform hover:scale-[1.02] hover:shadow-rose-500/20 hover:bg-rose-500/5 rounded-lg px-2 py-1"
                   initial={{ opacity: 0, x: -5 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
@@ -373,18 +373,18 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
                     delay: techIndex * 0.02
                   }}
                 >
-                  <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-violet-400 to-blue-400 shadow-violet-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
+                  <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-rose-400 to-pink-400 shadow-rose-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
                   <div>
-                    <h6 className="text-base font-semibold text-gray-900 dark:text-violet-100 leading-tight group-hover:text-violet-300 transition-colors">
+                    <h6 className="text-base font-semibold text-gray-900 dark:text-rose-100 leading-tight group-hover:text-rose-300 transition-colors">
                       {tech}
                     </h6>
-                    <p className="text-sm text-gray-600 dark:text-blue-200 leading-snug group-hover:text-blue-100 transition-colors">
+                    <p className="text-sm text-gray-600 dark:text-pink-200 leading-snug group-hover:text-pink-100 transition-colors">
                       {getTechDescription(tech)}
                     </p>
                   </div>
                 </motion.div>
               </TooltipTrigger>
-              <TooltipContent side="right" className="bg-violet-900/90 text-white border-violet-500/40 shadow-xl">
+              <TooltipContent side="right" className="bg-rose-900/90 text-white border-rose-500/40 shadow-xl">
                 {getTechDescription(tech)}
               </TooltipContent>
             </Tooltip>
@@ -405,17 +405,17 @@ const ProcessStep = ({ title, description, icon: Icon, isLast }: ProcessStep & {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-6 rounded-2xl border border-maikonik/20 shadow-lg hover:shadow-maikonik/20 transition-all duration-300 h-full">
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-6 rounded-2xl border border-rose-500/20 shadow-lg hover:shadow-rose-500/20 transition-all duration-300 h-full">
         <div className="flex flex-col items-center text-center">
-          <div className="bg-maikonik/10 p-4 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
-            <Icon className="h-6 w-6 text-maikonik" />
+          <div className="bg-rose-500/10 p-4 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+            <Icon className="h-6 w-6 text-rose-500" />
           </div>
-          <h3 className="text-xl font-bold mb-2 text-maikonik">{title}</h3>
+          <h3 className="text-xl font-bold mb-2 text-rose-500">{title}</h3>
           <p className="text-gray-600 dark:text-gray-300">{description}</p>
         </div>
       </div>
       {!isLast && (
-        <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-maikonik/20" />
+        <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-rose-500/20" />
       )}
     </motion.div>
   )
@@ -457,10 +457,10 @@ export default function MaikonikPage() {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-6xl md:text-8xl font-black mb-6 text-maikonik relative">
+              <h1 className="text-6xl md:text-8xl font-black mb-6 text-rose-500 relative">
                 {currentContent.hero.title}
                 <motion.div
-                  className="absolute -inset-1 bg-gradient-to-r from-pink-500/20 to-purple-500/20 blur-xl rounded-full"
+                  className="absolute -inset-1 bg-gradient-to-r from-rose-500/20 to-pink-500/20 blur-xl rounded-full"
                   animate={{
                     scale: [1, 1.2, 1],
                     opacity: [0.5, 0.8, 0.5],
@@ -498,7 +498,7 @@ export default function MaikonikPage() {
               <Button
                 asChild
                 size="lg"
-                className="px-8 py-6 rounded-full font-medium bg-maikonik hover:bg-maikonik/90 text-white shadow-lg shadow-maikonik/20 transition-all duration-300 hover:scale-105 hover:shadow-maikonik/30"
+                className="px-8 py-6 rounded-full font-medium bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/20 transition-all duration-300 hover:scale-105 hover:shadow-rose-500/30"
               >
                 <Link href="/contact" className="flex items-center gap-2 text-lg">
                   {currentContent.cta.button}
@@ -509,7 +509,7 @@ export default function MaikonikPage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="px-8 py-6 rounded-full font-medium border-2 border-maikonik text-maikonik hover:bg-maikonik/10 transition-all duration-300 hover:scale-105"
+                className="px-8 py-6 rounded-full font-medium border-2 border-rose-500 text-rose-500 hover:bg-rose-500/10 transition-all duration-300 hover:scale-105"
               >
                 <Link href="#services" className="flex items-center gap-2 text-lg">
                   {language === "es" ? "Nuestros Servicios" : "Our Services"}
@@ -531,7 +531,7 @@ export default function MaikonikPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-maikonik">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-rose-500">
               {currentContent.tech.title}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -557,7 +557,7 @@ export default function MaikonikPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-maikonik">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-rose-500">
               {currentContent.process.title}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -581,13 +581,13 @@ export default function MaikonikPage() {
       <SectionTransition className="relative py-24 bg-gradient-to-b from-pink-50/50 to-white dark:from-pink-950/20 dark:to-gray-900">
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
-            className="max-w-3xl mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-12 rounded-3xl border border-maikonik/20 shadow-xl"
+            className="max-w-3xl mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-12 rounded-3xl border border-rose-500/20 shadow-xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-maikonik text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-rose-500 text-center">
               {currentContent.cta.title}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 text-center">
@@ -597,7 +597,7 @@ export default function MaikonikPage() {
               <Button
                 asChild
                 size="lg"
-                className="px-8 py-6 rounded-full font-medium bg-maikonik hover:bg-maikonik/90 text-white shadow-lg shadow-maikonik/20 transition-all duration-300 hover:scale-105 hover:shadow-maikonik/30"
+                className="px-8 py-6 rounded-full font-medium bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/20 transition-all duration-300 hover:scale-105 hover:shadow-rose-500/30"
               >
                 <Link href="/contact" className="flex items-center gap-2 text-lg">
                   {currentContent.cta.button}

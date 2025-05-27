@@ -166,8 +166,8 @@ const projectList: Project[] = [
   },
   {
     id: 2,
-    title: "Video Youtube",
-    description: "Video para canal de youtube con animaciones y motion graphics.",
+    title: "Videos de Youtube",
+    description: "Videos para canal de youtube con animaciones y motion graphics.",
     youtubeId: "nSLwgQ8VFp0",
     type: "Maikonik",
     technologies: [

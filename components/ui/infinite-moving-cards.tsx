@@ -89,20 +89,20 @@ export const InfiniteMovingCards = ({
         {items.map((item) => (
           <li
             key={item.name + item.quote.slice(0, 10)}
-            className="group relative w-[350px] md:w-[450px] max-w-full shrink-0 rounded-2xl border border-white/10 bg-transparent px-8 py-6 overflow-hidden backdrop-blur-sm"
+            className="group relative w-[350px] md:w-[450px] max-w-full shrink-0 rounded-2xl border border-border bg-card px-8 py-6 overflow-hidden backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300"
           >
             {/* gradient overlay on hover */}
-            <span className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 via-fuchsia-600/0 to-purple-800/0 group-hover:from-purple-500/20 group-hover:via-fuchsia-600/20 group-hover:to-purple-800/20 transition-all duration-300" />
+            <span className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/10 group-hover:via-primary/5 group-hover:to-primary/10 transition-all duration-300" />
 
             <blockquote className="relative z-10">
-              <span className="block text-sm leading-relaxed font-normal text-neutral-300/80 dark:text-gray-300/80">
+              <span className="block text-sm leading-relaxed font-normal text-muted-foreground">
                 {item.quote}
               </span>
               <div className="mt-6 flex flex-col gap-1">
-                <span className="text-sm font-semibold text-neutral-200 dark:text-gray-100">
+                <span className="text-sm font-semibold text-foreground">
                   {item.name}
                 </span>
-                <span className="text-xs font-normal text-neutral-400 dark:text-gray-400">
+                <span className="text-xs font-normal text-muted-foreground/80">
                   {item.title}
                 </span>
               </div>

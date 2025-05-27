@@ -260,7 +260,7 @@ const projectList: Project[] = [
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+              <div className="absolute inset-0"></div>
             </div>
           </motion.div>
         </div>

@@ -49,6 +49,11 @@ export default function AboutPage() {
         name: "Miguel Millán",
         bio: "Miguel Millán is a digital strategist and creative leader with experience in multimedia project management and content production. As COO of StudioKó, he leads Maikonik Media, the company's digital and creative solutions division.\n\nWith a meticulous focus on process optimization and operational excellence, Miguel oversees project implementation to ensure each digital solution meets the highest standards of quality and effectiveness. His experience in editing and content production brings a unique perspective to each project.\n\nHis vision combines technological innovation with effective business strategies, driving StudioKó's growth while maintaining focus on creating meaningful digital experiences for clients."
       },
+      marketing: {
+        title: "Meet Our Marketing Lead",
+        name: "Fernanda Torres",
+        bio: "Fernanda Torres is a dynamic marketing strategist with expertise in digital brand development and audience engagement. As Marketing Lead at StudioKó, she drives the brand strategy across both BosoZoku and Maikonik Media, ensuring cohesive messaging and impactful market presence.\n\nWith a deep understanding of contemporary digital marketing trends and consumer behavior, Fernanda crafts compelling campaigns that resonate with diverse audiences. Her innovative approach to storytelling and visual communication helps amplify StudioKó's creative projects and client success stories.\n\nFernanda's strategic vision and creative execution ensure that StudioKó's unique identity and values reach the right audiences at the right time, building meaningful connections between the company and its community."
+      },
       values: {
         title: "Our Mission & Values",
         subtitle: "The principles that guide our work and define our company culture",
@@ -139,7 +144,12 @@ export default function AboutPage() {
       coo: {
         title: "Conoce a Nuestro COO",
         name: "Miguel Millán",
-        bio: "Miguel Millán es un estratega digital y líder creativo con experiencia en gestión de proyectos multimedia y producción de contenido. Como COO de StudioKó, dirige Maikonik Media, la división de soluciones digitales y creativas de la compañía.\n\nCon un enfoque meticuloso en la optimización de procesos y la excelencia operativa, Miguel supervisa la implementación de proyectos para garantizar que cada solución digital cumpla con los más altos estándares de calidad y efectividad. Su experiencia en edición y producción de contenido aporta una perspectiva única a cada proyecto.\n\nSu visión combina innovación tecnológica con estrategias de negocio efectivas, impulsando el crecimiento de StudioKó mientras mantiene el enfoque en crear experiencias digitales significativas para los clientes."
+        bio: "Miguel Millán es un estratega digital con experiencia en gestión de proyectos multimedia y producción de contenido. Como COO de StudioKó, dirige Maikonik Media, la división de soluciones digitales y creativas de la compañía.\n\nCon un enfoque meticuloso en la optimización de procesos y la excelencia operativa, Miguel supervisa la implementación de proyectos para garantizar que cada solución digital cumpla con los más altos estándares de calidad y efectividad. Su experiencia en edición y producción de contenido aporta una perspectiva única a cada proyecto.\n\nSu visión combina innovación tecnológica con estrategias de negocio efectivas, impulsando el crecimiento de StudioKó mientras mantiene el enfoque en crear experiencias digitales significativas para los clientes."
+      },
+      marketing: {
+        title: "Conoce a Nuestra Líder de Marketing",
+        name: "Fernanda Torres",
+        bio: "Fernanda Torres es una estratega de marketing dinámico con experiencia en desarrollo de marcas digitales y engagement del público. Como Líder de Marketing en StudioKó, dirige la estrategia de marca a través de BosoZoku y Maikonik Media, asegurando mensajes coherentes y presencia de mercado impactante.\n\nCon una profunda comprensión de las tendencias de marketing digital contemporáneo y comportamiento del consumidor, Fernanda crea campañas convincentes que resonan con audiencias diversas. Su enfoque innovador en narrativa y comunicación visual ayuda a amplificar los proyectos creativos de StudioKó y las historias de éxito de los clientes.\n\nLa visión estratégica y ejecución creativa de Fernanda aseguran que la identidad única y valores de StudioKó alcancen las audiencias adecuadas en el momento adecuado, construyendo conexiones significativas entre la compañía y su comunidad."
       },
       values: {
         title: "Nuestra Misión y Valores",
@@ -230,12 +240,14 @@ export default function AboutPage() {
   const t = content[language];
 
   return (
-    <div className="relative pt-20">
+    <div className="relative pt-20 overflow-x-hidden">
       {/* Hero Section */}
-      <section ref={targetRef} className="relative min-h-[80vh] flex items-center">
-        {/* Animated blobs */}
-        <AnimatedBlob color="#6C2BD9" size="600px" top="-300px" left="-300px" opacity={0.1} />
-        <AnimatedBlob color="#F43F5E" size="500px" bottom="-250px" right="-250px" opacity={0.1} delay={2} />
+      <section ref={targetRef} className="relative min-h-[80vh] flex items-center overflow-hidden">
+        {/* Animated blobs - Hidden on mobile */}
+        <div className="hidden lg:block">
+          <AnimatedBlob color="#6C2BD9" size="600px" top="-300px" left="-300px" opacity={0.1} />
+          <AnimatedBlob color="#F43F5E" size="500px" bottom="-250px" right="-250px" opacity={0.1} delay={2} />
+        </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -265,14 +277,14 @@ export default function AboutPage() {
             </motion.p>
           </motion.div>
 
-          <motion.div className="mt-16 relative" style={{ y, opacity }}>
+          <motion.div className="mt-16 relative px-4 md:px-0" style={{ y, opacity }}>
             <div className="relative mx-auto max-w-5xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl">
               <Image
                 src="/mikiyyo.png?height=1080&width=1920&text=StudioKó Team"
                 alt="StudioKó Team"
                 width={1920}
                 height={1080}
-                className="object-cover"
+                className="object-cover w-full h-full"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
@@ -284,7 +296,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story */}
-      <SectionTransition className="bg-muted/50">
+      <SectionTransition className="bg-muted/50 overflow-x-hidden">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -329,15 +341,15 @@ export default function AboutPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>
-              <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-primary rounded-xl opacity-30"></div>
-              <div className="absolute -bottom-8 -right-8 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl"></div>
+              <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-primary rounded-xl opacity-30 hidden sm:block"></div>
+              <div className="absolute -bottom-8 -right-8 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl hidden sm:block"></div>
             </motion.div>
           </div>
         </div>
       </SectionTransition>
 
       {/* Founder Section */}
-      <SectionTransition>
+      <SectionTransition className="overflow-x-hidden">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -347,8 +359,8 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-primary rounded-xl opacity-30"></div>
-              <div className="absolute -bottom-12 -right-12 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl"></div>
+              <div className="absolute -bottom-6 -right-6 lg:-bottom-6 lg:-right-6 w-full h-full border-4 border-primary rounded-xl opacity-30 hidden sm:block"></div>
+              <div className="absolute -bottom-12 -right-12 lg:-bottom-12 lg:-right-12 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl hidden sm:block"></div>
               <div className="relative z-10 rounded-xl overflow-hidden aspect-square shadow-2xl">
                 <Image
                   src="/founder.png?height=800&width=800&text=Ramón Aguilera"
@@ -432,7 +444,7 @@ export default function AboutPage() {
       </SectionTransition>
 
       {/* COO Section */}
-      <SectionTransition className="bg-muted/50">
+      <SectionTransition className="bg-muted/50 overflow-x-hidden">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -509,8 +521,8 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="absolute -bottom-6 -left-6 w-full h-full border-4 border-primary rounded-xl opacity-30"></div>
-              <div className="absolute -bottom-12 -left-12 w-full h-full bg-gradient-to-bl from-maikonik/20 to-bosozoku/20 rounded-xl blur-xl"></div>
+              <div className="absolute -bottom-6 -left-6 w-full h-full border-4 border-primary rounded-xl opacity-30 hidden sm:block"></div>
+              <div className="absolute -bottom-12 -left-12 w-full h-full bg-gradient-to-bl from-maikonik/20 to-bosozoku/20 rounded-xl blur-xl hidden sm:block"></div>
               <div className="relative z-10 rounded-xl overflow-hidden aspect-square shadow-2xl">
                 <Image
                   src="/mikey.png"
@@ -526,8 +538,103 @@ export default function AboutPage() {
         </div>
       </SectionTransition>
 
+      {/* Marketing Section */}
+      <SectionTransition className="bg-muted/50 overflow-x-hidden">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.marketing.title}</h2>
+              <h3 className="text-xl font-bold text-primary mb-4">{t.marketing.name}</h3>
+              <p className="text-muted-foreground mb-6 whitespace-pre-line">
+                {t.marketing.bio}
+              </p>
+              <div className="flex space-x-4 mt-6">
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-linkedin"
+                  >
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect width="4" height="12" x="2" y="9" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-twitter"
+                  >
+                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                  </svg>
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-instagram"
+                  >
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                  </svg>
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-primary rounded-xl opacity-30 hidden sm:block"></div>
+              <div className="absolute -bottom-12 -right-12 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl hidden sm:block"></div>
+              <div className="relative z-10 rounded-xl overflow-hidden aspect-square shadow-2xl">
+                <Image
+                  src="/ferxa.png"
+                  alt="Fernanda Torres - Marketing Lead"
+                  width={800}
+                  height={800}
+                  className="object-cover w-full h-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </SectionTransition>
+
       {/* Mission & Values */}
-      <SectionTransition>
+      <SectionTransition className="overflow-x-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.values.title}</h2>
@@ -536,7 +643,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <motion.div
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -603,7 +710,7 @@ export default function AboutPage() {
       </SectionTransition>
 
       {/* Timeline */}
-      <SectionTransition className="bg-muted/50">
+      <SectionTransition className="bg-muted/50 overflow-x-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.journey.title}</h2>
@@ -614,17 +721,21 @@ export default function AboutPage() {
 
           <div className="relative max-w-4xl mx-auto">
             {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-border"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-border hidden md:block"></div>
+            <div className="absolute left-4 md:hidden h-full w-1 bg-border"></div>
 
             {t.journey.milestones.map((item, index) => (
               <div key={index} className="relative z-10 mb-12">
-                <div className={`flex items-center ${item.side === "left" ? "md:flex-row-reverse" : "md:flex-row"}`}>
-                  <div className="md:w-1/2"></div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                <div className={`flex items-center ${item.side === "left" ? "md:flex-row-reverse" : "md:flex-row"} flex-col md:flex-row`}>
+                  <div className="md:w-1/2 hidden md:block"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 items-center justify-center hidden md:flex">
+                    <div className="h-4 w-4 rounded-full bg-primary"></div>
+                  </div>
+                  <div className="absolute left-4 transform -translate-x-1/2 flex items-center justify-center md:hidden">
                     <div className="h-4 w-4 rounded-full bg-primary"></div>
                   </div>
                   <motion.div
-                    className={`md:w-1/2 glassmorphism rounded-xl p-6 ${item.side === "left" ? "md:mr-10" : "md:ml-10"}`}
+                    className={`w-full md:w-1/2 glassmorphism rounded-xl p-6 ml-8 md:ml-0 ${item.side === "left" ? "md:mr-10" : "md:ml-10"}`}
                     initial={{ opacity: 0, x: item.side === "left" ? -50 : 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -649,7 +760,7 @@ export default function AboutPage() {
       </div>
 
       {/* Call to Action */}
-      <SectionTransition className="bg-gradient-to-r from-bosozoku/10 to-maikonik/10 dark:from-bosozoku/20 dark:to-maikonik/20">
+      <SectionTransition className="bg-gradient-to-r from-bosozoku/10 to-maikonik/10 dark:from-bosozoku/20 dark:to-maikonik/20 overflow-x-hidden">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -371,13 +371,17 @@ const projectList: Project[] = [
                 <Card className="overflow-hidden h-full border-2 hover:border-primary/50 transition-colors">
                   <div className="relative aspect-video overflow-hidden">
                     {project.youtubeId ? (
-                      <iframe
-                        src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${project.youtubeId}&modestbranding=1&rel=0`}
-                        title={project.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        className="w-full h-full"
-                      />
+                      <div className="relative w-full h-full group">
+                        <iframe
+                          src={`https://www.youtube-nocookie.com/embed/${project.youtubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${project.youtubeId}&modestbranding=1&rel=0`}
+                          title={project.title}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="w-full h-full"
+                        />
+                        {/* Invisible overlay that prevents hover interactions with YouTube player */}
+                        <div className="absolute inset-0 bg-transparent pointer-events-auto opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      </div>
                     ) : project.video ? (
                       <video
                         src={project.video}

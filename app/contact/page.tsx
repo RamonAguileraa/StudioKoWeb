@@ -3,9 +3,8 @@
 import type React from "react"
 
 import { useState, useRef } from "react"
-import Image from "next/image"
 import { motion, useInView, AnimatePresence } from "framer-motion"
-import { Send, Mail, Phone, MapPin, MessageSquare, User, Building2, Sparkles } from "lucide-react"
+import { Send, Mail, Phone, MessageSquare, User, Building2, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -32,6 +31,8 @@ export default function ContactPage() {
     service: "",
     message: "",
   })
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const formRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(formRef, { once: false, amount: 0.3 })
 
@@ -56,12 +57,73 @@ export default function ContactPage() {
     setFormStep((prev) => prev - 1)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {}
+    
+    if (!formData.name.trim()) {
+      newErrors.name = language === 'es' ? 'El nombre es requerido' : 'Name is required'
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = language === 'es' ? 'El correo es requerido' : 'Email is required'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = language === 'es' ? 'Correo electrónico inválido' : 'Invalid email address'
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = language === 'es' ? 'El mensaje es requerido' : 'Message is required'
+    }
+    
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Aquí agregamos la lógica para enviar el correo
-    const mailtoLink = `mailto:contact.studioko.dev@gmail.com?subject=Contact from ${formData.name}&body=${formData.message}`
-    window.location.href = mailtoLink
-    setFormSubmitted(true)
+    
+    if (!validateForm()) {
+      return
+    }
+    
+    setIsSubmitting(true)
+    
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || 'No especificada',
+          interest: formData.interest,
+          service: formData.service || 'No especificado',
+          message: formData.message,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Error al enviar el correo')
+      }
+
+      setFormSubmitted(true)
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        interest: "general",
+        service: "",
+        message: "",
+      })
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error)
+      setErrors({
+        submit: language === 'es' ? 'Error al enviar el formulario. Por favor, intente nuevamente.' : 'Error submitting form. Please try again.'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleScheduleCall = () => {
@@ -140,6 +202,14 @@ export default function ContactPage() {
       formTab: "Contact Form",
       whatsappTab: "WhatsApp",
       callTab: "Schedule a Call",
+      interests: {
+        general: "General Inquiry",
+        webDesign: "Web Design & Development",
+        digitalMarketing: "Digital Marketing",
+        branding: "Branding & Identity",
+        seo: "SEO & Content Strategy",
+        socialMedia: "Social Media Management"
+      },
     },
     es: {
       title: "Contáctanos",
@@ -184,6 +254,14 @@ export default function ContactPage() {
       formTab: "Formulario de Contacto",
       whatsappTab: "WhatsApp",
       callTab: "Programar Llamada",
+      interests: {
+        general: "Consulta General",
+        webDesign: "Diseño y Desarrollo Web",
+        digitalMarketing: "Marketing Digital",
+        branding: "Branding e Identidad",
+        seo: "SEO y Estrategia de Contenidos",
+        socialMedia: "Gestión de Redes Sociales"
+      },
     },
   }
 
@@ -517,32 +595,47 @@ export default function ContactPage() {
                               transition={{ duration: 0.3 }}
                               className="space-y-6"
                             >
-                              <div className="space-y-2">
-                                <Label className="flex items-center">
-                                  <Sparkles className="mr-2 h-4 w-4 text-muted-foreground" />
-                                  {t.interestLabel}
-                                </Label>
+                              <div className="space-y-4">
+                                <Label>{t.interestLabel}</Label>
                                 <RadioGroup
                                   value={formData.interest}
                                   onValueChange={handleRadioChange}
-                                  className="flex flex-col space-y-2"
+                                  className="space-y-3"
                                 >
-                                  <div className="flex items-center space-x-2 p-3 rounded-md hover:bg-muted/50 transition-colors">
+                                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-accent/50 transition-colors">
                                     <RadioGroupItem value="general" id="general" />
                                     <Label htmlFor="general" className="cursor-pointer flex-1">
-                                      {t.generalInquiry}
+                                      {t.interests.general}
                                     </Label>
                                   </div>
-                                  <div className="flex items-center space-x-2 p-3 rounded-md hover:bg-muted/50 transition-colors">
-                                    <RadioGroupItem value="bosozoku" id="bosozoku" />
-                                    <Label htmlFor="bosozoku" className="cursor-pointer flex-1">
-                                      {t.gameDevLabel}
+                                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-accent/50 transition-colors">
+                                    <RadioGroupItem value="webDesign" id="webDesign" />
+                                    <Label htmlFor="webDesign" className="cursor-pointer flex-1">
+                                      {t.interests.webDesign}
                                     </Label>
                                   </div>
-                                  <div className="flex items-center space-x-2 p-3 rounded-md hover:bg-muted/50 transition-colors">
-                                    <RadioGroupItem value="maikonik" id="maikonik" />
-                                    <Label htmlFor="maikonik" className="cursor-pointer flex-1">
-                                      {t.creativeAgencyLabel}
+                                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-accent/50 transition-colors">
+                                    <RadioGroupItem value="digitalMarketing" id="digitalMarketing" />
+                                    <Label htmlFor="digitalMarketing" className="cursor-pointer flex-1">
+                                      {t.interests.digitalMarketing}
+                                    </Label>
+                                  </div>
+                                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-accent/50 transition-colors">
+                                    <RadioGroupItem value="branding" id="branding" />
+                                    <Label htmlFor="branding" className="cursor-pointer flex-1">
+                                      {t.interests.branding}
+                                    </Label>
+                                  </div>
+                                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-accent/50 transition-colors">
+                                    <RadioGroupItem value="seo" id="seo" />
+                                    <Label htmlFor="seo" className="cursor-pointer flex-1">
+                                      {t.interests.seo}
+                                    </Label>
+                                  </div>
+                                  <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-accent/50 transition-colors">
+                                    <RadioGroupItem value="socialMedia" id="socialMedia" />
+                                    <Label htmlFor="socialMedia" className="cursor-pointer flex-1">
+                                      {t.interests.socialMedia}
                                     </Label>
                                   </div>
                                 </RadioGroup>
@@ -599,33 +692,46 @@ export default function ContactPage() {
                               transition={{ duration: 0.3 }}
                               className="space-y-6"
                             >
-                              <div className="space-y-2">
-                                <Label htmlFor="message" className="flex items-center">
-                                  <MessageSquare className="mr-2 h-4 w-4 text-muted-foreground" />
-                                  {t.messageLabel}
-                                </Label>
+                              <div className="space-y-4">
+                                <Label htmlFor="message">{t.messageLabel}</Label>
                                 <Textarea
                                   id="message"
                                   name="message"
-                                  placeholder={t.messagePlaceholder}
                                   value={formData.message}
                                   onChange={handleChange}
-                                  rows={5}
-                                  required
-                                  className="transition-all duration-300 focus:ring-2 focus:ring-primary resize-none"
+                                  placeholder={t.messagePlaceholder}
+                                  className={`min-h-[150px] ${errors.message ? 'border-red-500' : ''}`}
                                 />
+                                {errors.message && (
+                                  <p className="text-sm text-red-500">{errors.message}</p>
+                                )}
                               </div>
 
                               <div className="flex justify-between pt-4">
                                 <Button type="button" variant="outline" onClick={prevStep}>
                                   {t.back}
                                 </Button>
+                                {errors.submit && (
+                                  <div className="p-3 rounded-lg bg-red-100 text-red-700">
+                                    {errors.submit}
+                                  </div>
+                                )}
                                 <Button
                                   type="submit"
                                   className="bg-gradient-to-r from-bosozoku to-maikonik hover:opacity-90"
+                                  disabled={isSubmitting}
                                 >
-                                  <Send className="mr-2 h-4 w-4" />
-                                  {t.submit}
+                                  {isSubmitting ? (
+                                    <div className="flex items-center space-x-2">
+                                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                      <span>{language === 'es' ? 'Enviando...' : 'Sending...'}</span>
+                                    </div>
+                                  ) : (
+                                    <>
+                                      <Send className="mr-2 h-4 w-4" />
+                                      {t.sendMessage}
+                                    </>
+                                  )}
                                 </Button>
                               </div>
                             </motion.div>

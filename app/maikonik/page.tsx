@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { 
   ArrowRight, 
   Palette, 
@@ -349,19 +349,19 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
             ease: "easeInOut"
           }}
         >
-          <Icon />
+          <Icon className="w-6 h-6 md:w-8 md:h-8" />
         </motion.div>
-        <h5 className="text-xl font-bold text-gray-900 dark:text-rose-300 tracking-tight border-b-2 border-rose-500/30 pb-1 flex-1">
+        <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-rose-300 tracking-tight border-b-2 border-rose-500/30 pb-1 flex-1">
           {title}
         </h5>
       </div>
-      <div className="space-y-3">
+      <div className="space-y-2 md:space-y-3">
         {technologies.map((tech, techIndex) => (
           <TooltipProvider key={techIndex} delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
                 <motion.div 
-                  className="group flex items-start gap-3 cursor-pointer transition-transform hover:scale-[1.02] hover:shadow-rose-500/20 hover:bg-rose-500/5 rounded-lg px-2 py-1"
+                  className="group flex items-start gap-3 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-rose-500/20 hover:bg-rose-500/5 rounded-lg px-3 py-2"
                   initial={{ opacity: 0, x: -5 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
@@ -375,16 +375,20 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
                 >
                   <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-rose-400 to-pink-400 shadow-rose-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
                   <div>
-                    <h6 className="text-base font-semibold text-gray-900 dark:text-rose-100 leading-tight group-hover:text-rose-300 transition-colors">
+                    <h6 className="text-sm md:text-base font-semibold text-gray-900 dark:text-rose-100 leading-tight group-hover:text-rose-300 transition-colors">
                       {tech}
                     </h6>
-                    <p className="text-sm text-gray-600 dark:text-pink-200 leading-snug group-hover:text-pink-100 transition-colors">
+                    <p className="text-xs md:text-sm text-gray-600 dark:text-pink-200 leading-snug group-hover:text-pink-100 transition-colors">
                       {getTechDescription(tech)}
                     </p>
                   </div>
                 </motion.div>
               </TooltipTrigger>
-              <TooltipContent side="right" className="bg-rose-900/90 text-white border-rose-500/40 shadow-xl">
+              <TooltipContent 
+                side="right" 
+                className="bg-rose-900/90 text-white border-rose-500/40 shadow-xl text-sm md:text-base p-3"
+                sideOffset={5}
+              >
                 {getTechDescription(tech)}
               </TooltipContent>
             </Tooltip>
@@ -405,13 +409,13 @@ const ProcessStep = ({ title, description, icon: Icon, isLast }: ProcessStep & {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-6 rounded-2xl border border-rose-500/20 shadow-lg hover:shadow-rose-500/20 transition-all duration-300 h-full">
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-4 md:p-6 rounded-2xl border border-rose-500/20 shadow-lg hover:shadow-rose-500/20 transition-all duration-300 h-full">
         <div className="flex flex-col items-center text-center">
-          <div className="bg-rose-500/10 p-4 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
-            <Icon className="h-6 w-6 text-rose-500" />
+          <div className="bg-rose-500/10 p-3 md:p-4 rounded-full mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">
+            <Icon className="h-5 w-5 md:h-6 md:w-6 text-rose-500" />
           </div>
-          <h3 className="text-xl font-bold mb-2 text-rose-500">{title}</h3>
-          <p className="text-gray-600 dark:text-gray-300">{description}</p>
+          <h3 className="text-lg md:text-xl font-bold mb-2 text-rose-500">{title}</h3>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300">{description}</p>
         </div>
       </div>
       {!isLast && (
@@ -424,12 +428,9 @@ const ProcessStep = ({ title, description, icon: Icon, isLast }: ProcessStep & {
 // Componente principal
 export default function MaikonikPage() {
   const { language } = useLanguage()
-  const { scrollYProgress } = useScroll()
   const [mounted, setMounted] = useState(false)
   
   const currentContent = useMemo(() => content[language as keyof typeof content], [language])
-  const y = useTransform(scrollYProgress, [0, 1], [0, -100])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   useEffect(() => {
     setMounted(true)
@@ -438,13 +439,15 @@ export default function MaikonikPage() {
   if (!mounted) return null
 
   return (
-    <div className="relative pt-20 bg-gradient-to-b from-white via-pink-50/50 to-white dark:from-gray-900 dark:via-pink-950/20 dark:to-gray-900">
+    <div className="relative pt-16 md:pt-20 bg-gradient-to-b from-white via-pink-50/50 to-white dark:from-gray-900 dark:via-pink-950/20 dark:to-gray-900">
       {/* Hero Section */}
-      <SectionTransition id="hero" className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <AnimatedBlob color="#F43F5E" size="600px" top="-300px" right="-300px" opacity={0.15} />
-        <AnimatedBlob color="#FB7185" size="400px" bottom="-200px" left="-200px" opacity={0.1} delay={2} />
+      <SectionTransition id="hero" className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <AnimatedBlob color="#F43F5E" size="600px" top="-300px" right="-300px" opacity={0.15} />
+          <AnimatedBlob color="#FB7185" size="400px" bottom="-200px" left="-200px" opacity={0.1} delay={2} />
+        </div>
 
-        <div className="container mx-auto px-4 py-24 relative z-10">
+        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
           <motion.div
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -452,12 +455,12 @@ export default function MaikonikPage() {
             transition={{ duration: 0.8 }}
           >
             <motion.div
-              className="relative inline-block mb-8"
+              className="relative inline-block mb-6 md:mb-8"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-6xl md:text-8xl font-black mb-6 text-rose-500 relative">
+              <h1 className="text-5xl md:text-6xl lg:text-8xl font-black mb-4 md:mb-6 text-rose-500 relative">
                 {currentContent.hero.title}
                 <motion.div
                   className="absolute -inset-1 bg-gradient-to-r from-rose-500/20 to-pink-500/20 blur-xl rounded-full"
@@ -474,7 +477,7 @@ export default function MaikonikPage() {
               </h1>
             </motion.div>
             <motion.h2
-              className="text-3xl md:text-4xl mb-6 font-light text-gray-800 dark:text-gray-200"
+              className="text-2xl md:text-3xl lg:text-4xl mb-4 md:mb-6 font-light text-gray-800 dark:text-gray-200"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
@@ -482,7 +485,7 @@ export default function MaikonikPage() {
               {currentContent.hero.subtitle}
             </motion.h2>
             <motion.p
-              className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto"
+              className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -493,27 +496,27 @@ export default function MaikonikPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center px-4"
             >
               <Button
                 asChild
                 size="lg"
-                className="px-8 py-6 rounded-full font-medium bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/20 transition-all duration-300 hover:scale-105 hover:shadow-rose-500/30"
+                className="px-6 md:px-8 py-5 md:py-6 rounded-full font-medium bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/20 transition-all duration-300 hover:scale-105 hover:shadow-rose-500/30"
               >
-                <Link href="/contact" className="flex items-center gap-2 text-lg">
+                <Link href="/contact" className="flex items-center gap-2 text-base md:text-lg">
                   {currentContent.cta.button}
-                  <ChevronRight className="h-5 w-5" />
+                  <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="px-8 py-6 rounded-full font-medium border-2 border-rose-500 text-rose-500 hover:bg-rose-500/10 transition-all duration-300 hover:scale-105"
+                className="px-6 md:px-8 py-5 md:py-6 rounded-full font-medium border-2 border-rose-500 text-rose-500 hover:bg-rose-500/10 transition-all duration-300 hover:scale-105"
               >
-                <Link href="#services" className="flex items-center gap-2 text-lg">
+                <Link href="#services" className="flex items-center gap-2 text-base md:text-lg">
                   {language === "es" ? "Nuestros Servicios" : "Our Services"}
-                  <ArrowRight className="h-5 w-5" />
+                  <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
             </motion.div>
@@ -522,24 +525,27 @@ export default function MaikonikPage() {
       </SectionTransition>
 
       {/* Technologies Section */}
-      <SectionTransition id="tech" className="relative py-24 overflow-hidden">
+      <SectionTransition id="tech" className="relative py-16 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-rose-500/5 to-transparent" />
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-rose-500">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 text-rose-500">
               {currentContent.tech.title}
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               {currentContent.tech.subtitle}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
             {currentContent.tech.items.map((item, index) => (
               <TechCard key={index} {...item} />
             ))}
@@ -548,24 +554,27 @@ export default function MaikonikPage() {
       </SectionTransition>
 
       {/* Process Section */}
-      <SectionTransition id="process" className="relative py-24 bg-gradient-to-b from-white to-pink-50/50 dark:from-gray-900 dark:to-pink-950/20">
+      <SectionTransition id="process" className="relative py-16 md:py-24 bg-gradient-to-b from-white to-pink-50/50 dark:from-gray-900 dark:to-pink-950/20">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-pink-500/5 to-transparent" />
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-rose-500">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 text-rose-500">
               {currentContent.process.title}
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               {currentContent.process.subtitle}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto">
             {currentContent.process.steps.map((step, index) => (
               <ProcessStep 
                 key={index} 
@@ -578,30 +587,33 @@ export default function MaikonikPage() {
       </SectionTransition>
 
       {/* Call to Action */}
-      <SectionTransition className="relative py-24 bg-gradient-to-b from-pink-50/50 to-white dark:from-pink-950/20 dark:to-gray-900">
+      <SectionTransition className="relative py-16 md:py-24 bg-gradient-to-b from-pink-50/50 to-white dark:from-pink-950/20 dark:to-gray-900">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-rose-500/5 to-transparent" />
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
-            className="max-w-3xl mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-12 rounded-3xl border border-rose-500/20 shadow-xl"
+            className="max-w-3xl mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-8 md:p-12 rounded-3xl border border-rose-500/20 shadow-xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-rose-500 text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-rose-500 text-center">
               {currentContent.cta.title}
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 text-center">
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 md:mb-8 text-center">
               {currentContent.cta.subtitle}
             </p>
             <div className="flex justify-center">
               <Button
                 asChild
                 size="lg"
-                className="px-8 py-6 rounded-full font-medium bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/20 transition-all duration-300 hover:scale-105 hover:shadow-rose-500/30"
+                className="px-6 md:px-8 py-5 md:py-6 rounded-full font-medium bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/20 transition-all duration-300 hover:scale-105 hover:shadow-rose-500/30"
               >
-                <Link href="/contact" className="flex items-center gap-2 text-lg">
+                <Link href="/contact" className="flex items-center gap-2 text-base md:text-lg">
                   {currentContent.cta.button}
-                  <ChevronRight className="h-5 w-5" />
+                  <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
             </div>

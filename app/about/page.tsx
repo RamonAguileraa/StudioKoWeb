@@ -240,7 +240,7 @@ export default function AboutPage() {
   const t = content[language];
 
   return (
-    <div className="relative pt-20 overflow-x-hidden">
+    <div className="relative pt-20 ">
       {/* Hero Section */}
       <section ref={targetRef} className="relative min-h-[80vh] flex items-center overflow-hidden">
         {/* Animated blobs - Hidden on mobile */}
@@ -296,7 +296,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story */}
-      <SectionTransition className="bg-muted/50 overflow-x-hidden">
+      <SectionTransition className="bg-muted/50 ">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -349,7 +349,7 @@ export default function AboutPage() {
       </SectionTransition>
 
       {/* Founder Section */}
-      <SectionTransition className="overflow-x-hidden">
+      <SectionTransition className="">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -444,7 +444,7 @@ export default function AboutPage() {
       </SectionTransition>
 
       {/* COO Section */}
-      <SectionTransition className="bg-muted/50 overflow-x-hidden">
+      <SectionTransition className="bg-muted/50 ">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -539,7 +539,7 @@ export default function AboutPage() {
       </SectionTransition>
 
       {/* Marketing Section */}
-      <SectionTransition className="bg-muted/50 overflow-x-hidden">
+      <SectionTransition className="bg-muted/50 ">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -634,7 +634,7 @@ export default function AboutPage() {
       </SectionTransition>
 
       {/* Mission & Values */}
-      <SectionTransition className="overflow-x-hidden">
+      <SectionTransition className="">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.values.title}</h2>
@@ -710,7 +710,7 @@ export default function AboutPage() {
       </SectionTransition>
 
       {/* Timeline */}
-      <SectionTransition className="bg-muted/50 overflow-x-hidden">
+      <SectionTransition className="bg-muted/50 ">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.journey.title}</h2>
@@ -760,7 +760,7 @@ export default function AboutPage() {
       </div>
 
       {/* Call to Action */}
-      <SectionTransition className="bg-gradient-to-r from-bosozoku/10 to-maikonik/10 dark:from-bosozoku/20 dark:to-maikonik/20 overflow-x-hidden">
+      <SectionTransition className="bg-gradient-to-r from-bosozoku/10 to-maikonik/10 dark:from-bosozoku/20 dark:to-maikonik/20 ">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

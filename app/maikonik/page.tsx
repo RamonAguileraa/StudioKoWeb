@@ -439,7 +439,7 @@ export default function MaikonikPage() {
   if (!mounted) return null
 
   return (
-    <div className="relative pt-16 md:pt-20 bg-gradient-to-b from-white via-pink-50/50 to-white dark:from-gray-900 dark:via-pink-950/20 dark:to-gray-900">
+    <div className="app-maikonik relative pt-16 md:pt-20 bg-gradient-to-b from-white via-pink-50/50 to-white dark:from-gray-900 dark:via-pink-950/20 dark:to-gray-900">
       {/* Hero Section */}
       <SectionTransition id="hero" className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">

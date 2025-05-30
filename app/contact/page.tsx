@@ -86,6 +86,7 @@ export default function ContactPage() {
     }
     
     setIsSubmitting(true)
+    setErrors({}) // Limpiar errores anteriores
     
     try {
       const response = await fetch('/api/send-email', {
@@ -103,8 +104,10 @@ export default function ContactPage() {
         }),
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error('Error al enviar el correo')
+        throw new Error(data.details || data.error || 'Error al enviar el correo')
       }
 
       setFormSubmitted(true)
@@ -119,7 +122,11 @@ export default function ContactPage() {
     } catch (error) {
       console.error('Error al enviar el formulario:', error)
       setErrors({
-        submit: language === 'es' ? 'Error al enviar el formulario. Por favor, intente nuevamente.' : 'Error submitting form. Please try again.'
+        submit: error instanceof Error 
+          ? error.message 
+          : language === 'es' 
+            ? 'Error al enviar el formulario. Por favor, intente nuevamente.' 
+            : 'Error submitting form. Please try again.'
       })
     } finally {
       setIsSubmitting(false)

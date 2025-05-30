@@ -251,16 +251,19 @@ const projectList: Project[] = [
           </motion.div>
 
           <motion.div className="relative" style={{ y, opacity }}>
-            <div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl ">
+            <div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl bg-gray-100 dark:bg-gray-800">
               <Image
                 src="/digitalmedia.png"
                 alt="StudioKó Showcase"
                 width={1920}
                 height={1080}
-                className="object-cover"
+                className="object-cover opacity-0 transition-opacity duration-300"
+                onLoadingComplete={(image) => {
+                  image.classList.remove('opacity-0')
+                }}
                 priority
               />
-              <div className="absolute inset-0"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           </motion.div>
         </div>

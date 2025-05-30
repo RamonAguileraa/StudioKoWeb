@@ -38,7 +38,7 @@ interface Feature {
 interface TechItem {
   title: string
   technologies: string[]
-  icon: React.ReactNode
+  icon: LucideIcon
 }
 
 interface ProcessStep {
@@ -87,32 +87,11 @@ type LogoSlot = { left: number; top: number; size: number; techIdx: number }
 // Componente de tarjeta de tecnología
 const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
   return (
-    <motion.div 
-      className="mb-2"
-      initial={{ opacity: 0, y: 5, scale: 0.99 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ 
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        mass: 0.5,
-        duration: 0.2
-      }}
-    >
+    <div className="mb-2">
       <div className="flex items-center gap-3 mb-4">
-        <motion.div
-          className="bg-gradient-to-tr from-violet-500/30 to-blue-400/30 rounded-full p-3 shadow-lg"
-          animate={{ rotate: [0, 5, -5, 0] }}
-          transition={{ 
-            duration: 2,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut"
-          }}
-        >
-          {Icon}
-        </motion.div>
+        <div className="bg-gradient-to-tr from-violet-500/30 to-blue-400/30 rounded-full p-3 shadow-lg">
+          {Icon && <Icon className="h-6 w-6" />}
+        </div>
         <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-violet-300 tracking-tight border-b-2 border-violet-500/30 pb-1 flex-1">
           {title}
         </h5>
@@ -122,19 +101,7 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
           <TooltipProvider key={techIndex} delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <motion.div 
-                  className="group flex items-start gap-3 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-violet-500/20 hover:bg-violet-500/5 rounded-lg px-3 py-2"
-                  initial={{ opacity: 0, x: -5 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ 
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 20,
-                    mass: 0.5,
-                    delay: techIndex * 0.02
-                  }}
-                >
+                <div className="group flex items-start gap-3 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-violet-500/20 hover:bg-violet-500/5 rounded-lg px-3 py-2">
                   <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-violet-400 to-blue-400 shadow-violet-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
                   <div>
                     <h6 className="text-sm md:text-base font-semibold text-gray-900 dark:text-violet-100 leading-tight group-hover:text-violet-300 transition-colors">
@@ -144,7 +111,7 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
                       {getTechDescription(tech)}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               </TooltipTrigger>
               <TooltipContent 
                 side="right" 
@@ -157,75 +124,26 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
           </TooltipProvider>
         ))}
       </div>
-    </motion.div>
+    </div>
   )
 }
 
 // Componente de paso del proceso
 const ProcessStep = ({ title, description, icon: Icon }: ProcessStep) => {
   return (
-    <motion.div
-      className="bg-white/80 dark:bg-[#1E1F2E]/80 backdrop-blur-lg p-6 md:p-8 rounded-2xl border border-violet-200 dark:border-white/10 shadow-lg hover:shadow-violet-200/50 dark:hover:shadow-primary/20 text-center flex flex-col items-center transform transition-all duration-300 hover:scale-105"
-      initial={{ opacity: 0, y: 3, scale: 0.995 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ 
-        type: "spring",
-        stiffness: 120,
-        damping: 25,
-        mass: 0.4,
-        opacity: { duration: 0.15 },
-        scale: { duration: 0.15 }
-      }}
-    >
-      <motion.div 
-        className="bg-gradient-to-br from-violet-100 to-blue-100 dark:from-primary/20 dark:to-primary/10 rounded-full p-3 md:p-4 mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300"
-        initial={{ scale: 0.97, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ 
-          type: "spring",
-          stiffness: 120,
-          damping: 25,
-          mass: 0.4,
-          delay: 0.01
-        }}
-      >
+    <div className="bg-white/80 dark:bg-[#1E1F2E]/80 backdrop-blur-lg p-6 md:p-8 rounded-2xl border border-violet-200 dark:border-white/10 shadow-lg hover:shadow-violet-200/50 dark:hover:shadow-primary/20 text-center flex flex-col items-center transform transition-all duration-300 hover:scale-105">
+      <div className="bg-gradient-to-br from-violet-100 to-blue-100 dark:from-primary/20 dark:to-primary/10 rounded-full p-3 md:p-4 mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
         <div className="text-violet-600 dark:text-primary">
           {Icon}
         </div>
-      </motion.div>
-      <motion.h3 
-        className="text-lg md:text-xl font-bold mb-2 md:mb-4 text-violet-700 dark:text-primary"
-        initial={{ opacity: 0, y: 2 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ 
-          type: "spring",
-          stiffness: 120,
-          damping: 25,
-          mass: 0.4,
-          delay: 0.02
-        }}
-      >
+      </div>
+      <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-4 text-violet-700 dark:text-primary">
         {title}
-      </motion.h3>
-      <motion.p 
-        className="text-sm md:text-base text-gray-600 dark:text-gray-300"
-        initial={{ opacity: 0, y: 2 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ 
-          type: "spring",
-          stiffness: 120,
-          damping: 25,
-          mass: 0.4,
-          delay: 0.03
-        }}
-      >
+      </h3>
+      <p className="text-sm md:text-base text-gray-600 dark:text-gray-300">
         {description}
-      </motion.p>
-    </motion.div>
+      </p>
+    </div>
   )
 }
 
@@ -392,22 +310,22 @@ export default function StudioKoPage() {
           {
             title: "Frontend",
             technologies: ["React", "Next.js", "Vue.js", "Angular", "TypeScript"],
-            icon: <Code className="h-6 w-6" />
+            icon: Code
           },
           {
             title: "Backend",
             technologies: ["Node.js", "Python", "Java", "PHP", "Go"],
-            icon: <Server className="h-6 w-6" />
+            icon: Server
           },
           {
             title: "Mobile",
             technologies: ["React Native", "Flutter", "Swift", "Kotlin"],
-            icon: <Smartphone className="h-6 w-6" />
+            icon: Smartphone
           },
           {
             title: "Database",
             technologies: ["PostgreSQL", "MongoDB", "MySQL", "Redis"],
-            icon: <Database className="h-6 w-6" />
+            icon: Database
           }
         ]
       },
@@ -507,22 +425,22 @@ export default function StudioKoPage() {
           {
             title: "Frontend",
             technologies: ["React", "Next.js", "Vue.js", "Angular", "TypeScript"],
-            icon: <Code className="h-6 w-6" />
+            icon: Code
           },
           {
             title: "Backend",
             technologies: ["Node.js", "Python", "Java", "PHP", "Go"],
-            icon: <Server className="h-6 w-6" />
+            icon: Server
           },
           {
             title: "Móvil",
             technologies: ["React Native", "Flutter", "Swift", "Kotlin"],
-            icon: <Smartphone className="h-6 w-6" />
+            icon: Smartphone
           },
           {
             title: "Base de Datos",
             technologies: ["PostgreSQL", "MongoDB", "MySQL", "Redis"],
-            icon: <Database className="h-6 w-6" />
+            icon: Database
           }
         ]
       },
@@ -607,170 +525,83 @@ export default function StudioKoPage() {
             )
           })}
         </div>
-        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 drop-shadow-[0_2px_32px_rgba(236,72,153,0.5)] animate-fade-in"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
+        <div className="container mx-auto px-4 py-32 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 drop-shadow-[0_2px_32px_rgba(236,72,153,0.5)]">
               {t.hero.title}
-            </motion.h1>
-            <motion.h2
-              className="text-2xl md:text-3xl lg:text-4xl mb-4 md:mb-6 text-primary/90 drop-shadow-[0_1px_8px_rgba(80,0,120,0.2)]"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
+            </h1>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl mb-8 text-primary/90 drop-shadow-[0_1px_8px_rgba(80,0,120,0.2)]">
               {t.hero.subtitle}
-            </motion.h2>
-            <motion.p
-              className="text-lg md:text-xl text-gray-900 dark:text-white mb-8 md:mb-12 max-w-2xl mx-auto drop-shadow-[0_1px_8px_rgba(80,0,120,0.2)]"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
+            </h2>
+            <p className="text-lg md:text-xl text-gray-900 dark:text-white mb-12 max-w-2xl mx-auto drop-shadow-[0_1px_8px_rgba(80,0,120,0.2)]">
               {t.hero.description}
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
+            </p>
+            <div className="flex flex-col sm:flex-row gap-8 justify-center">
               <Button
                 asChild
                 size="lg"
-                className="px-6 md:px-8 py-5 md:py-6 rounded-full font-medium bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-pink-500/40"
+                className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-pink-500/40"
               >
-                <Link href="/contact" className="flex items-center gap-2 text-base md:text-lg">
+                <Link href="/contact" className="flex items-center gap-3 text-base md:text-lg">
                   {t.cta.button}
-                  <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
+                  <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
                 </Link>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="px-6 md:px-8 py-5 md:py-6 rounded-full font-medium border-2 border-pink-500 text-pink-500 bg-black/30 shadow-lg transition-all duration-300 hover:bg-pink-500 hover:text-white hover:scale-105"
+                className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium border-2 border-pink-500 text-pink-500 bg-black/30 shadow-lg transition-all duration-300 hover:bg-pink-500 hover:text-white hover:scale-105"
               >
-                <Link href="#services" className="flex items-center gap-2 text-base md:text-lg">
+                <Link href="#services" className="flex items-center gap-3 text-base md:text-lg">
                   {language === "es" ? "Nuestros Servicios" : "Our Services"}
-                  <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
+                  <ArrowRight className="h-5 w-5 md:h-6 md:w-6" />
                 </Link>
               </Button>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </SectionTransition>
 
       {/* Technologies Section */}
-      <SectionTransition id="tech" className="relative min-h-[70vh] flex items-start overflow-hidden bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4 py-8 md:py-12 relative z-10 flex flex-col justify-start" style={{ minHeight: '60vh' }}>
+      <SectionTransition id="tech" className="relative py-32 overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
-            className="text-center mb-6 md:mb-10"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            className="text-center mb-20"
+            whileHover={{ y: -5 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-2 md:mb-4 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
               {t.tech.title}
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-muted-foreground max-w-3xl mx-auto">
               {t.tech.subtitle}
             </p>
           </motion.div>
-          <div className="flex justify-center relative mt-2">
-            {/* Carrusel a la izquierda - solo visible en pantallas grandes */}
-            {isLargeScreen && (
-              <div className="hidden lg:flex flex-col gap-4 absolute left-[-60px] top-0 h-full justify-center z-20">
-                {technologies.slice(0, Math.ceil(technologies.length / 2)).map((tech, index) => (
-                  <motion.div
-                    key={index}
-                    className="p-3 rounded-xl flex flex-col items-center group transform transition-all duration-300 hover:scale-110 relative bg-transparent"
-                    whileHover={{ y: -6 }}
-                  >
-                    <div className="relative">
-                      <div
-                        className="text-primary/80 flex justify-center drop-shadow-[0_0_16px_rgba(99,102,241,0.5)] group-hover:drop-shadow-[0_0_32px_rgba(99,102,241,0.8)] transition-all duration-300"
-                        style={{ transform: `rotate(${index % 2 === 0 ? -10 : 10}deg)` }}
-                      >
-                        {tech.icon}
-                      </div>
-                    </div>
-                    <p className="text-xs text-primary mt-1 text-center font-medium tracking-wide group-hover:text-primary/80 transition-colors">
-                      {tech.name}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            )}
+          <div className="flex justify-center relative mt-4">
             <motion.div
-              className="w-full max-w-4xl bg-white/10 dark:bg-white/5 backdrop-blur-2xl p-6 md:p-8 lg:p-14 rounded-3xl border-2 border-violet-500/40 shadow-2xl relative overflow-hidden"
-              style={{ boxShadow: "0 0 32px 4px #7c3aed33, 0 2px 32px 0 #0ea5e933", marginTop: 0 }}
-              initial={{ opacity: 0, y: 30, scale: 0.98 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              className="w-full max-w-4xl bg-white/10 dark:bg-white/5 backdrop-blur-2xl p-8 md:p-10 lg:p-16 rounded-3xl border-2 border-violet-500/40 shadow-2xl relative overflow-hidden"
+              style={{ boxShadow: "0 0 32px 4px #7c3aed33, 0 2px 32px 0 #0ea5e933" }}
             >
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-violet-500/10 via-blue-400/5 to-transparent rounded-3xl" />
-              <div className="relative grid grid-cols-1 md:grid-cols-2 gap-x-8 md:gap-x-12 gap-y-8 md:gap-y-12">
+              <div className="relative grid grid-cols-1 md:grid-cols-2 gap-x-10 md:gap-x-16 gap-y-10 md:gap-y-16">
                 {t.tech.items.map((item, index) => (
                   <TechCard key={index} {...item} />
                 ))}
               </div>
             </motion.div>
-            {/* Carrusel a la derecha - solo visible en pantallas grandes */}
-            {isLargeScreen && (
-              <div className="hidden lg:flex flex-col gap-4 absolute right-[-60px] top-0 h-full justify-center z-20">
-                {technologies.slice(Math.ceil(technologies.length / 2)).map((tech, index) => (
-                  <motion.div
-                    key={index}
-                    className="p-3 rounded-xl flex flex-col items-center group transform transition-all duration-300 hover:scale-110 relative bg-transparent"
-                    whileHover={{ y: -6 }}
-                  >
-                    <div className="relative">
-                      <div
-                        className="text-primary/80 flex justify-center drop-shadow-[0_0_16px_rgba(99,102,241,0.5)] group-hover:drop-shadow-[0_0_32px_rgba(99,102,241,0.8)] transition-all duration-300"
-                        style={{ transform: `rotate(${index % 2 === 0 ? 10 : -10}deg)` }}
-                      >
-                        {tech.icon}
-                      </div>
-                    </div>
-                    <p className="text-xs text-primary mt-1 text-center font-medium tracking-wide group-hover:text-primary/80 transition-colors">
-                      {tech.name}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </SectionTransition>
 
       {/* Process Section */}
-      <SectionTransition id="process" className="relative bg-gradient-to-b from-gray-50 to-white dark:from-[#181A24] dark:to-gray-900 overflow-hidden">
-        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+      <SectionTransition id="process" className="relative py-32 bg-gradient-to-b from-gray-50 to-white dark:from-[#181A24] dark:to-gray-900 overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div 
-            className="text-center mb-12 md:mb-20"
-            initial={{ opacity: 0, y: 5 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ 
-              type: "spring",
-              stiffness: 100,
-              damping: 20,
-              mass: 0.5
-            }}
+            className="text-center mb-24"
+            whileHover={{ y: -5 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 drop-shadow-[0_2px_32px_rgba(236,72,153,0.5)] animate-fade-in">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
               {t.process.title}
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-muted-foreground max-w-3xl mx-auto">
@@ -778,51 +609,34 @@ export default function StudioKoPage() {
             </p>
           </motion.div>
 
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ 
-              type: "spring",
-              stiffness: 100,
-              damping: 20,
-              mass: 0.5,
-              staggerChildren: 0.02,
-              delayChildren: 0.02
-            }}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-12">
             {t.process.steps.map((step, index) => (
               <ProcessStep key={index} {...step} />
             ))}
-          </motion.div>
+          </div>
         </div>
       </SectionTransition>
 
       {/* Call to Action */}
-      <SectionTransition className="relative bg-white dark:bg-[#181A24] overflow-hidden">
-        <div className="container mx-auto px-4 py-16 md:py-24 text-center relative z-10">
+      <SectionTransition className="relative py-32 bg-white dark:bg-[#181A24] overflow-hidden">
+        <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div 
-            className="max-w-3xl mx-auto bg-gray-50 dark:bg-[#1E1F2E] backdrop-blur-lg p-8 md:p-12 rounded-2xl border border-gray-200 dark:border-white/10 shadow-lg"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto bg-gray-50 dark:bg-[#1E1F2E] backdrop-blur-lg p-12 md:p-16 rounded-2xl border border-gray-200 dark:border-white/10 shadow-lg"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-gray-900 dark:text-white">
               {t.cta.title}
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 md:mb-8">
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-12">
               {t.cta.subtitle}
             </p>
             <Button
               asChild
               size="lg"
-              className="px-6 md:px-8 py-5 md:py-6 rounded-full font-medium bg-gradient-to-r from-primary to-primary/80 hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+              className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium bg-gradient-to-r from-primary to-primary/80 hover:opacity-90 transition-all duration-300 transform hover:scale-105"
             >
-              <Link href="/contact" className="flex items-center gap-2 text-base md:text-lg">
+              <Link href="/contact" className="flex items-center gap-3 text-base md:text-lg">
                 {t.cta.button}
-                <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
+                <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
               </Link>
             </Button>
           </motion.div>

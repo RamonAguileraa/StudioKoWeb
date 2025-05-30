@@ -149,22 +149,22 @@ const content: ContentObject = {
         {
           title: "Design & Branding",
           technologies: ["Adobe Creative Suite", "Figma", "Blender", "Canva Pro"],
-          icon: Code
+          icon: Palette
         },
         {
           title: "Photo & Video",
           technologies: ["Photoshop", "Lightroom", "Premiere Pro", "After Effects"],
-          icon: Server
+          icon: Film
         },
         {
           title: "Social Media",
           technologies: ["Instagram", "Facebook", "TikTok", "LinkedIn"],
-          icon: Smartphone
+          icon: Globe
         },
         {
           title: "Marketing Tools",
           technologies: ["Meta Business", "Google Analytics", "Hootsuite", "Later"],
-          icon: Database
+          icon: TrendingUp
         }
       ]
     },
@@ -325,33 +325,12 @@ const content: ContentObject = {
 // Componente de tarjeta de tecnología
 const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
   return (
-    <motion.div 
-      className="mb-2"
-      initial={{ opacity: 0, y: 5, scale: 0.99 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ 
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        mass: 0.5,
-        duration: 0.2
-      }}
-    >
+    <div className="mb-2">
       <div className="flex items-center gap-3 mb-4">
-        <motion.div
-          className="bg-gradient-to-tr from-rose-500/30 to-pink-400/30 rounded-full p-3 shadow-lg"
-          animate={{ rotate: [0, 5, -5, 0] }}
-          transition={{ 
-            duration: 2,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut"
-          }}
-        >
-          <Icon className="w-6 h-6 md:w-8 md:h-8" />
-        </motion.div>
-        <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-rose-300 tracking-tight border-b-2 border-rose-500/30 pb-1 flex-1">
+        <div className="bg-gradient-to-tr from-violet-500/30 to-blue-400/30 rounded-full p-3 shadow-lg">
+          {Icon && <Icon className="h-6 w-6" />}
+        </div>
+        <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-violet-300 tracking-tight border-b-2 border-violet-500/30 pb-1 flex-1">
           {title}
         </h5>
       </div>
@@ -360,33 +339,21 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
           <TooltipProvider key={techIndex} delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <motion.div 
-                  className="group flex items-start gap-3 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-rose-500/20 hover:bg-rose-500/5 rounded-lg px-3 py-2"
-                  initial={{ opacity: 0, x: -5 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ 
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 20,
-                    mass: 0.5,
-                    delay: techIndex * 0.02
-                  }}
-                >
-                  <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-rose-400 to-pink-400 shadow-rose-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
+                <div className="group flex items-start gap-3 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-violet-500/20 hover:bg-violet-500/5 rounded-lg px-3 py-2">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-violet-400 to-blue-400 shadow-violet-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
                   <div>
-                    <h6 className="text-sm md:text-base font-semibold text-gray-900 dark:text-rose-100 leading-tight group-hover:text-rose-300 transition-colors">
+                    <h6 className="text-sm md:text-base font-semibold text-gray-900 dark:text-violet-100 leading-tight group-hover:text-violet-300 transition-colors">
                       {tech}
                     </h6>
-                    <p className="text-xs md:text-sm text-gray-600 dark:text-pink-200 leading-snug group-hover:text-pink-100 transition-colors">
+                    <p className="text-xs md:text-sm text-gray-600 dark:text-blue-200 leading-snug group-hover:text-blue-100 transition-colors">
                       {getTechDescription(tech)}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               </TooltipTrigger>
               <TooltipContent 
                 side="right" 
-                className="bg-rose-900/90 text-white border-rose-500/40 shadow-xl text-sm md:text-base p-3"
+                className="bg-violet-900/90 text-white border-violet-500/40 shadow-xl text-sm md:text-base p-3"
                 sideOffset={5}
               >
                 {getTechDescription(tech)}
@@ -395,7 +362,7 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
           </TooltipProvider>
         ))}
       </div>
-    </motion.div>
+    </div>
   )
 }
 
@@ -404,10 +371,8 @@ const ProcessStep = ({ title, description, icon: Icon, isLast }: ProcessStep & {
   return (
     <motion.div
       className="relative group"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+      whileHover={{ y: -5 }}
+      transition={{ type: "spring", stiffness: 300 }}
     >
       <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-4 md:p-6 rounded-2xl border border-rose-500/20 shadow-lg hover:shadow-rose-500/20 transition-all duration-300 h-full">
         <div className="flex flex-col items-center text-center">
@@ -447,97 +412,137 @@ export default function MaikonikPage() {
           <AnimatedBlob color="#FB7185" size="400px" bottom="-200px" left="-200px" opacity={0.1} delay={2} />
         </div>
 
-        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.div
-              className="relative inline-block mb-6 md:mb-8"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <h1 className="text-5xl md:text-6xl lg:text-8xl font-black mb-4 md:mb-6 text-rose-500 relative">
-                {currentContent.hero.title}
-                <motion.div
-                  className="absolute -inset-1 bg-gradient-to-r from-rose-500/20 to-pink-500/20 blur-xl rounded-full"
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.5, 0.8, 0.5],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-              </h1>
-            </motion.div>
-            <motion.h2
-              className="text-2xl md:text-3xl lg:text-4xl mb-4 md:mb-6 font-light text-gray-800 dark:text-gray-200"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
+        <div className="container mx-auto px-4 py-32 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 drop-shadow-[0_2px_32px_rgba(236,72,153,0.5)]">
+              {currentContent.hero.title}
+            </h1>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl mb-8 text-primary/90 drop-shadow-[0_1px_8px_rgba(80,0,120,0.2)]">
               {currentContent.hero.subtitle}
-            </motion.h2>
-            <motion.p
-              className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto px-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
+            </h2>
+            <p className="text-lg md:text-xl text-gray-900 dark:text-white mb-12 max-w-2xl mx-auto drop-shadow-[0_1px_8px_rgba(80,0,120,0.2)]">
               {currentContent.hero.description}
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center px-4"
-            >
+            </p>
+            <div className="flex flex-col sm:flex-row gap-8 justify-center">
               <Button
                 asChild
                 size="lg"
-                className="px-6 md:px-8 py-5 md:py-6 rounded-full font-medium bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/20 transition-all duration-300 hover:scale-105 hover:shadow-rose-500/30"
+                className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-pink-500/40"
               >
-                <Link href="/contact" className="flex items-center gap-2 text-base md:text-lg">
+                <Link href="/contact" className="flex items-center gap-3 text-base md:text-lg">
                   {currentContent.cta.button}
-                  <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
+                  <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
                 </Link>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="px-6 md:px-8 py-5 md:py-6 rounded-full font-medium border-2 border-rose-500 text-rose-500 hover:bg-rose-500/10 transition-all duration-300 hover:scale-105"
+                className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium border-2 border-pink-500 text-pink-500 bg-black/30 shadow-lg transition-all duration-300 hover:bg-pink-500 hover:text-white hover:scale-105"
               >
-                <Link href="#services" className="flex items-center gap-2 text-base md:text-lg">
+                <Link href="#services" className="flex items-center gap-3 text-base md:text-lg">
                   {language === "es" ? "Nuestros Servicios" : "Our Services"}
-                  <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
+                  <ArrowRight className="h-5 w-5 md:h-6 md:w-6" />
                 </Link>
               </Button>
-            </motion.div>
+            </div>
+          </div>
+        </div>
+      </SectionTransition>
+
+      {/* Services Section */}
+      <SectionTransition id="services" className="relative py-32 overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div 
+            className="text-center mb-20"
+            whileHover={{ y: -5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+              {currentContent.services.title}
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-muted-foreground max-w-3xl mx-auto">
+              {currentContent.services.subtitle}
+            </p>
           </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
+            {currentContent.services.webDev.features.map((service, index) => (
+              <motion.div
+                key={index}
+                className="bg-white/10 dark:bg-white/5 backdrop-blur-lg p-8 rounded-2xl border border-gray-200 dark:border-white/10 shadow-lg"
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-12 h-12 mb-4 text-primary">
+                    {service.icon && <service.icon className="w-full h-full" />}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {service.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </SectionTransition>
+
+      {/* Features Section */}
+      <SectionTransition className="relative py-32 bg-gradient-to-b from-gray-50 to-white dark:from-[#181A24] dark:to-gray-900 overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div 
+            className="text-center mb-24"
+            whileHover={{ y: -5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+              {currentContent.services.title}
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-muted-foreground max-w-3xl mx-auto">
+              {currentContent.services.subtitle}
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
+            {currentContent.services.webDev.features.map((feature, index) => (
+              <motion.div
+                key={index}
+                className="bg-white/10 dark:bg-white/5 backdrop-blur-lg p-8 rounded-2xl border border-gray-200 dark:border-white/10 shadow-lg"
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-12 h-12 mb-4 text-primary">
+                    {feature.icon && <feature.icon className="w-full h-full" />}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </SectionTransition>
 
       {/* Technologies Section */}
-      <SectionTransition id="tech" className="relative py-16 md:py-24 overflow-hidden">
+      <SectionTransition id="tech" className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-rose-500/5 to-transparent" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
-            className="text-center mb-12 md:mb-16"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            className="text-center mb-20"
+            whileHover={{ y: -5 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 text-rose-500">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-rose-500">
               {currentContent.tech.title}
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
@@ -545,7 +550,7 @@ export default function MaikonikPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 max-w-5xl mx-auto">
             {currentContent.tech.items.map((item, index) => (
               <TechCard key={index} {...item} />
             ))}
@@ -554,19 +559,19 @@ export default function MaikonikPage() {
       </SectionTransition>
 
       {/* Process Section */}
-      <SectionTransition id="process" className="relative py-16 md:py-24 bg-gradient-to-b from-white to-pink-50/50 dark:from-gray-900 dark:to-pink-950/20">
+      <SectionTransition id="process" className="relative py-24 bg-gradient-to-b from-white to-pink-50/50 dark:from-gray-900 dark:to-pink-950/20">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-pink-500/5 to-transparent" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
-            className="text-center mb-12 md:mb-16"
+            className="text-center mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 text-rose-500">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-rose-500">
               {currentContent.process.title}
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
@@ -574,7 +579,7 @@ export default function MaikonikPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12 max-w-6xl mx-auto">
             {currentContent.process.steps.map((step, index) => (
               <ProcessStep 
                 key={index} 
@@ -587,36 +592,27 @@ export default function MaikonikPage() {
       </SectionTransition>
 
       {/* Call to Action */}
-      <SectionTransition className="relative py-16 md:py-24 bg-gradient-to-b from-pink-50/50 to-white dark:from-pink-950/20 dark:to-gray-900">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-rose-500/5 to-transparent" />
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
+      <SectionTransition className="relative py-32 bg-white dark:bg-[#181A24] overflow-hidden">
+        <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div 
-            className="max-w-3xl mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-8 md:p-12 rounded-3xl border border-rose-500/20 shadow-xl"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto bg-gray-50 dark:bg-[#1E1F2E] backdrop-blur-lg p-12 md:p-16 rounded-2xl border border-gray-200 dark:border-white/10 shadow-lg"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-rose-500 text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-gray-900 dark:text-white">
               {currentContent.cta.title}
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 md:mb-8 text-center">
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-12">
               {currentContent.cta.subtitle}
             </p>
-            <div className="flex justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="px-6 md:px-8 py-5 md:py-6 rounded-full font-medium bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/20 transition-all duration-300 hover:scale-105 hover:shadow-rose-500/30"
-              >
-                <Link href="/contact" className="flex items-center gap-2 text-base md:text-lg">
-                  {currentContent.cta.button}
-                  <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
-                </Link>
-              </Button>
-            </div>
+            <Button
+              asChild
+              size="lg"
+              className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium bg-gradient-to-r from-primary to-primary/80 hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+            >
+              <Link href="/contact" className="flex items-center gap-3 text-base md:text-lg">
+                {currentContent.cta.button}
+                <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
+              </Link>
+            </Button>
           </motion.div>
         </div>
       </SectionTransition>

@@ -198,34 +198,14 @@ const projectList: Project[] = [
         <AnimatedBlob color="#F43F5E" size="500px" bottom="-250px" right="-250px" opacity={0.2} delay={2} />
 
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            className="max-w-3xl mx-auto text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
+          <div className="max-w-3xl mx-auto text-center mb-20">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent">
               {t.hero.title}
-            </motion.h1>
-            <motion.p
-              className="text-lg md:text-xl mb-6 text-muted-foreground"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
+            </h1>
+            <p className="text-lg md:text-xl mb-12 text-muted-foreground">
               {t.hero.subtitle}
-            </motion.p>
-            <motion.div
-              className="flex flex-col sm:flex-row justify-center gap-4 mb-16"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-8 mb-24">
               <Button
                 asChild
                 size="lg"
@@ -247,11 +227,11 @@ const projectList: Project[] = [
                   <Film className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           <motion.div className="relative" style={{ y, opacity }}>
-            <div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl bg-gray-100 dark:bg-gray-800">
+            <div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl ">
               <Image
                 src="/digitalmedia.png"
                 alt="StudioKó Showcase"
@@ -262,6 +242,7 @@ const projectList: Project[] = [
                   image.classList.remove('opacity-0')
                 }}
                 priority
+                loading="eager"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
@@ -271,35 +252,35 @@ const projectList: Project[] = [
 
       {/* Divisions Section */}
       <SectionTransition>
-        <div className="container mx-auto px-4 pt-12">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent">{t.divisions.title}</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">{t.divisions.subtitle}</p>
+        <div className="container mx-auto px-4 py-32">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent">{t.divisions.title}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">{t.divisions.subtitle}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
+          <div className="grid md:grid-cols-2 gap-16 lg:gap-24">
             <motion.div
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+              className="glassmorphism rounded-xl p-10 relative overflow-hidden group"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative z-10">
-                <Code className="h-12 w-12 mb-6 text-primary" />
-                <h3 className="text-2xl font-bold mb-4 text-primary">{t.divisions.studioko.title}</h3>
-                <p className="text-muted-foreground mb-6">{t.divisions.studioko.description}</p>
-                <div className="mb-8 grid grid-cols-3 gap-4">
+                <Code className="h-14 w-14 mb-8 text-primary" />
+                <h3 className="text-2xl font-bold mb-6 text-primary">{t.divisions.studioko.title}</h3>
+                <p className="text-muted-foreground mb-8">{t.divisions.studioko.description}</p>
+                <div className="mb-10 grid grid-cols-3 gap-6">
                   <div className="flex flex-col items-center">
-                    <Code className="h-8 w-8 mb-2 text-primary" />
-                    <span className="text-xs text-center">{t.divisions.studioko.webDev}</span>
+                    <Code className="h-10 w-10 mb-3 text-primary" />
+                    <span className="text-sm text-center">{t.divisions.studioko.webDev}</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <Code className="h-8 w-8 mb-2 text-primary" />
-                    <span className="text-xs text-center">{t.divisions.studioko.mobileDev}</span>
+                    <Code className="h-10 w-10 mb-3 text-primary" />
+                    <span className="text-sm text-center">{t.divisions.studioko.mobileDev}</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <Code className="h-8 w-8 mb-2 text-primary" />
-                    <span className="text-xs text-center">{t.divisions.studioko.softwareDev}</span>
+                    <Code className="h-10 w-10 mb-3 text-primary" />
+                    <span className="text-sm text-center">{t.divisions.studioko.softwareDev}</span>
                   </div>
                 </div>
 
@@ -319,25 +300,25 @@ const projectList: Project[] = [
             <motion.div
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-8 relative overflow-hidden group"
+              className="glassmorphism rounded-xl p-10 relative overflow-hidden group"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-maikonik/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative z-10">
-                <Film className="h-12 w-12 mb-6 text-maikonik" />
-                <h3 className="text-2xl font-bold mb-4 text-maikonik">{t.divisions.maikonik.title}</h3>
-                <p className="text-muted-foreground mb-6">{t.divisions.maikonik.description}</p>
-                <div className="mb-8 grid grid-cols-3 gap-4">
+                <Film className="h-14 w-14 mb-8 text-maikonik" />
+                <h3 className="text-2xl font-bold mb-6 text-maikonik">{t.divisions.maikonik.title}</h3>
+                <p className="text-muted-foreground mb-8">{t.divisions.maikonik.description}</p>
+                <div className="mb-10 grid grid-cols-3 gap-6">
                   <div className="flex flex-col items-center">
-                    <Film className="h-8 w-8 mb-2 text-maikonik" />
-                    <span className="text-xs text-center">{t.divisions.maikonik.videoProduction}</span>
+                    <Film className="h-10 w-10 mb-3 text-maikonik" />
+                    <span className="text-sm text-center">{t.divisions.maikonik.videoProduction}</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <Film className="h-8 w-8 mb-2 text-maikonik" />
-                    <span className="text-xs text-center">{t.divisions.maikonik.marketing}</span>
+                    <Film className="h-10 w-10 mb-3 text-maikonik" />
+                    <span className="text-sm text-center">{t.divisions.maikonik.marketing}</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <Film className="h-8 w-8 mb-2 text-maikonik" />
-                    <span className="text-xs text-center">{t.divisions.maikonik.brandDesign}</span>
+                    <Film className="h-10 w-10 mb-3 text-maikonik" />
+                    <span className="text-sm text-center">{t.divisions.maikonik.brandDesign}</span>
                   </div>
                 </div>
                 <Button
@@ -358,13 +339,13 @@ const projectList: Project[] = [
 
       {/* Latest Projects */}
       <SectionTransition>
-        <div className="container mx-auto px-4 pt-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent">{t.projects.title}</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">{t.projects.subtitle}</p>
+        <div className="container mx-auto px-4 py-32">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent">{t.projects.title}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">{t.projects.subtitle}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {projectList.map((project) => (
               <motion.div
                 key={project.id}
@@ -382,7 +363,6 @@ const projectList: Project[] = [
                           allowFullScreen
                           className="w-full h-full"
                         />
-                        {/* Invisible overlay that prevents hover interactions with YouTube player */}
                         <div className="absolute inset-0 bg-transparent pointer-events-auto opacity-0 group-hover:opacity-100 transition-opacity"></div>
                       </div>
                     ) : project.video ? (
@@ -403,18 +383,18 @@ const projectList: Project[] = [
                         className="object-cover transition-transform duration-500 hover:scale-110"
                       />
                     )}
-                    <div className="absolute top-2 right-2 text-xs font-medium px-3 py-1 rounded-full bg-background/80 backdrop-blur-sm border border-primary/20">
+                    <div className="absolute top-3 right-3 text-sm font-medium px-4 py-1.5 rounded-full bg-background/80 backdrop-blur-sm border border-primary/20">
                       {project.type}
                     </div>
                   </div>
-                  <CardContent className="p-6">
-                    <h3 className="font-bold text-lg mb-2">{project.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{project.description}</p>
-                    <div className="flex items-center gap-2 mb-4 flex-wrap">
+                  <CardContent className="p-8">
+                    <h3 className="font-bold text-xl mb-3">{project.title}</h3>
+                    <p className="text-muted-foreground mb-6 line-clamp-2">{project.description}</p>
+                    <div className="flex items-center gap-3 mb-6 flex-wrap">
                       {project.technologies.map((tech, index) => (
-                        <div key={index} className="flex items-center gap-1 text-muted-foreground bg-muted/50 px-2 py-1 rounded-md">
+                        <div key={index} className="flex items-center gap-2 text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-md">
                           <tech.icon className="w-4 h-4" />
-                          <span className="text-xs">{tech.name}</span>
+                          <span className="text-sm">{tech.name}</span>
                         </div>
                       ))}
                     </div>
@@ -431,7 +411,7 @@ const projectList: Project[] = [
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-16 text-center">
             <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10">
               <Link href="/projects">
                 {t.projects.viewAll}
@@ -444,12 +424,12 @@ const projectList: Project[] = [
 
       {/* Testimonials Section */}
       <SectionTransition>
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="container mx-auto px-4 py-24">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               {language === "es" ? "Lo que dicen nuestros clientes" : "What Our Clients Say"}
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               {language === "es" ? "Experiencias de quienes han confiado en nuestro trabajo" : "Experiences from those who have trusted our work"}
             </p>
           </div>
@@ -459,8 +439,8 @@ const projectList: Project[] = [
 
       {/* Founder Section */}
       <SectionTransition className="bg-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-4 py-24">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -477,6 +457,7 @@ const projectList: Project[] = [
                     height={600}
                     className="object-cover w-full h-full"
                     priority
+                    loading="eager"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -517,7 +498,7 @@ const projectList: Project[] = [
 
       {/* Call to Action */}
       <SectionTransition className="bg-gradient-to-r from-primary/10 to-maikonik/10 dark:from-primary/20 dark:to-maikonik/20">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 py-24 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

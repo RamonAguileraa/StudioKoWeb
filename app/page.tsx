@@ -199,7 +199,7 @@ const projectList: Project[] = [
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-20">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent pt-[175px] py-2">
               {t.hero.title}
             </h1>
             <p className="text-lg md:text-xl mb-12 text-muted-foreground">
@@ -254,7 +254,7 @@ const projectList: Project[] = [
       <SectionTransition>
         <div className="container mx-auto px-4 py-32">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent">{t.divisions.title}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent pt-[150px]">{t.divisions.title}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">{t.divisions.subtitle}</p>
           </div>
 

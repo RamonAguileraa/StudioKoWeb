@@ -81,7 +81,7 @@ export default function TestimonialsCarousel() {
       <InfiniteMovingCards
         items={movingItems}
         direction="right"
-        speed="normal"
+        speed="slow"
       />
     </div>
   );

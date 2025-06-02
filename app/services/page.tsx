@@ -29,7 +29,6 @@ interface ServiceCardProps {
   description: string
   features: string[]
   icon: LucideIcon
-  price: number
   link: string
   isMaikonik?: boolean
 }
@@ -274,7 +273,6 @@ const ServiceCard = ({
   description, 
   features, 
   icon: Icon, 
-  price, 
   link, 
   isMaikonik = false 
 }: ServiceCardProps) => {
@@ -322,14 +320,6 @@ const ServiceCard = ({
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-          <div className="flex items-center space-x-2">
-            <span className="text-xs text-muted-foreground">
-              {language === 'en' ? 'Starting at' : 'Desde'}
-            </span>
-            <span className="text-sm font-medium">
-              {language === 'en' ? `$${price} USD` : `$${price * 16.5} MXN`}
-            </span>
-          </div>
         </div>
       </div>
     </motion.div>
@@ -376,7 +366,7 @@ export default function ServicesPage() {
       </section>
 
       {/* StudioKo Services */}
-      <SectionTransition className="bg-muted/50">
+      <SectionTransition className="bg-muted/50 py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.studioko.title}</h2>
@@ -389,23 +379,21 @@ export default function ServicesPage() {
               description={t.studioko.webDev.description}
               features={t.studioko.webDev.features}
               icon={Globe}
-              price={999}
-              link="/studioko"
+              link="/services/desarrollo-web"
             />
             <ServiceCard
               title={t.studioko.mobileDev.title}
               description={t.studioko.mobileDev.description}
               features={t.studioko.mobileDev.features}
               icon={Smartphone}
-              price={1499}
-              link="/studioko"
+              link="/services/desarrollo-movil"
             />
           </div>
         </div>
       </SectionTransition>
 
       {/* Maikonik Services */}
-      <SectionTransition>
+      <SectionTransition className="py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.maikonik.title}</h2>
@@ -418,8 +406,7 @@ export default function ServicesPage() {
               description={t.maikonik.videoProd.description}
               features={t.maikonik.videoProd.features}
               icon={Film}
-              price={799}
-              link="/maikonik"
+              link="/services/produccion-video"
               isMaikonik={true}
             />
             <ServiceCard
@@ -427,8 +414,7 @@ export default function ServicesPage() {
               description={t.maikonik.marketing.description}
               features={t.maikonik.marketing.features}
               icon={TrendingUp}
-              price={599}
-              link="/maikonik"
+              link="/services/marketing-digital"
               isMaikonik={true}
             />
             <ServiceCard
@@ -436,8 +422,7 @@ export default function ServicesPage() {
               description={t.maikonik.brandDev.description}
               features={t.maikonik.brandDev.features}
               icon={Palette}
-              price={999}
-              link="/maikonik"
+              link="/services/desarrollo-marca"
               isMaikonik={true}
             />
             <ServiceCard
@@ -445,8 +430,7 @@ export default function ServicesPage() {
               description={t.maikonik.photography.description}
               features={t.maikonik.photography.features}
               icon={MessageSquare}
-              price={799}
-              link="/maikonik"
+              link="/services/fotografia"
               isMaikonik={true}
             />
             <ServiceCard
@@ -454,8 +438,7 @@ export default function ServicesPage() {
               description={t.maikonik.socialMedia.description}
               features={t.maikonik.socialMedia.features}
               icon={Globe}
-              price={499}
-              link="/maikonik"
+              link="/services/redes-sociales"
               isMaikonik={true}
             />
             <ServiceCard
@@ -463,8 +446,7 @@ export default function ServicesPage() {
               description={t.maikonik.strategicMarketing.description}
               features={t.maikonik.strategicMarketing.features}
               icon={Zap}
-              price={999}
-              link="/maikonik"
+              link="/services/marketing-estrategico"
               isMaikonik={true}
             />
           </div>
@@ -472,7 +454,7 @@ export default function ServicesPage() {
       </SectionTransition>
 
       {/* Call to Action */}
-      <SectionTransition className="bg-gradient-to-r from-primary/10 to-maikonik/10 dark:from-primary/20 dark:to-maikonik/20">
+      <SectionTransition className="bg-gradient-to-r from-primary/10 to-maikonik/10 dark:from-primary/20 dark:to-maikonik/20 py-24">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

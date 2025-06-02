@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useMemo } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
@@ -9,6 +9,64 @@ import { Button } from "@/components/ui/button"
 import SectionTransition from "@/components/section-transition"
 import AnimatedBlob from "@/components/animated-blob"
 import { useLanguage } from "@/context/language-context"
+
+interface TeamMember {
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+}
+
+interface ValueItem {
+  title: string;
+  description: string;
+  icon: React.ElementType;
+}
+
+interface Content {
+  hero: {
+    title: string;
+    subtitle: string;
+  };
+  story: {
+    title: string;
+    p1: string;
+    p2: string;
+    p3: string;
+    division1: string;
+    division1Desc: string;
+    division2: string;
+    division2Desc: string;
+    together: string;
+  };
+  team: {
+    title: string;
+    subtitle: string;
+    members: TeamMember[];
+  };
+  values: {
+    title: string;
+    subtitle: string;
+    items: ValueItem[];
+    mission: string;
+  };
+  journey: {
+    title: string;
+    subtitle: string;
+    milestones: Array<{
+      year: string;
+      title: string;
+      description: string;
+      side: string;
+    }>;
+  };
+  cta: {
+    title: string;
+    subtitle: string;
+    primaryButton: string;
+    secondaryButton: string;
+  };
+}
 
 export default function AboutPage() {
   const { language } = useLanguage()
@@ -25,8 +83,8 @@ export default function AboutPage() {
   const content = {
     en: {
       hero: {
-        title: "About",
-        subtitle: "Our story, mission, and the team behind our creative digital company"
+        title: "Bienvenido a StudioKó",
+        subtitle: "Nuestra historia, misión y el equipo detrás de nuestra empresa digital creativa"
       },
       story: {
         title: "Our Story",
@@ -54,25 +112,55 @@ export default function AboutPage() {
         name: "Fernanda Torres",
         bio: "Fernanda Torres is a dynamic marketing strategist with expertise in digital brand development and audience engagement. As Marketing Lead at StudioKó, she drives the brand strategy across both BosoZoku and Maikonik Media, ensuring cohesive messaging and impactful market presence.\n\nWith a deep understanding of contemporary digital marketing trends and consumer behavior, Fernanda crafts compelling campaigns that resonate with diverse audiences. Her innovative approach to storytelling and visual communication helps amplify StudioKó's creative projects and client success stories.\n\nFernanda's strategic vision and creative execution ensure that StudioKó's unique identity and values reach the right audiences at the right time, building meaningful connections between the company and its community."
       },
+      team: {
+        title: "Our Team",
+        subtitle: "Meet the creative minds behind StudioKó",
+        members: [
+          {
+            name: "Ramón Aguilera",
+            role: "CEO & Creative Director",
+            bio: "Ramón Aguilera is a multidisciplinary creative with extensive experience in game development, web design, and digital strategy.",
+            image: "/team/ramon.jpg"
+          },
+          {
+            name: "Miguel Millán",
+            role: "COO & Digital Strategist",
+            bio: "Miguel Millán is a digital strategist and creative leader with experience in multimedia project management and content production.",
+            image: "/team/miguel.jpg"
+          },
+          {
+            name: "Fernanda Torres",
+            role: "Marketing Lead",
+            bio: "Fernanda Torres is a dynamic marketing strategist with expertise in digital brand development and audience engagement.",
+            image: "/team/fernanda.jpg"
+          }
+        ]
+      },
       values: {
         title: "Our Mission & Values",
         subtitle: "The principles that guide our work and define our company culture",
-        creativity: {
-          title: "Creativity",
-          desc: "We approach every project with fresh perspectives and innovative thinking to create unique digital experiences."
-        },
-        excellence: {
-          title: "Excellence",
-          desc: "We are committed to delivering the highest quality in everything we create, from code to design to user experience."
-        },
-        collaboration: {
-          title: "Collaboration",
-          desc: "We believe in the power of teamwork and partnership, both within our organization and with our clients."
-        },
-        innovation: {
-          title: "Innovation",
-          desc: "We continuously explore new technologies and methodologies to expand the boundaries of what's possible."
-        },
+        items: [
+          {
+            title: "Creativity",
+            description: "We approach every project with fresh perspectives and innovative thinking to create unique digital experiences.",
+            icon: Lightbulb
+          },
+          {
+            title: "Excellence",
+            description: "We are committed to delivering the highest quality in everything we create, from code to design to user experience.",
+            icon: Award
+          },
+          {
+            title: "Collaboration",
+            description: "We believe in the power of teamwork and partnership, both within our organization and with our clients.",
+            icon: Users
+          },
+          {
+            title: "Innovation",
+            description: "We continuously explore new technologies and methodologies to expand the boundaries of what's possible.",
+            icon: Rocket
+          }
+        ],
         mission: "Our mission is to create digital experiences that blend artistic expression with technical excellence, delivering solutions that not only meet our clients' needs but exceed their expectations and create lasting impact."
       },
       journey: {
@@ -111,18 +199,35 @@ export default function AboutPage() {
           },
         ]
       },
-     
-        
+      achievements: {
+        title: "Logros y Reconocimientos",
+        subtitle: "Reconocimiento de nuestro recorrido, talento y participación significativa en la industria creativa",
+        ludicJam: {
+          title: "Ganador de Ludic Jam – Emprendimiento",
+          desc: "El equipo de BosoZoku, liderado por Ramón Aguilera, fue seleccionado como uno de los 10 ganadores entre 29 equipos en el Ludic Jam 2025, ganando la categoría de Emprendimiento y obteniendo una beca del 100%.",
+          date: "Abril 2025"
+        },
+        nasa: {
+          title: "NASA Space Apps Challenge – Mentor",
+          desc: "Participamos como mentores en el International NASA Space Apps Challenge, ayudando a equipos a mejorar su UX, comunicación y estrategias narrativas.",
+          date: "Octubre 2024"
+        },
+        tibucami: {
+          title: "Tibucami – Reconocimiento Cultural y Artístico",
+          desc: "Tibucami, el juego original de aventuras 3D desarrollado por BosoZoku, ha sido reconocido por su identidad visual única e inspiración cultural Rarámuri, fusionando mitología con innovación en gameplay.",
+          date: "Marzo 2025"
+        }
+      },
       cta: {
         title: "Let's Create Something Amazing Together",
         subtitle: "Whether you're interested in BosoZoku's games or Maikonik Media's creative agency services, we'd love to hear from you.",
-        contact: "Get in Touch",
-        careers: "Join Our Team"
+        primaryButton: "Get in Touch",
+        secondaryButton: "Join Our Team"
       }
     },
     es: {
       hero: {
-        title: "Acerca de",
+        title: "Bienvenido a StudioKó",
         subtitle: "Nuestra historia, misión y el equipo detrás de nuestra empresa digital creativa"
       },
       story: {
@@ -151,25 +256,55 @@ export default function AboutPage() {
         name: "Fernanda Torres",
         bio: "Fernanda Torres es una estratega de marketing dinámico con experiencia en desarrollo de marcas digitales y engagement del público. Como Líder de Marketing en StudioKó, dirige la estrategia de marca a través de BosoZoku y Maikonik Media, asegurando mensajes coherentes y presencia de mercado impactante.\n\nCon una profunda comprensión de las tendencias de marketing digital contemporáneo y comportamiento del consumidor, Fernanda crea campañas convincentes que resonan con audiencias diversas. Su enfoque innovador en narrativa y comunicación visual ayuda a amplificar los proyectos creativos de StudioKó y las historias de éxito de los clientes.\n\nLa visión estratégica y ejecución creativa de Fernanda aseguran que la identidad única y valores de StudioKó alcancen las audiencias adecuadas en el momento adecuado, construyendo conexiones significativas entre la compañía y su comunidad."
       },
+      team: {
+        title: "Nuestro Equipo",
+        subtitle: "Conoce las mentes creativas detrás de StudioKó",
+        members: [
+          {
+            name: "Ramón Aguilera",
+            role: "CEO & Director Creativo",
+            bio: "Ramón Aguilera es un creativo multidisciplinario con amplia experiencia en desarrollo de videojuegos, diseño web y estrategia digital.",
+            image: "/team/ramon.jpg"
+          },
+          {
+            name: "Miguel Millán",
+            role: "COO & Estratega Digital",
+            bio: "Miguel Millán es un estratega digital y líder creativo con experiencia en gestión de proyectos multimedia y producción de contenido.",
+            image: "/team/miguel.jpg"
+          },
+          {
+            name: "Fernanda Torres",
+            role: "Líder de Marketing",
+            bio: "Fernanda Torres es una estratega de marketing dinámico con experiencia en desarrollo de marcas digitales y engagement del público.",
+            image: "/team/fernanda.jpg"
+          }
+        ]
+      },
       values: {
         title: "Nuestra Misión y Valores",
         subtitle: "Los principios que guían nuestro trabajo y definen nuestra cultura empresarial",
-        creativity: {
-          title: "Creatividad",
-          desc: "Abordamos cada proyecto con perspectivas frescas y pensamiento innovador para crear experiencias digitales únicas."
-        },
-        excellence: {
-          title: "Excelencia",
-          desc: "Estamos comprometidos con ofrecer la más alta calidad en todo lo que creamos, desde código hasta diseño y experiencia de usuario."
-        },
-        collaboration: {
-          title: "Colaboración",
-          desc: "Creemos en el poder del trabajo en equipo y las alianzas, tanto dentro de nuestra organización como con nuestros clientes."
-        },
-        innovation: {
-          title: "Innovación",
-          desc: "Exploramos continuamente nuevas tecnologías y metodologías para expandir los límites de lo posible."
-        },
+        items: [
+          {
+            title: "Creatividad",
+            description: "Abordamos cada proyecto con perspectivas frescas y pensamiento innovador para crear experiencias digitales únicas.",
+            icon: Lightbulb
+          },
+          {
+            title: "Excelencia",
+            description: "Estamos comprometidos con ofrecer la más alta calidad en todo lo que creamos, desde código hasta diseño y experiencia de usuario.",
+            icon: Award
+          },
+          {
+            title: "Colaboración",
+            description: "Creemos en el poder del trabajo en equipo y las alianzas, tanto dentro de nuestra organización como con nuestros clientes.",
+            icon: Users
+          },
+          {
+            title: "Innovación",
+            description: "Exploramos continuamente nuevas tecnologías y metodologías para expandir los límites de lo posible.",
+            icon: Rocket
+          }
+        ],
         mission: "Nuestra misión es crear experiencias digitales que combinen expresión artística con excelencia técnica, ofreciendo soluciones que no solo satisfagan las necesidades de nuestros clientes, sino que superen sus expectativas y creen un impacto duradero."
       },
       journey: {
@@ -230,564 +365,271 @@ export default function AboutPage() {
       cta: {
         title: "Creemos Algo Increíble Juntos",
         subtitle: "Ya sea que estés interesado en los videojuegos de BosoZoku o los servicios de agencia creativa de Maikonik Media, nos encantaría saber de ti.",
-        contact: "Contáctanos",
-        careers: "Únete a Nuestro Equipo"
+        primaryButton: "Contáctanos",
+        secondaryButton: "Únete a Nuestro Equipo"
       }
     }
   };
 
   // Use translations based on selected language
-  const t = content[language];
+  const t = useMemo(() => content[language], [language])
 
   return (
-    <div className="relative pt-20 ">
-      {/* Hero Section */}
-      <section ref={targetRef} className="relative min-h-[80vh] flex items-center overflow-hidden">
-        {/* Animated blobs - Hidden on mobile */}
-        <div className="hidden lg:block">
-          <AnimatedBlob color="#6C2BD9" size="600px" top="-300px" left="-300px" opacity={0.1} />
-          <AnimatedBlob color="#F43F5E" size="500px" bottom="-250px" right="-250px" opacity={0.1} delay={2} />
-        </div>
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary/5 via-transparent to-maikonik/5" />
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-maikonik/10 rounded-full blur-3xl" />
+      </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.h1
-              className="text-4xl md:text-6xl font-bold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {t.hero.title}{" "}
-              <span className="bg-gradient-to-r from-bosozoku via-primary to-maikonik bg-clip-text text-transparent">
-                StudioKó
-              </span>
-            </motion.h1>
-            <motion.p
-              className="text-xl md:text-2xl mb-8 text-muted-foreground"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              {t.hero.subtitle}
-            </motion.p>
-          </motion.div>
+      <div className="container mx-auto px-4 py-32 mt-24">
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-20"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-maikonik via-pink-400 to-maikonik bg-clip-text text-transparent">
+            {t.hero.title}
+          </h1>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            {t.hero.subtitle}
+          </p>
+        </motion.div>
 
-          <motion.div className="mt-16 relative px-4 md:px-0" style={{ y, opacity }}>
-            <div className="relative mx-auto max-w-5xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl">
-              <Image
-                src="/mikiyyo.png?height=1080&width=1920&text=StudioKó Team"
-                alt="StudioKó Team"
-                width={1920}
-                height={1080}
-                className="object-cover w-full h-full"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
-            </div>
-          </motion.div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent"></div>
-      </section>
-
-      {/* Our Story */}
-      <SectionTransition className="bg-muted/50 ">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.story.title}</h2>
-              <p className="text-muted-foreground mb-6">
-                {t.story.p1}
-              </p>
-              <p className="text-muted-foreground mb-6">
-                {t.story.p2}
-              </p>
-              <p className="text-muted-foreground">
-                {t.story.p3}
-                <br />
-                <span className="text-primary">{t.story.division1}</span>{t.story.division1Desc}
-                <br />
-                <span className="text-primary">{t.story.division2}</span>{t.story.division2Desc}
-                <br />
-                {t.story.together}
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="relative rounded-xl overflow-hidden aspect-square shadow-2xl">
-                <Image
-                  src="/ourstory.png"
-                  alt="StudioKó Story"
-                  width={800}
-                  height={800}
-                  className="object-cover w-full h-full"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              </div>
-              <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-primary rounded-xl opacity-30 hidden sm:block"></div>
-              <div className="absolute -bottom-8 -right-8 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl hidden sm:block"></div>
-            </motion.div>
-          </div>
-        </div>
-      </SectionTransition>
-
-      {/* Founder Section */}
-      <SectionTransition className="">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="absolute -bottom-6 -right-6 lg:-bottom-6 lg:-right-6 w-full h-full border-4 border-primary rounded-xl opacity-30 hidden sm:block"></div>
-              <div className="absolute -bottom-12 -right-12 lg:-bottom-12 lg:-right-12 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl hidden sm:block"></div>
-              <div className="relative z-10 rounded-xl overflow-hidden aspect-square shadow-2xl">
-                <Image
-                  src="/rmn.png?height=800&width=800&text=Ramón Aguilera"
-                  alt="Ramón Aguilera - CEO"
-                  width={800}
-                  height={800}
-                  className="object-cover w-full h-full"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.ceo.title}</h2>
-              <h3 className="text-xl font-bold text-primary mb-4">{t.ceo.name}</h3>
-              <p className="text-muted-foreground mb-6 whitespace-pre-line">
-                {t.ceo.bio}
-              </p>
-              <div className="flex space-x-4 mt-6">
-                <a href="https://www.linkedin.com/in/ram%C3%B3n-aguilera-95a2732a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="text-muted-foreground hover:text-primary transition-colors">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-linkedin"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                    <rect width="4" height="12" x="2" y="9" />
-                    <circle cx="4" cy="4" r="2" />
-                  </svg>
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-twitter"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                  </svg>
-                </a>
-                <a href="https://www.instagram.com/ramon_aguileraa/" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-instagram"
-                  >
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                  </svg>
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </SectionTransition>
-
-      {/* COO Section */}
-      <SectionTransition className="bg-muted/50 ">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.coo.title}</h2>
-              <h3 className="text-xl font-bold text-primary mb-4">{t.coo.name}</h3>
-              <p className="text-muted-foreground mb-6 whitespace-pre-line">
-                {t.coo.bio}
-              </p>
-              <div className="flex space-x-4 mt-6">
-                <a href="https://www.linkedin.com/in/miguel-mill%C3%A1n-675506307/" className="text-muted-foreground hover:text-primary transition-colors">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-linkedin"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                    <rect width="4" height="12" x="2" y="9" />
-                    <circle cx="4" cy="4" r="2" />
-                  </svg>
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-twitter"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                  </svg>
-                </a>
-                <a href="https://www.instagram.com/miguel.millaan/" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-instagram"
-                  >
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                  </svg>
-                </a>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="absolute -bottom-6 -left-6 w-full h-full border-4 border-primary rounded-xl opacity-30 hidden sm:block"></div>
-              <div className="absolute -bottom-12 -left-12 w-full h-full bg-gradient-to-bl from-maikonik/20 to-bosozoku/20 rounded-xl blur-xl hidden sm:block"></div>
-              <div className="relative z-10 rounded-xl overflow-hidden aspect-square shadow-2xl">
-                <Image
-                  src="/mki.jpg"
-                  alt="Miguel Millán - COO"
-                  width={800}
-                  height={800}
-                  className="object-cover w-full h-full"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </SectionTransition>
-
-      {/* Marketing Section */}
-      <SectionTransition className="bg-muted/50 ">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.marketing.title}</h2>
-              <h3 className="text-xl font-bold text-primary mb-4">{t.marketing.name}</h3>
-              <p className="text-muted-foreground mb-6 whitespace-pre-line">
-                {t.marketing.bio}
-              </p>
-              <div className="flex space-x-4 mt-6">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-linkedin"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                    <rect width="4" height="12" x="2" y="9" />
-                    <circle cx="4" cy="4" r="2" />
-                  </svg>
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-twitter"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                  </svg>
-                </a>
-                <a href="https://www.instagram.com/_torrejas/" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-instagram"
-                  >
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                  </svg>
-                </a>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-primary rounded-xl opacity-30 hidden sm:block"></div>
-              <div className="absolute -bottom-12 -right-12 w-full h-full bg-gradient-to-br from-bosozoku/20 to-maikonik/20 rounded-xl blur-xl hidden sm:block"></div>
-              <div className="relative z-10 rounded-xl overflow-hidden aspect-square shadow-2xl">
-                <Image
-                  src="/fer.jpg"
-                  alt="Fernanda Torres - Marketing Lead"
-                  width={800}
-                  height={800}
-                  className="object-cover w-full h-full"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </SectionTransition>
-
-      {/* Mission & Values */}
-      <SectionTransition className="">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.values.title}</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t.values.subtitle}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 text-center"
-            >
-              <div className="bg-primary/10 rounded-full p-4 inline-flex mb-6">
-                <Lightbulb className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">{t.values.creativity.title}</h3>
-              <p className="text-muted-foreground">
-                {t.values.creativity.desc}
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 text-center"
-            >
-              <div className="bg-primary/10 rounded-full p-4 inline-flex mb-6">
-                <Award className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">{t.values.excellence.title}</h3>
-              <p className="text-muted-foreground">
-                {t.values.excellence.desc}
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 text-center"
-            >
-              <div className="bg-primary/10 rounded-full p-4 inline-flex mb-6">
-                <Users className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">{t.values.collaboration.title}</h3>
-              <p className="text-muted-foreground">
-                {t.values.collaboration.desc}
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="glassmorphism rounded-xl p-6 text-center"
-            >
-              <div className="bg-primary/10 rounded-full p-4 inline-flex mb-6">
-                <Rocket className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">{t.values.innovation.title}</h3>
-              <p className="text-muted-foreground">
-                {t.values.innovation.desc}
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="mt-16 text-center">
-            <p className="text-muted-foreground max-w-3xl mx-auto mb-8">
-              {t.values.mission}
-            </p>
-          </div>
-        </div>
-      </SectionTransition>
-
-      {/* Timeline */}
-      <SectionTransition className="bg-muted/50 ">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.journey.title}</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t.journey.subtitle}
-            </p>
-          </div>
-
-          <div className="relative max-w-4xl mx-auto">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-border hidden md:block"></div>
-            <div className="absolute left-4 md:hidden h-full w-1 bg-border"></div>
-
-            {t.journey.milestones.map((item, index) => (
-              <div key={index} className="relative z-10 mb-12">
-                <div className={`flex items-center ${item.side === "left" ? "md:flex-row-reverse" : "md:flex-row"} flex-col md:flex-row`}>
-                  <div className="md:w-1/2 hidden md:block"></div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 items-center justify-center hidden md:flex">
-                    <div className="h-4 w-4 rounded-full bg-primary"></div>
-                  </div>
-                  <div className="absolute left-4 transform -translate-x-1/2 flex items-center justify-center md:hidden">
-                    <div className="h-4 w-4 rounded-full bg-primary"></div>
-                  </div>
+        {/* Story Section */}
+        <SectionTransition>
+          <div className="container mx-auto px-4 py-24">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent rounded-3xl" />
+              <div className="container mx-auto px-4 py-12 relative">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
                   <motion.div
-                    className={`w-full md:w-1/2 glassmorphism rounded-xl p-6 ml-8 md:ml-0 ${item.side === "left" ? "md:mr-10" : "md:ml-10"}`}
-                    initial={{ opacity: 0, x: item.side === "left" ? -50 : 50 }}
+                    initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.6 }}
+                    className="space-y-6"
                   >
-                    <div className="text-primary font-bold mb-2">{item.year}</div>
-                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                    <p className="text-muted-foreground">{item.description}</p>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent">
+                      {t.story.title}
+                    </h2>
+                    <p className="text-muted-foreground text-lg leading-relaxed">
+                      {t.story.p1}
+                    </p>
+                    <p className="text-muted-foreground text-lg leading-relaxed">
+                      {t.story.p2}
+                    </p>
+                    <p className="text-muted-foreground text-lg leading-relaxed">
+                      {t.story.p3}
+                      <br />
+                      <span className="text-primary">{t.story.division1}</span>{t.story.division1Desc}
+                      <br />
+                      <span className="text-primary">{t.story.division2}</span>{t.story.division2Desc}
+                      <br />
+                      {t.story.together}
+                    </p>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="relative aspect-video rounded-2xl overflow-hidden shadow-xl"
+                  >
+                    <Image
+                      src="/ourstory.png"
+                      alt="StudioKó Story"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
                   </motion.div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </SectionTransition>
+        </SectionTransition>
 
-      {/* Visual Separator */}
-      <div className="py-12 bg-gradient-to-r from-bosozoku/5 to-maikonik/5">
-        <div className="container mx-auto px-4">
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent"></div>
-        </div>
+        {/* Team Section */}
+        <SectionTransition>
+          <div className="container mx-auto px-4 py-24">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-maikonik to-primary bg-clip-text text-transparent">
+                {t.team.title}
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                {t.team.subtitle}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {t.team.members.map((member, index) => (
+                <motion.div
+                  key={member.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="glassmorphism rounded-xl p-6 text-center border border-border/40 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
+                >
+                  <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden ring-4 ring-primary/10">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{member.name}</h3>
+                  <p className="text-primary mb-3">{member.role}</p>
+                  <p className="text-muted-foreground text-sm">{member.bio}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </SectionTransition>
+
+        {/* Values Section - Mejorada con animación de hover */}
+        <SectionTransition>
+          <div className="container mx-auto px-4 py-24">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.values.title}</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                {t.values.subtitle}
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {t.values.items.map((item, index) => (
+                <div
+                  key={item.title}
+                  className="group bg-card border border-border rounded-lg p-6 text-center shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary/60"
+                >
+                  <div className="mb-4 flex justify-center">
+                    <item.icon className="h-8 w-8 text-primary icon-hover-animate" />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm">{item.description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 text-center max-w-2xl mx-auto text-muted-foreground text-base">
+              {t.values.mission}
+            </div>
+          </div>
+        </SectionTransition>
+
+        {/* Journey Section - Mejorada visualmente */}
+        <SectionTransition>
+          <div className="container mx-auto px-4 py-24">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.journey.title}</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                {t.journey.subtitle}
+              </p>
+            </div>
+            <div className="relative">
+              {/* Línea central con gradiente */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-2 rounded-full" style={{background: 'linear-gradient(to bottom, #6366f1 0%, #a855f7 100%)'}} />
+              <div className="space-y-20">
+                {t.journey.milestones.map((milestone, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, delay: index * 0.1 }}
+                    className="relative flex items-center min-h-[160px]"
+                  >
+                    {milestone.side === 'left' ? (
+                      <>
+                        <div className="w-1/2 pr-8 flex justify-end">
+                          <div className="bg-card border border-border rounded-lg p-6 w-full max-w-md text-left shadow-lg transition-all duration-300">
+                            <span className="block text-primary text-sm font-semibold mb-2">{milestone.year}</span>
+                            <h3 className="text-lg font-bold mb-1">{milestone.title}</h3>
+                            <p className="text-muted-foreground text-sm">{milestone.description}</p>
+                          </div>
+                        </div>
+                        <div className="w-0 flex flex-col items-center">
+                          <div className="w-5 h-5 rounded-full bg-primary border-4 border-background z-10 timeline-dot" />
+                        </div>
+                        <div className="w-1/2" />
+                      </>
+                    ) : (
+                      <>
+                        <div className="w-1/2" />
+                        <div className="w-0 flex flex-col items-center">
+                          <div className="w-5 h-5 rounded-full bg-primary border-4 border-background z-10 timeline-dot" />
+                        </div>
+                        <div className="w-1/2 pl-8 flex justify-start">
+                          <div className="bg-card border border-border rounded-lg p-6 w-full max-w-md text-left shadow-lg transition-all duration-300">
+                            <span className="block text-primary text-sm font-semibold mb-2">{milestone.year}</span>
+                            <h3 className="text-lg font-bold mb-1">{milestone.title}</h3>
+                            <p className="text-muted-foreground text-sm">{milestone.description}</p>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </SectionTransition>
+
+        {/* CTA Section */}
+        <SectionTransition>
+          <div className="container mx-auto px-4 py-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl mx-auto text-center"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.cta.title}</h2>
+              <p className="text-xl text-muted-foreground mb-8">{t.cta.subtitle}</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-primary to-maikonik hover:opacity-90 transition-opacity"
+                >
+                  <Link href="/contact">{t.cta.primaryButton}</Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                >
+                  <Link href="/careers">{t.cta.secondaryButton}</Link>
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </SectionTransition>
       </div>
 
-      {/* Call to Action */}
-      <SectionTransition className="bg-gradient-to-r from-bosozoku/10 to-maikonik/10 dark:from-bosozoku/20 dark:to-maikonik/20 ">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.cta.title}</h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              {t.cta.subtitle}
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-gradient-to-r from-bosozoku to-maikonik hover:opacity-90 transition-opacity"
-              >
-                <Link href="/contact">{t.cta.contact}</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="/careers">{t.cta.careers}</Link>
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </SectionTransition>
+      {/* Agregar estilos para animaciones */}
+      <style jsx global>{`
+        .timeline-dot {
+          animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+          0% { box-shadow: 0 0 0 0 rgba(99,102,241,0.7); }
+          70% { box-shadow: 0 0 0 10px rgba(99,102,241,0); }
+          100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+        }
+        .icon-hover-animate {
+          transition: transform 0.4s cubic-bezier(.4,2,.6,1);
+        }
+        .group:hover .icon-hover-animate {
+          transform: translateX(8px) rotate(-8deg);
+        }
+      `}</style>
     </div>
   )
 }

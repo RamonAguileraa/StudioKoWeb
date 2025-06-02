@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button"
 import SectionTransition from "@/components/section-transition"
 import AnimatedBlob from "@/components/animated-blob"
 import { useLanguage } from "@/context/language-context"
+import BackgroundParticles from "../../components/ui/background-particles"
 
 // Interfaces para tipado
 interface ServiceCardProps {

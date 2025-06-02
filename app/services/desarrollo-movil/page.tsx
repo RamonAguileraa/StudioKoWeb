@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import BackgroundParticles from "../../components/ui/background-particles"
+import BackgroundParticles from "../../../components/ui/background-particles"
 import { ArrowLeft } from "lucide-react"
 import { useRouter } from "next/navigation"
 

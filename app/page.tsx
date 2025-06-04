@@ -229,7 +229,7 @@ const projectList: Project[] = [
               </Button>
             </div>
           </div>
-
+          {/*
           <motion.div className="relative" style={{ y, opacity }}>
             <div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl ">
               <Image
@@ -247,6 +247,7 @@ const projectList: Project[] = [
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           </motion.div>
+          */}
         </div>
       </section>
 

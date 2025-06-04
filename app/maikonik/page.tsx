@@ -327,10 +327,10 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
   return (
     <div className="mb-2">
       <div className="flex items-center gap-3 mb-4">
-        <div className="bg-gradient-to-tr from-violet-500/30 to-blue-400/30 rounded-full p-3 shadow-lg">
-          {Icon && <Icon className="h-6 w-6" />}
+        <div className="bg-gradient-to-tr from-rose-500/20 to-rose-400/20 rounded-full p-3 shadow-lg">
+          {Icon && <Icon className="h-6 w-6 text-rose-500" />}
         </div>
-        <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-violet-300 tracking-tight border-b-2 border-violet-500/30 pb-1 flex-1">
+        <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-rose-300 tracking-tight border-b-2 border-rose-500/20 pb-1 flex-1">
           {title}
         </h5>
       </div>
@@ -339,13 +339,13 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
           <TooltipProvider key={techIndex} delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="group flex items-start gap-3 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-violet-500/20 hover:bg-violet-500/5 rounded-lg px-3 py-2">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-violet-400 to-blue-400 shadow-violet-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
+                <div className="group flex items-start gap-3 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-rose-500/20 hover:bg-rose-500/10 rounded-lg px-3 py-2">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-rose-400 to-rose-300 shadow-rose-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
                   <div>
-                    <h6 className="text-sm md:text-base font-semibold text-gray-900 dark:text-violet-100 leading-tight group-hover:text-violet-300 transition-colors">
+                    <h6 className="text-sm md:text-base font-semibold text-gray-900 dark:text-rose-100 leading-tight group-hover:text-rose-400 transition-colors">
                       {tech}
                     </h6>
-                    <p className="text-xs md:text-sm text-gray-600 dark:text-blue-200 leading-snug group-hover:text-blue-100 transition-colors">
+                    <p className="text-xs md:text-sm text-gray-600 dark:text-rose-200 leading-snug group-hover:text-rose-200 transition-colors">
                       {getTechDescription(tech)}
                     </p>
                   </div>
@@ -353,7 +353,7 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
               </TooltipTrigger>
               <TooltipContent 
                 side="right" 
-                className="bg-violet-900/90 text-white border-violet-500/40 shadow-xl text-sm md:text-base p-3"
+                className="bg-rose-900/90 text-white border-rose-500/40 shadow-xl text-sm md:text-base p-3"
                 sideOffset={5}
               >
                 {getTechDescription(tech)}
@@ -414,10 +414,10 @@ export default function MaikonikPage() {
 
         <div className="container mx-auto px-4 py-32 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 drop-shadow-[0_2px_32px_rgba(236,72,153,0.5)]">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-rose-400 to-rose-300 drop-shadow-[0_2px_32px_rgba(236,72,153,0.5)]">
               {currentContent.hero.title}
             </h1>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl mb-8 text-primary/90 drop-shadow-[0_1px_8px_rgba(80,0,120,0.2)]">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl mb-8 text-rose-500 drop-shadow-[0_1px_8px_rgba(236,72,153,0.2)]">
               {currentContent.hero.subtitle}
             </h2>
             <p className="text-lg md:text-xl text-gray-900 dark:text-white mb-12 max-w-2xl mx-auto drop-shadow-[0_1px_8px_rgba(80,0,120,0.2)]">
@@ -427,7 +427,7 @@ export default function MaikonikPage() {
               <Button
                 asChild
                 size="lg"
-                className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-pink-500/40"
+                className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium bg-gradient-to-r from-rose-500 to-rose-400 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-pink-500/40 border-rose-500"
               >
                 <Link href="/contact" className="flex items-center gap-3 text-base md:text-lg">
                   {currentContent.cta.button}
@@ -438,7 +438,7 @@ export default function MaikonikPage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium border-2 border-pink-500 text-pink-500 bg-black/30 shadow-lg transition-all duration-300 hover:bg-pink-500 hover:text-white hover:scale-105"
+                className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium border-2 border-rose-500 text-rose-500 bg-white/50 dark:bg-black/30 shadow-lg transition-all duration-300 hover:bg-rose-500 hover:text-white hover:scale-105"
               >
                 <Link href="#services" className="flex items-center gap-3 text-base md:text-lg">
                   {language === "es" ? "Nuestros Servicios" : "Our Services"}
@@ -458,14 +458,14 @@ export default function MaikonikPage() {
             whileHover={{ y: -5 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-rose-400 to-rose-300">
               {currentContent.services.title}
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-muted-foreground max-w-3xl mx-auto">
               {currentContent.services.subtitle}
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center max-w-5xl mx-auto">
             {currentContent.services.webDev.features.map((service, index) => (
               <motion.div
                 key={index}
@@ -475,54 +475,13 @@ export default function MaikonikPage() {
               >
                 <div className="flex flex-col items-center text-center">
                   <div className="w-12 h-12 mb-4 text-primary">
-                    {service.icon && <service.icon className="w-full h-full" />}
+                    {service.icon && <service.icon className="w-full h-full text-rose-500" />}
                   </div>
                   <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
                     {service.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
                     {service.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </SectionTransition>
-
-      {/* Features Section */}
-      <SectionTransition className="relative py-32 bg-gradient-to-b from-gray-50 to-white dark:from-[#181A24] dark:to-gray-900 overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
-            className="text-center mb-24"
-            whileHover={{ y: -5 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
-              {currentContent.services.title}
-            </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-muted-foreground max-w-3xl mx-auto">
-              {currentContent.services.subtitle}
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
-            {currentContent.services.webDev.features.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="bg-white/10 dark:bg-white/5 backdrop-blur-lg p-8 rounded-2xl border border-gray-200 dark:border-white/10 shadow-lg"
-                whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 mb-4 text-primary">
-                    {feature.icon && <feature.icon className="w-full h-full" />}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {feature.description}
                   </p>
                 </div>
               </motion.div>
@@ -606,7 +565,7 @@ export default function MaikonikPage() {
             <Button
               asChild
               size="lg"
-              className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium bg-gradient-to-r from-primary to-primary/80 hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+              className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium bg-gradient-to-r from-rose-500 to-rose-400 hover:opacity-90 transition-all duration-300 transform hover:scale-105"
             >
               <Link href="/contact" className="flex items-center gap-3 text-base md:text-lg">
                 {currentContent.cta.button}

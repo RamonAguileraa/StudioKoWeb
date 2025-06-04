@@ -551,7 +551,7 @@ export default function StudioKoPage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium border-2 border-pink-500 text-pink-500 bg-black/30 shadow-lg transition-all duration-300 hover:bg-pink-500 hover:text-white hover:scale-105"
+                className="px-8 md:px-10 py-6 md:py-7 rounded-full font-medium border-2 border-pink-500 text-pink-500 bg-white/50 dark:bg-black/30 shadow-lg transition-all duration-300 hover:bg-pink-500 hover:text-white hover:scale-105"
               >
                 <Link href="#services" className="flex items-center gap-3 text-base md:text-lg">
                   {language === "es" ? "Nuestros Servicios" : "Our Services"}
@@ -571,7 +571,7 @@ export default function StudioKoPage() {
             whileHover={{ y: -5 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 py-2">
               {t.tech.title}
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-muted-foreground max-w-3xl mx-auto">
@@ -580,7 +580,7 @@ export default function StudioKoPage() {
           </motion.div>
           <div className="flex justify-center relative mt-4">
             <motion.div
-              className="w-full max-w-4xl bg-white/10 dark:bg-white/5 backdrop-blur-2xl p-8 md:p-10 lg:p-16 rounded-3xl border-2 border-violet-500/40 shadow-2xl relative overflow-hidden"
+              className="w-full max-w-4xl bg-white/10 dark:bg-white/5 backdrop-blur-2xl p-8 md:p-10 lg:p-16 rounded-3xl border-2 border-violet-500/40 shadow-2xl relative overflow-visible"
               style={{ boxShadow: "0 0 32px 4px #7c3aed33, 0 2px 32px 0 #0ea5e933" }}
             >
               <div className="relative grid grid-cols-1 md:grid-cols-2 gap-x-10 md:gap-x-16 gap-y-10 md:gap-y-16">

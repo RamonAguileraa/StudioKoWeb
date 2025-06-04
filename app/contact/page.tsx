@@ -373,9 +373,9 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="md:col-span-3" ref={formRef}>
+            <div className="md:col-span-3 pb-12" ref={formRef}>
               <Tabs defaultValue="form" value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid w-full grid-cols-3 mb-6 md:mb-8">
+                <TabsList className="grid w-full grid-cols-3 mb-6 md:mb-8 ">
                   <TabsTrigger value="form" className="text-xs md:text-sm">
                     <MessageSquare className="mr-2 h-3 w-3 md:h-4 md:w-4" />
                     {t.formTab}
@@ -447,8 +447,8 @@ export default function ContactPage() {
                     >
                       <h2 className="text-2xl font-bold mb-6">{t.formTitle}</h2>
 
-                      <form onSubmit={handleSubmit} className="space-y-6">
-                        <div className="relative">
+                      <form onSubmit={handleSubmit} className="space-y-6 ">
+                        <div className="relative py-1">
                           <div
                             className="absolute left-0 top-0 h-1 bg-gradient-to-r from-bosozoku to-maikonik rounded-full"
                             style={{ width: `${(formStep / 3) * 100}%` }}

@@ -130,7 +130,7 @@ export default function Home() {
         title: "Últimos Proyectos",
         subtitle: "Explora nuestros trabajos más recientes en ambas divisiones",
         project: "Proyecto",
-        viewProject: "Ver Proyecto",
+        viewProject: "Ver Proyectos",
         viewAll: "Ver Todos los Proyectos",
       },
       vision: {
@@ -400,7 +400,7 @@ const projectList: Project[] = [
                       ))}
                     </div>
                     <Link
-                      href={`/projects/${project.id}`}
+                      href={`/projects/`}
                       className="text-sm font-medium text-primary flex items-center hover:underline"
                     >
                       {t.projects.viewProject}

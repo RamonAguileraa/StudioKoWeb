@@ -81,24 +81,24 @@ const projects = {
       live: "https://tibucami.com"
     },
     {
-      title: "Spot Café Promo",
-      description: "Promotional video for coffee shops, highlighting atmosphere, menu, and customer experience.",
-      image: "/projects/aromacafe.png",
-      technologies: ["Adobe Premiere", "After Effects", "DaVinci Resolve"],
+      title: "Restaurant Promo Video",
+      description: "Engaging promotional video showcasing the restaurant's ambiance, signature dishes, and dining experience.",
+      image: "/projects/restaurant-promo.png",
+      technologies: ["Adobe Premiere", "After Effects", "Color Grading"],
       category: "Video Editing",
       icon: Briefcase,
-      github: "https://github.com/yourusername/spotcafepromo",
-      live: "https://cafepromospot.com"
+      github: "",
+      live: "https://youtu.be/QnxMZ5ElFYY"
     },
     {
-      title: "Enligne Motion",
-      description: "Explainer animation for the Enligne app, showing user flow and benefits of the virtual queue system.",
-      image: "/projects/enligne.png",
-      technologies: ["After Effects", "Illustrator"],
+      title: "YouTube Channel Intro",
+      description: "Dynamic and eye-catching YouTube channel introduction animation that captures viewer attention.",
+      image: "/projects/youtube-intro.png",
+      technologies: ["After Effects", "Motion Graphics", "Sound Design"],
       category: "Video Editing",
       icon: Briefcase,
-      github: "https://github.com/yourusername/enlignemotion",
-      live: "https://enligne.app/video"
+      github: "",
+      live: "https://youtu.be/AdMngOqDYTo"
     }
   ],
   es: [
@@ -143,24 +143,24 @@ const projects = {
       live: "https://tibucami.com"
     },
     {
-      title: "Spot Café Promo",
-      description: "Video promocional para cafeterías, destacando ambiente, menú y experiencia del cliente.",
-      image: "/projects/aromacafe.png",
-      technologies: ["Adobe Premiere", "After Effects", "DaVinci Resolve"],
+      title: "Video Promocional de Restaurante",
+      description: "Video promocional cautivador que muestra el ambiente del restaurante, platillos distintivos y experiencia gastronómica.",
+      image: "/projects/restaurant-promo.png",
+      technologies: ["Adobe Premiere", "After Effects", "Color Grading"],
       category: "Edición de Video",
       icon: Briefcase,
-      github: "https://github.com/yourusername/spotcafepromo",
-      live: "https://cafepromospot.com"
+      github: "",
+      live: "https://youtu.be/QnxMZ5ElFYY"
     },
     {
-      title: "Enligne Motion",
-      description: "Animación explicativa para la app Enligne, mostrando el flujo de usuario y beneficios del sistema de filas virtuales.",
-      image: "/projects/enligne.png",
-      technologies: ["After Effects", "Illustrator"],
+      title: "Intro para Canal de YouTube",
+      description: "Animación dinámica y llamativa para introducción de canal de YouTube que captura la atención del espectador.",
+      image: "/projects/youtube-intro.png",
+      technologies: ["After Effects", "Motion Graphics", "Sound Design"],
       category: "Edición de Video",
       icon: Briefcase,
-      github: "https://github.com/yourusername/enlignemotion",
-      live: "https://enligne.app/video"
+      github: "",
+      live: "https://youtu.be/AdMngOqDYTo"
     }
   ]
 }
@@ -170,8 +170,8 @@ export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("all")
 
   const categories = {
-    en: ["All", "Web Development", "Branding", "Mobile Development"],
-    es: ["Todos", "Desarrollo Web", "Branding", "Desarrollo Móvil"]
+    en: ["All", "Web Development", "Branding", "Mobile Development", "Video Editing"],
+    es: ["Todos", "Desarrollo Web", "Branding", "Desarrollo Móvil", "Edición de Video"]
   }
 
   const filteredProjects = activeCategory === "all" 
@@ -187,7 +187,7 @@ export default function ProjectsPage() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-maikonik to-bosozoku bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-maikonik to-bosozoku bg-clip-text text-transparent py-2">
             {language === "en" ? "Our Projects" : "Nuestros Proyectos"}
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -229,13 +229,24 @@ export default function ProjectsPage() {
               <Card className="group h-full overflow-hidden border-border/40 hover:border-primary/50 transition-all duration-300">
                 <CardContent className="p-0">
                   <div className="relative aspect-video overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
+                    {project.category === "Video Editing" || project.category === "Edición de Video" ? (
+                      <iframe
+                        src={`${project.live.replace('youtu.be/', 'youtube.com/embed/')}?autoplay=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${project.live.split('/').pop()}&mute=1&modestbranding=1`}
+                        title={project.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full"
+                        frameBorder="0"
+                      />
+                    ) : (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   
@@ -261,15 +272,19 @@ export default function ProjectsPage() {
                     
                     <div className="flex items-center justify-between">
                       <div className="flex space-x-4">
-                        <Link
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                          aria-label={`GitHub - ${project.title}`}
-                        >
-                          <Github className="w-5 h-5" />
-                        </Link>
+                        {project.category !== "Video Editing" && 
+                         project.category !== "Edición de Video" && 
+                         project.category !== "Branding" && (
+                          <Link
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                            aria-label={`GitHub - ${project.title}`}
+                          >
+                            <Github className="w-5 h-5" />
+                          </Link>
+                        )}
                         <Link
                           href={project.live}
                           target="_blank"

@@ -327,10 +327,10 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
   return (
     <div className="mb-2">
       <div className="flex items-center gap-3 mb-4">
-        <div className="bg-gradient-to-tr from-rose-500/20 to-rose-400/20 rounded-full p-3 shadow-lg">
+        <div className="bg-gradient-to-tr from-rose-500/20 via-rose-400/20 to-rose-300/20 rounded-full p-3 shadow-lg">
           {Icon && <Icon className="h-6 w-6 text-rose-500" />}
         </div>
-        <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-rose-300 tracking-tight border-b-2 border-rose-500/20 pb-1 flex-1">
+        <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white tracking-tight border-b-2 border-rose-500/20 pb-1 flex-1">
           {title}
         </h5>
       </div>
@@ -342,10 +342,10 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
                 <div className="group flex items-start gap-3 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-rose-500/20 hover:bg-rose-500/10 rounded-lg px-3 py-2">
                   <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-rose-400 to-rose-300 shadow-rose-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
                   <div>
-                    <h6 className="text-sm md:text-base font-semibold text-gray-900 dark:text-rose-100 leading-tight group-hover:text-rose-400 transition-colors">
+                    <h6 className="text-sm md:text-base font-semibold text-gray-900 dark:text-white leading-tight group-hover:text-rose-500 transition-colors">
                       {tech}
                     </h6>
-                    <p className="text-xs md:text-sm text-gray-600 dark:text-rose-200 leading-snug group-hover:text-rose-200 transition-colors">
+                    <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300 leading-snug group-hover:text-rose-500/90 dark:group-hover:text-rose-300 transition-colors">
                       {getTechDescription(tech)}
                     </p>
                   </div>

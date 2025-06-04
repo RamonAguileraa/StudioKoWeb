@@ -89,10 +89,10 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
   return (
     <div className="mb-2">
       <div className="flex items-center gap-3 mb-4">
-        <div className="bg-gradient-to-tr from-violet-500/30 to-blue-400/30 rounded-full p-3 shadow-lg">
-          {Icon && <Icon className="h-6 w-6" />}
+        <div className="bg-gradient-to-tr from-violet-500/20 via-violet-400/20 to-blue-300/20 rounded-full p-3 shadow-lg">
+          {Icon && <Icon className="h-6 w-6 text-violet-500" />}
         </div>
-        <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-violet-300 tracking-tight border-b-2 border-violet-500/30 pb-1 flex-1">
+        <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white tracking-tight border-b-2 border-violet-500/20 pb-1 flex-1">
           {title}
         </h5>
       </div>
@@ -101,13 +101,13 @@ const TechCard = ({ title, technologies, icon: Icon }: TechItem) => {
           <TooltipProvider key={techIndex} delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="group flex items-start gap-3 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-violet-500/20 hover:bg-violet-500/5 rounded-lg px-3 py-2">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-violet-400 to-blue-400 shadow-violet-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
+                <div className="group flex items-start gap-3 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-violet-500/20 hover:bg-violet-500/10 rounded-lg px-3 py-2">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-tr from-violet-400 to-blue-300 shadow-violet-500/50 shadow-md flex-shrink-0 group-hover:scale-125 transition-transform" />
                   <div>
-                    <h6 className="text-sm md:text-base font-semibold text-gray-900 dark:text-violet-100 leading-tight group-hover:text-violet-300 transition-colors">
+                    <h6 className="text-sm md:text-base font-semibold text-gray-900 dark:text-white leading-tight group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
                       {tech}
                     </h6>
-                    <p className="text-xs md:text-sm text-gray-600 dark:text-blue-200 leading-snug group-hover:text-blue-100 transition-colors">
+                    <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300 leading-snug group-hover:text-violet-500/90 dark:group-hover:text-violet-300 transition-colors">
                       {getTechDescription(tech)}
                     </p>
                   </div>

@@ -319,7 +319,7 @@ export default function ContactPage() {
 
       {/* Contact Form Section */}
       <SectionTransition className="bg-muted/50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 py-12">
           <div className="grid md:grid-cols-5 gap-8 lg:gap-12">
             {/* Contact Information */}
             <div className="md:col-span-2">
@@ -373,7 +373,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="md:col-span-3 pb-12" ref={formRef}>
+            <div className="md:col-span-3 " ref={formRef}>
               <Tabs defaultValue="form" value={activeTab} onValueChange={setActiveTab} className="w-full">
                 <TabsList className="grid w-full grid-cols-3 mb-6 md:mb-8 ">
                   <TabsTrigger value="form" className="text-xs md:text-sm">

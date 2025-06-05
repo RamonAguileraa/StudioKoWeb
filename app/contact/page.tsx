@@ -448,7 +448,7 @@ export default function ContactPage() {
                       <h2 className="text-2xl font-bold mb-6">{t.formTitle}</h2>
 
                       <form onSubmit={handleSubmit} className="space-y-6 ">
-                        <div className="relative py-1">
+                        <div className="relative py-1 px-2">
                           <div
                             className="absolute left-0 top-0 h-1 bg-gradient-to-r from-bosozoku to-maikonik rounded-full"
                             style={{ width: `${(formStep / 3) * 100}%` }}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, ChevronDown, Code2, Palette, Briefcase, Home, Phone, Users, Wrench } from "lucide-react"
@@ -84,10 +85,15 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <Link href="/" className="flex items-center space-x-2">
-              <span className="text-3xl font-bold bg-gradient-to-r from-primary via-maikonik to-bosozoku bg-clip-text text-transparent hover:from-maikonik hover:via-primary hover:to-bosozoku transition-all duration-500">
-                StudioKo
-              </span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/Logo original.png"
+                alt="StudioKo Logo"
+                width={100}
+                height={30}
+                className="object-contain"
+                priority
+              />
             </Link>
           </motion.div>
 

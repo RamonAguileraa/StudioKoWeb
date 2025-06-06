@@ -86,7 +86,7 @@ export default function ContactPage() {
     }
     
     setIsSubmitting(true)
-    setErrors({}) // Limpiar errores anteriores
+    setErrors({})
     
     try {
       const response = await fetch('/api/send-email', {
@@ -107,6 +107,11 @@ export default function ContactPage() {
       const data = await response.json()
 
       if (!response.ok) {
+        if (data.error === 'Las variables de entorno para el correo no están configuradas') {
+          throw new Error(language === 'es' 
+            ? 'Lo sentimos, el sistema de correo no está configurado en este momento. Por favor, intenta contactarnos por WhatsApp o teléfono.'
+            : 'Sorry, the email system is not configured at the moment. Please try contacting us via WhatsApp or phone.')
+        }
         throw new Error(data.details || data.error || 'Error al enviar el correo')
       }
 
@@ -314,135 +319,79 @@ export default function ContactPage() {
 
       {/* Contact Form Section */}
       <SectionTransition className="bg-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-5 gap-12">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid md:grid-cols-5 gap-8 lg:gap-12">
             {/* Contact Information */}
             <div className="md:col-span-2">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="sticky top-24"
+                className="sticky top-24 space-y-8"
               >
-                <h2 className="text-3xl font-bold mb-6">{t.contactInfo}</h2>
-                <p className="text-muted-foreground mb-8">{t.reachOut}</p>
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4">{t.contactInfo}</h2>
+                  <p className="text-muted-foreground text-sm md:text-base">{t.reachOut}</p>
+                </div>
 
                 <div className="space-y-6">
                   <motion.div
-                    className="flex items-start"
+                    className="flex items-start space-x-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.1 }}
                   >
-                    <div className="bg-primary/10 rounded-full p-3 mr-4">
-                      <Mail className="h-6 w-6 text-primary" />
+                    <div className="bg-primary/10 rounded-full p-3 flex-shrink-0">
+                      <Mail className="h-5 w-5 md:h-6 md:w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold">{t.email}</h3>
-                      <p className="text-muted-foreground">contact.studioko.dev@gmail.com
+                      <h3 className="font-bold text-sm md:text-base">{t.email}</h3>
+                      <p className="text-muted-foreground text-sm md:text-base break-all">
+                        contact.studioko.dev@gmail.com
                       </p>
                     </div>
                   </motion.div>
 
                   <motion.div
-                    className="flex items-start"
+                    className="flex items-start space-x-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.2 }}
                   >
-                    <div className="bg-primary/10 rounded-full p-3 mr-4">
-                      <Phone className="h-6 w-6 text-primary" />
+                    <div className="bg-primary/10 rounded-full p-3 flex-shrink-0">
+                      <Phone className="h-5 w-5 md:h-6 md:w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold">{t.phone}</h3>
-                      <p className="text-muted-foreground">+52 (614) 465-9147</p>
+                      <h3 className="font-bold text-sm md:text-base">{t.phone}</h3>
+                      <p className="text-muted-foreground text-sm md:text-base">
+                        +52 (614) 465-9147
+                      </p>
                     </div>
                   </motion.div>
-
-                  <motion.div
-                    className="flex items-start"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.3 }}
-                  >
-                  </motion.div>
                 </div>
-
-                <motion.div
-                  className="mt-12"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.4 }}
-                >
-                  <h3 className="text-xl font-bold mb-4">{t.followUs}</h3>
-                  <div className="flex space-x-4">
-                    <a
-                      href="https://www.instagram.com/bosozoku.studio/"
-                      className="bg-muted p-3 rounded-full hover:bg-primary/10 transition-colors hover:scale-110 transform duration-200"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-instagram"
-                      >
-                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                      </svg>
-                    </a>
-                    <a
-                      href="#"
-                      className="bg-muted p-3 rounded-full hover:bg-primary/10 transition-colors hover:scale-110 transform duration-200"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-twitter"
-                      >
-                        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                      </svg>
-                    </a>
-                  </div>
-                </motion.div>
-
-
               </motion.div>
             </div>
 
             {/* Contact Form */}
-            <div className="md:col-span-3" ref={formRef}>
+            <div className="md:col-span-3 " ref={formRef}>
               <Tabs defaultValue="form" value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid w-full grid-cols-3 mb-8">
-                  <TabsTrigger value="form" className="text-sm">
-                    <MessageSquare className="mr-2 h-4 w-4" />
+                <TabsList className="grid w-full grid-cols-3 mb-6 md:mb-8 ">
+                  <TabsTrigger value="form" className="text-xs md:text-sm">
+                    <MessageSquare className="mr-2 h-3 w-3 md:h-4 md:w-4" />
                     {t.formTab}
                   </TabsTrigger>
-                  <TabsTrigger value="whatsapp" className="text-sm">
+                  <TabsTrigger value="whatsapp" className="text-xs md:text-sm">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
+                      width="14"
+                      height="14"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="mr-2"
+                      className="mr-2 md:w-4 md:h-4"
                     >
                       <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
                       <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1Z" />
@@ -451,8 +400,8 @@ export default function ContactPage() {
                     </svg>
                     {t.whatsappTab}
                   </TabsTrigger>
-                  <TabsTrigger value="call" className="text-sm">
-                    <Phone className="mr-2 h-4 w-4" />
+                  <TabsTrigger value="call" className="text-xs md:text-sm">
+                    <Phone className="mr-2 h-3 w-3 md:h-4 md:w-4" />
                     {t.callTab}
                   </TabsTrigger>
                 </TabsList>
@@ -498,8 +447,8 @@ export default function ContactPage() {
                     >
                       <h2 className="text-2xl font-bold mb-6">{t.formTitle}</h2>
 
-                      <form onSubmit={handleSubmit} className="space-y-6">
-                        <div className="relative">
+                      <form onSubmit={handleSubmit} className="space-y-6 ">
+                        <div className="relative py-1 px-2">
                           <div
                             className="absolute left-0 top-0 h-1 bg-gradient-to-r from-bosozoku to-maikonik rounded-full"
                             style={{ width: `${(formStep / 3) * 100}%` }}

@@ -130,7 +130,7 @@ export default function Home() {
         title: "Últimos Proyectos",
         subtitle: "Explora nuestros trabajos más recientes en ambas divisiones",
         project: "Proyecto",
-        viewProject: "Ver Proyecto",
+        viewProject: "Ver Proyectos",
         viewAll: "Ver Todos los Proyectos",
       },
       vision: {
@@ -199,7 +199,7 @@ const projectList: Project[] = [
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-20">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent pt-[175px] py-2">
               {t.hero.title}
             </h1>
             <p className="text-lg md:text-xl mb-12 text-muted-foreground">
@@ -229,24 +229,25 @@ const projectList: Project[] = [
               </Button>
             </div>
           </div>
-
-          <motion.div
-            className="relative"
-            style={{ y, opacity }}
-          >
-            <div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl">
+          {/*
+          <motion.div className="relative" style={{ y, opacity }}>
+            <div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-2xl ">
               <Image
                 src="/digitalmedia.png"
                 alt="StudioKó Showcase"
                 width={1920}
                 height={1080}
-                className="object-cover"
+                className="object-cover opacity-0 transition-opacity duration-300"
+                onLoadingComplete={(image) => {
+                  image.classList.remove('opacity-0')
+                }}
                 priority
                 loading="eager"
               />
-              <div className="absolute inset-0"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           </motion.div>
+          */}
         </div>
       </section>
 
@@ -254,7 +255,7 @@ const projectList: Project[] = [
       <SectionTransition>
         <div className="container mx-auto px-4 py-32">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent">{t.divisions.title}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-primary to-maikonik bg-clip-text text-transparent pt-[150px]">{t.divisions.title}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">{t.divisions.subtitle}</p>
           </div>
 
@@ -399,7 +400,7 @@ const projectList: Project[] = [
                       ))}
                     </div>
                     <Link
-                      href={`/projects/${project.id}`}
+                      href={`/projects/`}
                       className="text-sm font-medium text-primary flex items-center hover:underline"
                     >
                       {t.projects.viewProject}

@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { motion } from "framer-motion"
-import { Instagram, Linkedin, Github, ArrowUp } from "lucide-react"
+import { Instagram, Linkedin, Github, ArrowUp, Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "@/context/language-context"
 import { LegalDialog } from "@/components/legal-dialog"
+import { Button } from "@/components/ui/button"
 
 export default function Footer() {
   const { language } = useLanguage()
@@ -20,6 +22,7 @@ export default function Footer() {
       services: "Services",
       portfolio: "Portfolio",
       contact: "Contact",
+      maikonik: "Maikonik Media",
       rights: "All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
@@ -30,6 +33,7 @@ export default function Footer() {
       services: "Servicios",
       portfolio: "Portafolio",
       contact: "Contacto",
+      maikonik: "Maikonik Media",
       rights: "Todos los derechos reservados.",
       privacy: "Política de Privacidad",
       terms: "Términos de Servicio",
@@ -51,20 +55,25 @@ export default function Footer() {
   }
 
   return (
-    <footer className="relative bg-gradient-to-r from-primary/10 to-primary/20 dark:from-primary/20 dark:to-primary/30">
+    <footer className="relative bg-gradient-to-r from-bosozoku/10 to-maikonik/10 dark:from-bosozoku/20 dark:to-maikonik/20">
       {/* Blob decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-primary/10 dark:bg-primary/20 rounded-full filter blur-3xl opacity-50 blob-animation"></div>
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-primary/10 dark:bg-primary/20 rounded-full filter blur-3xl opacity-50 blob-animation"></div>
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-bosozoku/10 dark:bg-bosozoku/20 rounded-full filter blur-3xl opacity-50 blob-animation"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-maikonik/10 dark:bg-maikonik/20 rounded-full filter blur-3xl opacity-50 blob-animation"></div>
       </div>
 
       <div className="container mx-auto px-4 py-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <Link href="/" className="inline-block mb-4">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                StudioKó
-              </h3>
+              <Image
+                src="/Logo original.png"
+                alt="StudioKo Logo"
+                width={100}
+                height={30}
+                className="object-contain"
+                priority
+              />
             </Link>
             <p className="text-sm text-muted-foreground mb-4">{t.tagline}</p>
             <div className="flex space-x-4">
@@ -129,25 +138,47 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-medium mb-4">{t.contact}</h4>
+            <h4 className="font-medium mb-4">{t.maikonik}</h4>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/contact"
+                  href="/maikonik"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  {t.contact}
+                  {t.about}
                 </Link>
               </li>
               <li>
-                <a
-                  href="mailto:contact@studioko.com"
+                <Link
+                  href="/maikonik#services"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  contact@studioko.com
-                </a>
+                  {t.services}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/maikonik#portfolio"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {t.portfolio}
+                </Link>
               </li>
             </ul>
+          </div>
+
+          <div>
+            <h4 className="font-medium mb-4">{t.contact}</h4>
+            <Button
+              asChild
+              variant="outline"
+              className="w-full justify-start gap-2"
+            >
+              <Link href="/contact">
+                <Phone className="h-4 w-4" />
+                {t.contact}
+              </Link>
+            </Button>
           </div>
         </div>
 

@@ -192,7 +192,7 @@ const projectList: Project[] = [
   return (
     <div className="relative overflow-hidden">
       {/* Hero Section */}
-      <section ref={targetRef} className="relative h-[90vh] flex items-center pt-60 bg-background">
+      <section ref={targetRef} className="relative h-[90vh] mt-6 flex items-center pt-60 bg-background">
         {/* Animated blobs */}
         <AnimatedBlob color="#6C2BD9" size="600px" top="-300px" left="-300px" opacity={0.2} />
         <AnimatedBlob color="#F43F5E" size="500px" bottom="-250px" right="-250px" opacity={0.2} delay={2} />

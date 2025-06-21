@@ -1,0 +1,39 @@
+User-agent: *
+Allow: /
+
+# Permitir acceso a recursos importantes
+Allow: /fav/
+Allow: /images/
+Allow: /projects/
+
+# Bloquear acceso a archivos sensibles
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://studioko.com/sitemap.xml
+
+# Crawl-delay para ser respetuoso con el servidor
+Crawl-delay: 1
+
+# Reglas específicas para Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Reglas específicas para Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Reglas para bots de redes sociales
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: / 

@@ -12,6 +12,7 @@ import AnimatedBlob from "@/components/animated-blob"
 import { useLanguage } from "@/context/language-context"
 import { SiNextdotjs, SiReact, SiTailwindcss, SiTypescript,SiAdobepremierepro, SiAdobeaftereffects, SiUnity, SiBlender, SiFigma, SiAdobexd, SiNodedotjs, SiPython, SiDocker, SiAmazon, SiAdobephotoshop, SiAdobeillustrator, SiDavinciresolve } from "react-icons/si"
 import TestimonialsCarousel from "@/app/components/testimonials-carousel"
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/json-ld"
 
 interface Project {
   id: number;
@@ -524,6 +525,10 @@ const projectList: Project[] = [
           </motion.div>
         </div>
       </SectionTransition>
+
+      {/* SEO Structured Data */}
+      <OrganizationJsonLd />
+      <WebSiteJsonLd />
     </div>
   )
 }
